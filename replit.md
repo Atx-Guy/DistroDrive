@@ -81,3 +81,6 @@ Preferred communication style: Simple, everyday language.
 - **Vite**: Frontend build tool with HMR
 - **esbuild**: Server bundling for production
 - **Replit Plugins**: Development banner and cartographer for Replit environment
+
+### Scripts
+- **RSS Feed Fetcher**: `tsx scripts/fetch-news.ts` - Fetches news from DistroWatch, Phoronix, and 9to5Linux RSS feeds and populates the news table. Handles duplicates (based on source URL) and errors gracefully. Can be run as a cron job for automatic updates.
