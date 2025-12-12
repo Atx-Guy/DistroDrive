@@ -4,7 +4,8 @@ import {
   type Release, type InsertRelease,
   type Download, type InsertDownload,
   type News, type InsertNews,
-  type DistributionWithReleases, type ReleaseWithDownloads
+  type DistributionWithReleases, type ReleaseWithDownloads,
+  type DistributionWithLatestRelease
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, ilike, desc, asc } from "drizzle-orm";
@@ -12,6 +13,7 @@ import { eq, ilike, desc, asc } from "drizzle-orm";
 export interface IStorage {
   // Distributions
   getDistributions(): Promise<Distribution[]>;
+  getDistributionsWithLatestRelease(): Promise<DistributionWithLatestRelease[]>;
   getDistribution(id: number): Promise<Distribution | undefined>;
   getDistributionWithReleases(id: number): Promise<DistributionWithReleases | undefined>;
   searchDistributions(query: string): Promise<Distribution[]>;
@@ -36,6 +38,43 @@ export interface IStorage {
 export class DatabaseStorage implements IStorage {
   async getDistributions(): Promise<Distribution[]> {
     return await db.select().from(distributions).orderBy(asc(distributions.name));
+  }
+
+  async getDistributionsWithLatestRelease(): Promise<DistributionWithLatestRelease[]> {
+    const allDistributions = await this.getDistributions();
+    const result: DistributionWithLatestRelease[] = [];
+
+    for (const distro of allDistributions) {
+      const distroReleases = await this.getReleasesByDistro(distro.id);
+      
+      let latestVersion: string | null = null;
+      let isLatestLts = false;
+      const architectureSet = new Set<string>();
+
+      if (distroReleases.length > 0) {
+        const sortedReleases = distroReleases.sort(
+          (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+        );
+        const latestRelease = sortedReleases[0];
+        latestVersion = latestRelease.versionNumber;
+        isLatestLts = latestRelease.isLts;
+
+        for (const release of distroReleases) {
+          for (const download of release.downloads) {
+            architectureSet.add(download.architecture);
+          }
+        }
+      }
+
+      result.push({
+        ...distro,
+        latestVersion,
+        isLatestLts,
+        availableArchitectures: Array.from(architectureSet),
+      });
+    }
+
+    return result;
   }
 
   async getDistribution(id: number): Promise<Distribution | undefined> {

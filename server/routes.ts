@@ -10,10 +10,10 @@ export async function registerRoutes(
   // Seed database on startup
   await storage.seedDatabase();
 
-  // Get all distributions
+  // Get all distributions with latest release info
   app.get("/api/distributions", async (req, res) => {
     try {
-      const distros = await storage.getDistributions();
+      const distros = await storage.getDistributionsWithLatestRelease();
       res.json(distros);
     } catch (error) {
       console.error("Error fetching distributions:", error);

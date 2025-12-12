@@ -14,7 +14,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield } from "lucide-react";
-import type { Distribution, DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
+import type { DistributionWithLatestRelease, DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
 
 const BASE_DISTROS = ["Debian", "Arch", "Ubuntu", "Independent", "Fedora", "RHEL"];
 const DESKTOP_ENVIRONMENTS = ["GNOME", "KDE Plasma", "Xfce", "Cinnamon", "MATE", "LXQt", "Budgie"];
@@ -26,7 +26,7 @@ export default function IsoBrowser() {
   const [selectedArchitectures, setSelectedArchitectures] = useState<string[]>([]);
   const [selectedDistroId, setSelectedDistroId] = useState<number | null>(null);
 
-  const { data: distributions, isLoading } = useQuery<Distribution[]>({
+  const { data: distributions, isLoading } = useQuery<DistributionWithLatestRelease[]>({
     queryKey: ["/api/distributions"],
   });
 
@@ -46,9 +46,13 @@ export default function IsoBrowser() {
         const hasMatchingDE = distro.desktopEnvironments.some((de) => selectedDEs.includes(de));
         if (!hasMatchingDE) return false;
       }
+      if (selectedArchitectures.length > 0) {
+        const hasMatchingArch = distro.availableArchitectures.some((arch) => selectedArchitectures.includes(arch));
+        if (!hasMatchingArch) return false;
+      }
       return true;
     });
-  }, [distributions, selectedBaseDistros, selectedDEs]);
+  }, [distributions, selectedBaseDistros, selectedDEs, selectedArchitectures]);
 
   const toggleFilter = (value: string, selected: string[], setSelected: (val: string[]) => void) => {
     if (selected.includes(value)) {
@@ -249,6 +253,15 @@ export default function IsoBrowser() {
                           {distro.baseDistro && (
                             <Badge variant="secondary" className="text-xs" data-testid={`badge-base-${distro.id}`}>
                               {distro.baseDistro}
+                            </Badge>
+                          )}
+                          {distro.latestVersion && (
+                            <Badge 
+                              variant={distro.isLatestLts ? "default" : "outline"} 
+                              className={distro.isLatestLts ? "text-xs bg-green-600" : "text-xs"}
+                              data-testid={`badge-version-${distro.id}`}
+                            >
+                              v{distro.latestVersion}{distro.isLatestLts ? " LTS" : ""}
                             </Badge>
                           )}
                         </div>

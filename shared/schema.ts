@@ -100,3 +100,9 @@ export type ReleaseWithDownloads = Release & {
 export type DistributionWithReleases = Distribution & {
   releases: ReleaseWithDownloads[];
 };
+
+export type DistributionWithLatestRelease = Distribution & {
+  latestVersion: string | null;
+  isLatestLts: boolean;
+  availableArchitectures: string[];
+};
