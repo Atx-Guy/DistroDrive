@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import DistributionDetail from "@/pages/DistributionDetail";
 import NewsPage from "@/pages/NewsPage";
+import IsoBrowser from "@/pages/iso-browser";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/distro/:id" component={DistributionDetail} />
       <Route path="/news" component={NewsPage} />
+      <Route path="/iso-browser" component={IsoBrowser} />
       <Route component={NotFound} />
     </Switch>
   );
