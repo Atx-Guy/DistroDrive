@@ -177,66 +177,49 @@ export class DatabaseStorage implements IStorage {
       isLts: true,
     });
 
-    const ubuntu2310 = await this.createRelease({
-      distroId: ubuntu.id,
-      versionNumber: "23.10 (Mantic Minotaur)",
-      releaseDate: new Date("2023-10-12"),
-      isLts: false,
-    });
-
     // Seed downloads for Ubuntu 24.04
     await this.createDownload({
       releaseId: ubuntu2404.id,
       architecture: "amd64",
-      isoUrl: "https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso",
-      torrentUrl: "https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso.torrent",
-      checksum: "sha256:e240e4b801f7534f4bc8ec87e2caae7e03ea76d45ab9a9bd3e0c4e73ee0fb0eb",
-      downloadSize: "5.7 GB",
+      isoUrl: "https://releases.ubuntu.com/noble/ubuntu-24.04.2-desktop-amd64.iso",
+      torrentUrl: "https://releases.ubuntu.com/noble/ubuntu-24.04.2-desktop-amd64.iso.torrent",
+      checksum: "sha256: See https://releases.ubuntu.com/noble/SHA256SUMS",
+      downloadSize: "5.8 GB",
     });
 
     await this.createDownload({
       releaseId: ubuntu2404.id,
       architecture: "arm64",
-      isoUrl: "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04-live-server-arm64.iso",
-      torrentUrl: "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04-live-server-arm64.iso.torrent",
-      checksum: "sha256:d2fb98fc4f5f5e0dd5c0d1e0f2b2b98f2b2b98f2b2b98f2b2b98f2b2b98f2b2b",
+      isoUrl: "https://cdimage.ubuntu.com/releases/24.04.2/release/ubuntu-24.04.2-live-server-arm64.iso",
+      torrentUrl: "https://cdimage.ubuntu.com/releases/24.04.2/release/ubuntu-24.04.2-live-server-arm64.iso.torrent",
+      checksum: "sha256: See https://cdimage.ubuntu.com/releases/24.04.2/release/SHA256SUMS",
       downloadSize: "2.6 GB",
     });
 
-    // Seed downloads for Ubuntu 23.10
-    await this.createDownload({
-      releaseId: ubuntu2310.id,
-      architecture: "amd64",
-      isoUrl: "https://releases.ubuntu.com/23.10/ubuntu-23.10-desktop-amd64.iso",
-      torrentUrl: "https://releases.ubuntu.com/23.10/ubuntu-23.10-desktop-amd64.iso.torrent",
-      checksum: "sha256:76fbc8fcaab4e4c7c4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4",
-      downloadSize: "5.2 GB",
-    });
-
     // Seed releases for Fedora
-    const fedora40 = await this.createRelease({
+    const fedora41 = await this.createRelease({
       distroId: fedora.id,
-      versionNumber: "40",
-      releaseDate: new Date("2024-04-23"),
+      versionNumber: "41",
+      releaseDate: new Date("2024-10-24"),
       isLts: false,
     });
 
     await this.createDownload({
-      releaseId: fedora40.id,
+      releaseId: fedora41.id,
       architecture: "amd64",
-      isoUrl: "https://download.fedoraproject.org/pub/fedora/linux/releases/40/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-40-1.14.iso",
-      torrentUrl: "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-x86_64-40.torrent",
-      checksum: "sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
-      downloadSize: "2.2 GB",
+      isoUrl: "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-41-1.4.iso",
+      torrentUrl: "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-x86_64-41.torrent",
+      checksum: "sha256: See https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Workstation/x86_64/iso/",
+      downloadSize: "2.3 GB",
     });
 
     await this.createDownload({
-      releaseId: fedora40.id,
+      releaseId: fedora41.id,
       architecture: "arm64",
-      isoUrl: "https://download.fedoraproject.org/pub/fedora/linux/releases/40/Workstation/aarch64/iso/Fedora-Workstation-Live-aarch64-40-1.14.iso",
-      torrentUrl: "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-aarch64-40.torrent",
-      checksum: "sha256:b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
-      downloadSize: "2.1 GB",
+      isoUrl: "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/iso/Fedora-Server-netinst-aarch64-41-1.4.iso",
+      torrentUrl: "https://torrent.fedoraproject.org/torrents/Fedora-Server-netinst-aarch64-41.torrent",
+      checksum: "sha256: See https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/iso/",
+      downloadSize: "900 MB",
     });
 
     // Seed releases for Debian
@@ -250,53 +233,53 @@ export class DatabaseStorage implements IStorage {
     await this.createDownload({
       releaseId: debian12.id,
       architecture: "amd64",
-      isoUrl: "https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-12.5.0-amd64-DVD-1.iso",
-      torrentUrl: "https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/debian-12.5.0-amd64-DVD-1.iso.torrent",
-      checksum: "sha256:c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
-      downloadSize: "3.7 GB",
+      isoUrl: "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso",
+      torrentUrl: "https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/debian-12.9.0-amd64-netinst.iso.torrent",
+      checksum: "sha256: See https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS",
+      downloadSize: "660 MB",
     });
 
     await this.createDownload({
       releaseId: debian12.id,
       architecture: "arm64",
-      isoUrl: "https://cdimage.debian.org/debian-cd/current/arm64/iso-dvd/debian-12.5.0-arm64-DVD-1.iso",
-      torrentUrl: "https://cdimage.debian.org/debian-cd/current/arm64/bt-dvd/debian-12.5.0-arm64-DVD-1.iso.torrent",
-      checksum: "sha256:d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5",
-      downloadSize: "3.5 GB",
+      isoUrl: "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-12.9.0-arm64-netinst.iso",
+      torrentUrl: "https://cdimage.debian.org/debian-cd/current/arm64/bt-cd/debian-12.9.0-arm64-netinst.iso.torrent",
+      checksum: "sha256: See https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA256SUMS",
+      downloadSize: "700 MB",
     });
 
     // Seed releases for Arch Linux
-    const arch202405 = await this.createRelease({
+    const arch202412 = await this.createRelease({
       distroId: arch.id,
-      versionNumber: "2024.05.01",
-      releaseDate: new Date("2024-05-01"),
+      versionNumber: "2024.12.01",
+      releaseDate: new Date("2024-12-01"),
       isLts: false,
     });
 
     await this.createDownload({
-      releaseId: arch202405.id,
+      releaseId: arch202412.id,
       architecture: "amd64",
-      isoUrl: "https://geo.mirror.pkgbuild.com/iso/2024.05.01/archlinux-2024.05.01-x86_64.iso",
-      torrentUrl: "https://archlinux.org/releng/releases/2024.05.01/torrent/",
-      checksum: "sha256:e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6",
+      isoUrl: "https://geo.mirror.pkgbuild.com/iso/2024.12.01/archlinux-2024.12.01-x86_64.iso",
+      torrentUrl: "https://archlinux.org/releng/releases/2024.12.01/torrent/",
+      checksum: "sha256: See https://archlinux.org/download/",
       downloadSize: "1.1 GB",
     });
 
     // Seed releases for Linux Mint
-    const mint22 = await this.createRelease({
+    const mint221 = await this.createRelease({
       distroId: mint.id,
-      versionNumber: "22 (Wilma)",
-      releaseDate: new Date("2024-07-25"),
+      versionNumber: "22.1 (Xia)",
+      releaseDate: new Date("2024-12-01"),
       isLts: true,
     });
 
     await this.createDownload({
-      releaseId: mint22.id,
+      releaseId: mint221.id,
       architecture: "amd64",
-      isoUrl: "https://mirrors.kernel.org/linuxmint/stable/22/linuxmint-22-cinnamon-64bit.iso",
-      torrentUrl: "https://torrents.linuxmint.com/torrents/linuxmint-22-cinnamon-64bit.iso.torrent",
-      checksum: "sha256:f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1",
-      downloadSize: "2.8 GB",
+      isoUrl: "https://mirrors.kernel.org/linuxmint/stable/22.1/linuxmint-22.1-cinnamon-64bit.iso",
+      torrentUrl: "https://torrents.linuxmint.com/torrents/linuxmint-22.1-cinnamon-64bit.iso.torrent",
+      checksum: "sha256: See https://linuxmint.com/edition.php?id=319",
+      downloadSize: "2.9 GB",
     });
 
     // Seed news
