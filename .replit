@@ -44,3 +44,5 @@ integrations = ["javascript_database:1.0.0"]
 [userenv]
 
 [userenv.shared]
+VITE_SUPABASE_URL = "https://vmgmyccmkrbniimqfmlu.supabase.co/"
+VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZtZ215Y2Nta3JibmlpbXFmbWx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1ODU0NTAsImV4cCI6MjA4MTE2MTQ1MH0.XNGp9N3CatvxLmcN5J6gFJin6z8ma-XxnUQP3zS-EcQ"
