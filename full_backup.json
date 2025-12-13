@@ -1,0 +1,1265 @@
+{
+  "exportedAt": "2025-12-13T20:34:29.956Z",
+  "distributions": [
+    {
+      "id": 1,
+      "name": "Ubuntu",
+      "description": "Ubuntu is a popular Linux distribution based on Debian. Known for its ease of use and regular release schedule, it's one of the most widely used desktop Linux distributions.",
+      "websiteUrl": "https://ubuntu.com",
+      "logoUrl": "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "GNOME",
+        "KDE Plasma",
+        "Xfce",
+        "MATE"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Fedora",
+      "description": "Fedora is a Linux distribution developed by the community-supported Fedora Project and sponsored by Red Hat. Features cutting-edge technology and a focus on innovation.",
+      "websiteUrl": "https://fedoraproject.org",
+      "logoUrl": "https://fedoraproject.org/assets/images/fedora-logo.png",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "GNOME",
+        "KDE Plasma",
+        "Xfce",
+        "LXQt",
+        "Cinnamon"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Debian",
+      "description": "Debian is one of the oldest and most influential Linux distributions. Known for its stability and vast software repository, it serves as the foundation for many other distributions.",
+      "websiteUrl": "https://debian.org",
+      "logoUrl": "https://www.debian.org/logos/openlogo-100.png",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "GNOME",
+        "KDE Plasma",
+        "Xfce",
+        "LXDE",
+        "MATE",
+        "Cinnamon"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Arch Linux",
+      "description": "Arch Linux is a lightweight and flexible Linux distribution that tries to Keep It Simple. A rolling release distribution targeting experienced users.",
+      "websiteUrl": "https://archlinux.org",
+      "logoUrl": "https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.png",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "Any (user choice)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Linux Mint",
+      "description": "Linux Mint is a community-driven Linux distribution based on Ubuntu. It strives to be a modern, elegant and comfortable operating system which is both powerful and easy to use.",
+      "websiteUrl": "https://linuxmint.com",
+      "logoUrl": "https://www.linuxmint.com/img/logo.png",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "Cinnamon",
+        "MATE",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Manjaro",
+      "description": "User-friendly Arch-based distribution with pre-configured desktop environments.",
+      "websiteUrl": "https://manjaro.org",
+      "logoUrl": "https://manjaro.org/img/logo.svg",
+      "baseDistro": "Arch",
+      "desktopEnvironments": [
+        "GNOME",
+        "KDE Plasma",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "openSUSE Tumbleweed",
+      "description": "Rolling-release distribution with the latest stable packages.",
+      "websiteUrl": "https://www.opensuse.org",
+      "logoUrl": "https://www.opensuse.org/build/images/opensuse-logo.png",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "GNOME",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "openSUSE Leap",
+      "description": "Regular-release enterprise-grade distribution with stability focus.",
+      "websiteUrl": "https://www.opensuse.org",
+      "logoUrl": "https://www.opensuse.org/build/images/opensuse-logo.png",
+      "baseDistro": "SUSE",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "GNOME",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "CentOS Stream",
+      "description": "Community-driven upstream for Red Hat Enterprise Linux.",
+      "websiteUrl": "https://centos.org",
+      "logoUrl": "https://www.centos.org/assets/icons/apple-touch-icon.png",
+      "baseDistro": "RHEL",
+      "desktopEnvironments": [
+        "GNOME"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Pop!_OS",
+      "description": "Ubuntu-based distribution by System76 optimized for productivity and gaming.",
+      "websiteUrl": "https://pop.system76.com",
+      "logoUrl": "https://placehold.co/400x400?text=P",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "COSMIC",
+        "GNOME"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "AlmaLinux",
+      "description": "Community-driven RHEL-compatible enterprise distribution.",
+      "websiteUrl": "https://almalinux.org",
+      "logoUrl": "https://almalinux.org/images/og/newhero.png",
+      "baseDistro": "RHEL",
+      "desktopEnvironments": [
+        "GNOME"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Alpine Linux",
+      "description": "Security-oriented, lightweight distribution using musl libc.",
+      "websiteUrl": "https://alpinelinux.org",
+      "logoUrl": "https://alpinelinux.org/alpine-logo.ico",
+      "baseDistro": "Independent",
+      "desktopEnvironments": []
+    },
+    {
+      "id": 49,
+      "name": "Armbian",
+      "description": "Debian/Ubuntu-based distribution for ARM development boards.",
+      "websiteUrl": "https://armbian.com",
+      "logoUrl": "https://cdn.armbian.com/wp-content/uploads/2022/01/xfcezaslon.png",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "Xfce",
+        "GNOME",
+        "Budgie"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Artix Linux",
+      "description": "Arch-based distribution without systemd init system.",
+      "websiteUrl": "https://artixlinux.org",
+      "logoUrl": "https://artixlinux.org/favicons/apple-touch-icon.png?v=1550100165",
+      "baseDistro": "Arch",
+      "desktopEnvironments": [
+        "Xfce",
+        "KDE Plasma",
+        "MATE"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Asahi Linux",
+      "description": "Asahi Linux is a project that ports the Linux kernel and related software to Apple Silicon-powered Macs, started by Hector Martin. It does so by reverse-engineering the SoCs which lack documentation from Apple.",
+      "websiteUrl": "https://asahilinux.org",
+      "logoUrl": "https://asahilinux.org/img/AsahiLinux_logomark_256px.png",
+      "baseDistro": "Fedora",
+      "desktopEnvironments": [
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Bodhi Linux",
+      "description": "Lightweight Ubuntu-based distribution featuring the Moksha desktop.",
+      "websiteUrl": "https://bodhilinux.com",
+      "logoUrl": "https://www.bodhilinux.com/trial/wp-content/uploads/2023/09/shot-2023-09-16_13-09-50.png",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "Moksha"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Elementary OS",
+      "description": "Beautiful Ubuntu-based distribution with a focus on design and user experience.",
+      "websiteUrl": "https://elementary.io",
+      "logoUrl": "https://placehold.co/400x400?text=E",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "Pantheon"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Zorin OS",
+      "description": "Ubuntu-based distribution designed to make Linux accessible to Windows users.",
+      "websiteUrl": "https://zorin.com/os",
+      "logoUrl": "https://placehold.co/400x400?text=Z",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "GNOME",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "MX Linux",
+      "description": "Midweight Debian-based distribution known for stability and performance.",
+      "websiteUrl": "https://mxlinux.org",
+      "logoUrl": "https://placehold.co/400x400?text=M",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "Xfce",
+        "KDE Plasma",
+        "Fluxbox"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "EndeavourOS",
+      "description": "Arch-based distribution that aims to be terminal-centric yet user-friendly.",
+      "websiteUrl": "https://endeavouros.com",
+      "logoUrl": "https://placehold.co/400x400?text=E",
+      "baseDistro": "Arch",
+      "desktopEnvironments": [
+        "Xfce",
+        "KDE Plasma",
+        "GNOME",
+        "i3"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Garuda Linux",
+      "description": "Arch-based gaming-focused distribution with performance optimizations.",
+      "websiteUrl": "https://garudalinux.org",
+      "logoUrl": "https://placehold.co/400x400?text=G",
+      "baseDistro": "Arch",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "GNOME",
+        "Xfce",
+        "Sway"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Solus",
+      "description": "Independent distribution built from scratch with a focus on desktop experience.",
+      "websiteUrl": "https://getsol.us",
+      "logoUrl": "https://placehold.co/400x400?text=S",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "Budgie",
+        "GNOME",
+        "KDE Plasma",
+        "MATE"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Kali Linux",
+      "description": "Debian-based distribution designed for digital forensics and penetration testing.",
+      "websiteUrl": "https://kali.org",
+      "logoUrl": "https://placehold.co/400x400?text=K",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "Xfce",
+        "GNOME",
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Kubuntu",
+      "description": "Official Ubuntu flavor featuring the KDE Plasma desktop environment.",
+      "websiteUrl": "https://kubuntu.org",
+      "logoUrl": "https://placehold.co/400x400?text=K",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Xubuntu",
+      "description": "Official Ubuntu flavor featuring the lightweight Xfce desktop.",
+      "websiteUrl": "https://xubuntu.org",
+      "logoUrl": "https://placehold.co/400x400?text=X",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "Xfce"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Lubuntu",
+      "description": "Official Ubuntu flavor designed for older hardware with LXQt desktop.",
+      "websiteUrl": "https://lubuntu.me",
+      "logoUrl": "https://placehold.co/400x400?text=L",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "LXQt"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Ubuntu MATE",
+      "description": "Official Ubuntu flavor featuring the traditional MATE desktop.",
+      "websiteUrl": "https://ubuntu-mate.org",
+      "logoUrl": "https://placehold.co/400x400?text=U",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "MATE"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Ubuntu Studio",
+      "description": "Official Ubuntu flavor for creative professionals with multimedia tools.",
+      "websiteUrl": "https://ubuntustudio.org",
+      "logoUrl": "https://placehold.co/400x400?text=U",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Rocky Linux",
+      "description": "Enterprise-grade RHEL-compatible distribution founded after CentOS changes.",
+      "websiteUrl": "https://rockylinux.org",
+      "logoUrl": "https://placehold.co/400x400?text=R",
+      "baseDistro": "RHEL",
+      "desktopEnvironments": [
+        "GNOME"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Void Linux",
+      "description": "Independent rolling-release distribution with runit init system.",
+      "websiteUrl": "https://voidlinux.org",
+      "logoUrl": "https://placehold.co/400x400?text=V",
+      "baseDistro": "Independent",
+      "desktopEnvironments": []
+    },
+    {
+      "id": 26,
+      "name": "Gentoo",
+      "description": "Source-based distribution offering extreme configurability.",
+      "websiteUrl": "https://gentoo.org",
+      "logoUrl": "https://placehold.co/400x400?text=G",
+      "baseDistro": "Independent",
+      "desktopEnvironments": []
+    },
+    {
+      "id": 27,
+      "name": "Slackware",
+      "description": "One of the oldest surviving Linux distributions, known for simplicity.",
+      "websiteUrl": "https://slackware.com",
+      "logoUrl": "https://placehold.co/400x400?text=S",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "NixOS",
+      "description": "Unique distribution using the Nix package manager for reproducible builds.",
+      "websiteUrl": "https://nixos.org",
+      "logoUrl": "https://placehold.co/400x400?text=N",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "GNOME",
+        "KDE Plasma",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Tails",
+      "description": "Privacy-focused distribution designed to preserve anonymity.",
+      "websiteUrl": "https://tails.net",
+      "logoUrl": "https://placehold.co/400x400?text=T",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "GNOME"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Qubes OS",
+      "description": "Security-focused distribution using virtualization for isolation.",
+      "websiteUrl": "https://qubes-os.org",
+      "logoUrl": "https://placehold.co/400x400?text=Q",
+      "baseDistro": "Fedora",
+      "desktopEnvironments": [
+        "Xfce"
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Parrot OS",
+      "description": "Debian-based distribution for security, development, and privacy.",
+      "websiteUrl": "https://parrotsec.org",
+      "logoUrl": "https://placehold.co/400x400?text=P",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "MATE",
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "PCLinuxOS",
+      "description": "User-friendly rolling-release distribution with KDE focus.",
+      "websiteUrl": "https://pclinuxos.com",
+      "logoUrl": "https://placehold.co/400x400?text=P",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "MATE",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Puppy Linux",
+      "description": "Extremely lightweight distribution that runs entirely in RAM.",
+      "websiteUrl": "https://puppylinux.com",
+      "logoUrl": "https://placehold.co/400x400?text=P",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "JWM"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "SparkyLinux",
+      "description": "Lightweight Debian-based distribution with multiple editions.",
+      "websiteUrl": "https://sparkylinux.org",
+      "logoUrl": "https://placehold.co/400x400?text=S",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "LXQt",
+        "Xfce",
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Peppermint OS",
+      "description": "Lightweight Debian-based distribution focused on cloud and web apps.",
+      "websiteUrl": "https://peppermintos.com",
+      "logoUrl": "https://placehold.co/400x400?text=P",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "Xfce"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "antiX",
+      "description": "Fast and lightweight Debian-based distribution for older hardware.",
+      "websiteUrl": "https://antixlinux.com",
+      "logoUrl": "https://placehold.co/400x400?text=a",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "IceWM",
+        "Fluxbox"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Deepin",
+      "description": "Beautiful Chinese distribution with its own Deepin Desktop Environment.",
+      "websiteUrl": "https://deepin.org",
+      "logoUrl": "https://placehold.co/400x400?text=D",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "DDE"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "KDE neon",
+      "description": "Ubuntu-based distribution featuring the latest KDE software.",
+      "websiteUrl": "https://neon.kde.org",
+      "logoUrl": "https://placehold.co/400x400?text=K",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "KDE Plasma"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "LMDE",
+      "description": "Linux Mint Debian Edition - Mint features directly on Debian.",
+      "websiteUrl": "https://linuxmint.com/download_lmde.php",
+      "logoUrl": "https://placehold.co/400x400?text=L",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "Cinnamon"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Mageia",
+      "description": "Community fork of the former Mandriva Linux distribution.",
+      "websiteUrl": "https://mageia.org",
+      "logoUrl": "https://placehold.co/400x400?text=M",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "GNOME",
+        "Xfce"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Vanilla OS",
+      "description": "Ubuntu-based immutable distribution with atomic updates.",
+      "websiteUrl": "https://vanillaos.org",
+      "logoUrl": "https://placehold.co/400x400?text=V",
+      "baseDistro": "Ubuntu",
+      "desktopEnvironments": [
+        "GNOME"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Nobara",
+      "description": "Fedora-based distribution optimized for gaming.",
+      "websiteUrl": "https://nobaraproject.org",
+      "logoUrl": "https://placehold.co/400x400?text=N",
+      "baseDistro": "Fedora",
+      "desktopEnvironments": [
+        "KDE Plasma",
+        "GNOME"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Fedora Silverblue",
+      "description": "Immutable Fedora variant using rpm-ostree for atomic updates.",
+      "websiteUrl": "https://fedoraproject.org/silverblue",
+      "logoUrl": "https://placehold.co/400x400?text=F",
+      "baseDistro": "Fedora",
+      "desktopEnvironments": [
+        "GNOME"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Raspberry Pi OS",
+      "description": "Official Debian-based operating system for Raspberry Pi.",
+      "websiteUrl": "https://raspberrypi.com/software",
+      "logoUrl": "https://placehold.co/400x400?text=R",
+      "baseDistro": "Debian",
+      "desktopEnvironments": [
+        "Pixel"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Clear Linux",
+      "description": "Intel's performance-optimized distribution for cloud and containers.",
+      "websiteUrl": "https://clearlinux.org",
+      "logoUrl": "https://clearlinux.org/modules/custom/clearlinux.org/themes/clearlinux_theme/favicon.ico",
+      "baseDistro": "Independent",
+      "desktopEnvironments": [
+        "GNOME",
+        "Xfce"
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "id": 1,
+      "distroId": 1,
+      "versionNumber": "24.04 LTS (Noble Numbat)",
+      "releaseDate": "2024-04-25T00:00:00.000Z",
+      "isLts": true
+    },
+    {
+      "id": 4,
+      "distroId": 3,
+      "versionNumber": "12 (Bookworm)",
+      "releaseDate": "2023-06-10T00:00:00.000Z",
+      "isLts": true
+    },
+    {
+      "id": 3,
+      "distroId": 2,
+      "versionNumber": "41",
+      "releaseDate": "2024-04-23T00:00:00.000Z",
+      "isLts": false
+    },
+    {
+      "id": 5,
+      "distroId": 4,
+      "versionNumber": "2024.12.01",
+      "releaseDate": "2024-05-01T00:00:00.000Z",
+      "isLts": false
+    },
+    {
+      "id": 6,
+      "distroId": 5,
+      "versionNumber": "22.1 (Xia)",
+      "releaseDate": "2024-07-25T00:00:00.000Z",
+      "isLts": true
+    },
+    {
+      "id": 7,
+      "distroId": 24,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:14:35.077Z",
+      "isLts": false
+    },
+    {
+      "id": 8,
+      "distroId": 47,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:14:36.073Z",
+      "isLts": false
+    },
+    {
+      "id": 9,
+      "distroId": 49,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:14:37.370Z",
+      "isLts": false
+    },
+    {
+      "id": 10,
+      "distroId": 42,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:14:50.760Z",
+      "isLts": false
+    },
+    {
+      "id": 11,
+      "distroId": 50,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:14:54.265Z",
+      "isLts": false
+    },
+    {
+      "id": 12,
+      "distroId": 34,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:14:54.902Z",
+      "isLts": false
+    },
+    {
+      "id": 13,
+      "distroId": 22,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:15:12.081Z",
+      "isLts": false
+    },
+    {
+      "id": 14,
+      "distroId": 46,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:31:24.462Z",
+      "isLts": false
+    },
+    {
+      "id": 15,
+      "distroId": 35,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:31:45.271Z",
+      "isLts": false
+    },
+    {
+      "id": 16,
+      "distroId": 10,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:32:47.563Z",
+      "isLts": false
+    },
+    {
+      "id": 17,
+      "distroId": 13,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:32:52.427Z",
+      "isLts": false
+    },
+    {
+      "id": 18,
+      "distroId": 45,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:32:58.543Z",
+      "isLts": false
+    },
+    {
+      "id": 19,
+      "distroId": 14,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:33:11.955Z",
+      "isLts": false
+    },
+    {
+      "id": 20,
+      "distroId": 26,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:33:30.713Z",
+      "isLts": false
+    },
+    {
+      "id": 21,
+      "distroId": 36,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:33:40.417Z",
+      "isLts": false
+    },
+    {
+      "id": 22,
+      "distroId": 16,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:33:48.130Z",
+      "isLts": false
+    },
+    {
+      "id": 23,
+      "distroId": 17,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:34:33.860Z",
+      "isLts": false
+    },
+    {
+      "id": 24,
+      "distroId": 37,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:34:40.677Z",
+      "isLts": false
+    },
+    {
+      "id": 25,
+      "distroId": 19,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:34:54.800Z",
+      "isLts": false
+    },
+    {
+      "id": 26,
+      "distroId": 12,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:35:04.692Z",
+      "isLts": false
+    },
+    {
+      "id": 27,
+      "distroId": 38,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:35:26.309Z",
+      "isLts": false
+    },
+    {
+      "id": 28,
+      "distroId": 6,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:35:44.234Z",
+      "isLts": false
+    },
+    {
+      "id": 29,
+      "distroId": 28,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:35:50.965Z",
+      "isLts": false
+    },
+    {
+      "id": 30,
+      "distroId": 44,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:35:56.994Z",
+      "isLts": false
+    },
+    {
+      "id": 31,
+      "distroId": 39,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:36:10.543Z",
+      "isLts": false
+    },
+    {
+      "id": 32,
+      "distroId": 31,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:36:29.122Z",
+      "isLts": false
+    },
+    {
+      "id": 33,
+      "distroId": 32,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:36:42.940Z",
+      "isLts": false
+    },
+    {
+      "id": 34,
+      "distroId": 7,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:36:49.299Z",
+      "isLts": false
+    },
+    {
+      "id": 35,
+      "distroId": 40,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:00.396Z",
+      "isLts": false
+    },
+    {
+      "id": 36,
+      "distroId": 30,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:12.640Z",
+      "isLts": false
+    },
+    {
+      "id": 37,
+      "distroId": 48,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:21.238Z",
+      "isLts": false
+    },
+    {
+      "id": 38,
+      "distroId": 23,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:41.721Z",
+      "isLts": false
+    },
+    {
+      "id": 39,
+      "distroId": 27,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:47.992Z",
+      "isLts": false
+    },
+    {
+      "id": 40,
+      "distroId": 15,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:48.906Z",
+      "isLts": false
+    },
+    {
+      "id": 41,
+      "distroId": 41,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:37:54.771Z",
+      "isLts": false
+    },
+    {
+      "id": 42,
+      "distroId": 29,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:46:19.154Z",
+      "isLts": false
+    },
+    {
+      "id": 43,
+      "distroId": 20,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:46:34.980Z",
+      "isLts": false
+    },
+    {
+      "id": 44,
+      "distroId": 21,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:46:40.639Z",
+      "isLts": false
+    },
+    {
+      "id": 45,
+      "distroId": 43,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:46:48.465Z",
+      "isLts": false
+    },
+    {
+      "id": 46,
+      "distroId": 25,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:47:12.953Z",
+      "isLts": false
+    },
+    {
+      "id": 47,
+      "distroId": 18,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:47:19.339Z",
+      "isLts": false
+    },
+    {
+      "id": 48,
+      "distroId": 11,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:47:33.123Z",
+      "isLts": false
+    },
+    {
+      "id": 49,
+      "distroId": 33,
+      "versionNumber": "latest",
+      "releaseDate": "2025-12-13T01:47:51.851Z",
+      "isLts": false
+    }
+  ],
+  "downloads": [
+    {
+      "id": 1,
+      "releaseId": 1,
+      "architecture": "amd64",
+      "isoUrl": "https://releases.ubuntu.com/noble/ubuntu-24.04.2-desktop-amd64.iso",
+      "torrentUrl": "https://releases.ubuntu.com/noble/ubuntu-24.04.2-desktop-amd64.iso.torrent",
+      "checksum": "sha256: See https://releases.ubuntu.com/noble/SHA256SUMS",
+      "downloadSize": "5.8 GB"
+    },
+    {
+      "id": 2,
+      "releaseId": 1,
+      "architecture": "arm64",
+      "isoUrl": "https://cdimage.ubuntu.com/releases/24.04.2/release/ubuntu-24.04.2-live-server-arm64.iso",
+      "torrentUrl": "https://cdimage.ubuntu.com/releases/24.04.2/release/ubuntu-24.04.2-live-server-arm64.iso.torrent",
+      "checksum": "sha256: See https://cdimage.ubuntu.com/releases/24.04.2/release/SHA256SUMS",
+      "downloadSize": "2.6 GB"
+    },
+    {
+      "id": 4,
+      "releaseId": 3,
+      "architecture": "amd64",
+      "isoUrl": "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-41-1.4.iso",
+      "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Workstation-Live-x86_64-41.torrent",
+      "checksum": "sha256: See https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Workstation/x86_64/iso/Fedora-Workstation-41-1.4-x86_64-CHECKSUM",
+      "downloadSize": "2.3 GB"
+    },
+    {
+      "id": 5,
+      "releaseId": 3,
+      "architecture": "arm64",
+      "isoUrl": "https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/iso/Fedora-Server-netinst-aarch64-41-1.4.iso",
+      "torrentUrl": "https://torrent.fedoraproject.org/torrents/Fedora-Server-netinst-aarch64-41.torrent",
+      "checksum": "sha256: See https://dl.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/iso/",
+      "downloadSize": "900 MB"
+    },
+    {
+      "id": 6,
+      "releaseId": 4,
+      "architecture": "amd64",
+      "isoUrl": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso",
+      "torrentUrl": "https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/debian-12.9.0-amd64-netinst.iso.torrent",
+      "checksum": "sha256: See https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS",
+      "downloadSize": "660 MB"
+    },
+    {
+      "id": 7,
+      "releaseId": 4,
+      "architecture": "arm64",
+      "isoUrl": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-12.9.0-arm64-netinst.iso",
+      "torrentUrl": "https://cdimage.debian.org/debian-cd/current/arm64/bt-cd/debian-12.9.0-arm64-netinst.iso.torrent",
+      "checksum": "sha256: See https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA256SUMS",
+      "downloadSize": "700 MB"
+    },
+    {
+      "id": 8,
+      "releaseId": 5,
+      "architecture": "amd64",
+      "isoUrl": "https://geo.mirror.pkgbuild.com/iso/2024.12.01/archlinux-2024.12.01-x86_64.iso",
+      "torrentUrl": "https://archlinux.org/releng/releases/2024.12.01/torrent/",
+      "checksum": "sha256: See https://archlinux.org/download/",
+      "downloadSize": "1.1 GB"
+    },
+    {
+      "id": 9,
+      "releaseId": 6,
+      "architecture": "amd64",
+      "isoUrl": "https://mirrors.kernel.org/linuxmint/stable/22.1/linuxmint-22.1-cinnamon-64bit.iso",
+      "torrentUrl": "https://torrents.linuxmint.com/torrents/linuxmint-22.1-cinnamon-64bit.iso.torrent",
+      "checksum": "sha256: See https://linuxmint.com/edition.php?id=319",
+      "downloadSize": "2.9 GB"
+    },
+    {
+      "id": 10,
+      "releaseId": 7,
+      "architecture": "amd64",
+      "isoUrl": "https://repo.almalinux.org/almalinux/10/isos/x86_64/AlmaLinux-10.1-x86_64-boot.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 11,
+      "releaseId": 8,
+      "architecture": "arm64",
+      "isoUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-standard-3.23.0-aarch64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 12,
+      "releaseId": 8,
+      "architecture": "amd64",
+      "isoUrl": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/armv7/alpine-standard-3.23.0-armv7.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 13,
+      "releaseId": 10,
+      "architecture": "amd64",
+      "isoUrl": "https://iso.artixlinux.org/iso/artix-base-openrc-20250407-x86_64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 14,
+      "releaseId": 15,
+      "architecture": "amd64",
+      "isoUrl": "https://cdimage.deepin.com/live-system/deepin-live-system-2.0-amd64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 17,
+      "releaseId": 18,
+      "architecture": "amd64",
+      "isoUrl": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Silverblue/x86_64/iso/Fedora-Silverblue-ostree-x86_64-43-1.6.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 18,
+      "releaseId": 18,
+      "architecture": "arm64",
+      "isoUrl": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Silverblue/aarch64/iso/Fedora-Silverblue-ostree-aarch64-43-1.6.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 16,
+      "releaseId": 17,
+      "architecture": "amd64",
+      "isoUrl": "https://mirror.sjtu.edu.cn/endeavouros/iso/EndeavourOS_Ganymede-2025.11.24.iso",
+      "torrentUrl": "magnet:?xt=urn:btih:7acabfe301753723bef432d889f7606de637fa57&dn=EndeavourOS_Ganymede-2025.11.24.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fthetracker.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.dutchtracking.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce",
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 19,
+      "releaseId": 20,
+      "architecture": "amd64",
+      "isoUrl": "https://distfiles.gentoo.org/releases/amd64/autobuilds/20251207T170056Z/livegui-amd64-20251207T170056Z.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 20,
+      "releaseId": 20,
+      "architecture": "arm64",
+      "isoUrl": "https://distfiles.gentoo.org/releases/arm64/autobuilds/20251207T230055Z/install-arm64-minimal-20251207T230055Z.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 29,
+      "releaseId": 33,
+      "architecture": "amd64",
+      "isoUrl": "https://mirror.ossplanet.net/peppermint/iso/Mini/PepMini-deb-amd64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 21,
+      "releaseId": 21,
+      "architecture": "amd64",
+      "isoUrl": "https://files.kde.org/neon/images/unstable/20251207-1146/neon-unstable-20251207-1146.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 22,
+      "releaseId": 22,
+      "architecture": "amd64",
+      "isoUrl": "https://cdimage.kali.org/kali-2025.4/kali-linux-2025.4-installer-netinst-amd64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 23,
+      "releaseId": 23,
+      "architecture": "amd64",
+      "isoUrl": "https://cdimage.ubuntu.com/kubuntu/releases/24.04.3/release/kubuntu-24.04.3-desktop-amd64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 25,
+      "releaseId": 25,
+      "architecture": "i386",
+      "isoUrl": "http://cdimage.ubuntu.com/lubuntu/releases/12.10/release/lubuntu-12.10-desktop-i386.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 24,
+      "releaseId": 25,
+      "architecture": "amd64",
+      "isoUrl": "http://cdimage.ubuntu.com/lubuntu/releases/12.10/release/lubuntu-12.10-desktop-amd64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 30,
+      "releaseId": 34,
+      "architecture": "amd64",
+      "isoUrl": "https://iso.pop-os.org/24.04/amd64/nvidia/22/pop-os_24.04_amd64_nvidia_22.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 26,
+      "releaseId": 28,
+      "architecture": "amd64",
+      "isoUrl": "https://download.manjaro.org/gnome/25.0.10/manjaro-gnome-25.0.10-251013-linux612.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 28,
+      "releaseId": 29,
+      "architecture": "arm64",
+      "isoUrl": "https://channels.nixos.org/nixos-25.11/latest-nixos-graphical-aarch64-linux.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 27,
+      "releaseId": 29,
+      "architecture": "amd64",
+      "isoUrl": "https://channels.nixos.org/nixos-25.11/latest-nixos-minimal-x86_64-linux.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 31,
+      "releaseId": 34,
+      "architecture": "arm64",
+      "isoUrl": "https://iso.pop-os.org/24.04/arm64/generic/3/pop-os_24.04_arm64_generic_3.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 32,
+      "releaseId": 36,
+      "architecture": "amd64",
+      "isoUrl": "https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.2.4-x86_64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 33,
+      "releaseId": 38,
+      "architecture": "amd64",
+      "isoUrl": "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.1-x86_64-minimal.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 36,
+      "releaseId": 44,
+      "architecture": "amd64",
+      "isoUrl": "https://cdimage.ubuntu.com/ubuntustudio/releases/25.10/release/ubuntustudio-25.10-desktop-amd64.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 34,
+      "releaseId": 40,
+      "architecture": "amd64",
+      "isoUrl": "https://downloads.getsol.us/isos/2025-11-29/Solus-Plasma-Release-2025-11-29.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 35,
+      "releaseId": 43,
+      "architecture": "amd64",
+      "isoUrl": "https://cdimage.ubuntu.com/ubuntu-mate/releases/noble/release/ubuntu-mate-24.04.3-desktop-amd64.iso",
+      "torrentUrl": "magnet:?xt=urn:btih:f96ec24df9376129de9e7b0d842b187e0b8815a0&dn=ubuntu-mate-25.04-desktop-amd64.iso&tr=https%3A%2F%2Ftorrent.ubuntu.com%2Fannounce",
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 37,
+      "releaseId": 46,
+      "architecture": "amd64",
+      "isoUrl": "https://repo-default.voidlinux.org/live/current/void-live-x86_64-20250202-xfce.iso",
+      "torrentUrl": null,
+      "checksum": null,
+      "downloadSize": null
+    },
+    {
+      "id": 15,
+      "releaseId": 16,
+      "architecture": "amd64",
+      "isoUrl": "http://nyc3.dl.elementary.io/download/MTc2NTU4OTU2OA==/elementaryos-8.0-stable-amd64.20250902rc.iso",
+      "torrentUrl": "magnet:?xt=urn:btih:36d2dec9234ae7196062b60eca32b08f01c77143&dn=elementaryos-8.0-stable-amd64.20250902rc.iso&tr=https%3A%2F%2Fashrise.com%3A443%2Fphoenix%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&ws=http%3A%2F%2Fnyc3.dl.elementary.io%2Fdownload%2FMTc2NTU4OTU2OA%3D%3D%2Felementaryos-8.0-stable-amd64.20250902rc.iso",
+      "checksum": null,
+      "downloadSize": null
+    }
+  ]
+}
