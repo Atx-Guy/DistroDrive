@@ -54,7 +54,7 @@ async function importDatabase() {
   const releaseMapping: Record<string, number> = {};
   
   for (const release of backup.releases) {
-    const { id, distroId, ...releaseData } = release;
+    const { id, distroId, releaseDate, ...releaseData } = release;
     const newDistroId = distroMapping[distroId];
     if (!newDistroId) {
       console.warn(`Skipping release ${id}: distro ${distroId} not found`);
@@ -63,6 +63,7 @@ async function importDatabase() {
     const [newRelease] = await db.insert(releases).values({
       ...releaseData,
       distroId: newDistroId,
+      releaseDate: new Date(releaseDate),
     }).returning();
     releaseMapping[id] = newRelease.id;
   }
