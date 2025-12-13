@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { updateDownloadUrlSchema } from "@shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -100,6 +101,45 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error fetching top distros:", error);
       res.status(500).json({ error: "Failed to fetch top distros" });
+    }
+  });
+
+  // Get broken/invalid download links
+  app.get("/api/admin/broken-downloads", async (req, res) => {
+    try {
+      const brokenDownloads = await storage.getBrokenDownloads();
+      res.json(brokenDownloads);
+    } catch (error) {
+      console.error("Error fetching broken downloads:", error);
+      res.status(500).json({ error: "Failed to fetch broken downloads" });
+    }
+  });
+
+  // Update a download URL
+  app.patch("/api/admin/downloads/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Invalid download ID" });
+      }
+      
+      const parseResult = updateDownloadUrlSchema.safeParse(req.body);
+      if (!parseResult.success) {
+        return res.status(400).json({ 
+          error: "Validation failed", 
+          details: parseResult.error.flatten().fieldErrors 
+        });
+      }
+      
+      const { isoUrl, torrentUrl } = parseResult.data;
+      const updated = await storage.updateDownloadUrl(id, isoUrl, torrentUrl || undefined);
+      if (!updated) {
+        return res.status(404).json({ error: "Download not found" });
+      }
+      res.json(updated);
+    } catch (error) {
+      console.error("Error updating download:", error);
+      res.status(500).json({ error: "Failed to update download" });
     }
   });
 

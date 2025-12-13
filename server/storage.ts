@@ -248,7 +248,7 @@ export class DatabaseStorage implements IStorage {
       return; // Already seeded
     }
 
-    // Seed distributions
+    // Seed all 50 distributions
     const ubuntu = await this.createDistribution({
       name: "Ubuntu",
       description: "Ubuntu is a popular Linux distribution based on Debian. Known for its ease of use and regular release schedule, it's one of the most widely used desktop Linux distributions.",
@@ -292,6 +292,412 @@ export class DatabaseStorage implements IStorage {
       logoUrl: "https://www.linuxmint.com/img/logo.png",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Cinnamon", "MATE", "Xfce"],
+    });
+
+    // Additional 45 distributions
+    await this.createDistribution({
+      name: "Pop!_OS",
+      description: "Pop!_OS is a Linux distribution developed by System76 based on Ubuntu. Designed for creators, developers, and gamers with excellent hardware support and a tiling window manager.",
+      websiteUrl: "https://pop.system76.com",
+      logoUrl: "https://placehold.co/400x400?text=P",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["COSMIC", "GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "openSUSE Tumbleweed",
+      description: "openSUSE Tumbleweed is a rolling release distribution that provides the latest stable versions of all software. Perfect for developers and experienced users who want cutting-edge packages.",
+      websiteUrl: "https://www.opensuse.org",
+      logoUrl: "https://placehold.co/400x400?text=O",
+      baseDistro: "SUSE",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "openSUSE Leap",
+      description: "openSUSE Leap is a stable, enterprise-grade distribution that shares its codebase with SUSE Linux Enterprise. Ideal for users who want reliability with regular point releases.",
+      websiteUrl: "https://www.opensuse.org",
+      logoUrl: "https://placehold.co/400x400?text=O",
+      baseDistro: "SUSE",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "Elementary OS",
+      description: "Elementary OS is a beautifully designed Linux distribution focused on simplicity and elegance. Features the custom Pantheon desktop environment inspired by macOS.",
+      websiteUrl: "https://elementary.io",
+      logoUrl: "https://placehold.co/400x400?text=E",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["Pantheon"],
+    });
+
+    await this.createDistribution({
+      name: "Zorin OS",
+      description: "Zorin OS is designed to make Linux easy for Windows and macOS users. Features a familiar interface with multiple layout options and excellent compatibility.",
+      websiteUrl: "https://zorin.com/os",
+      logoUrl: "https://placehold.co/400x400?text=Z",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["GNOME", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "MX Linux",
+      description: "MX Linux is a midweight distribution based on Debian stable. Known for its efficiency, elegance, and extensive collection of custom tools and utilities.",
+      websiteUrl: "https://mxlinux.org",
+      logoUrl: "https://placehold.co/400x400?text=M",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Xfce", "KDE Plasma", "Fluxbox"],
+    });
+
+    await this.createDistribution({
+      name: "EndeavourOS",
+      description: "EndeavourOS is a user-friendly Arch-based distribution. Provides a terminal-centric experience while remaining accessible to newcomers wanting to learn Arch.",
+      websiteUrl: "https://endeavouros.com",
+      logoUrl: "https://placehold.co/400x400?text=E",
+      baseDistro: "Arch",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "i3", "Budgie", "Cinnamon"],
+    });
+
+    await this.createDistribution({
+      name: "Garuda Linux",
+      description: "Garuda Linux is a performance-focused Arch-based distribution optimized for gaming. Features BTRFS snapshots, performance tweaks, and beautiful theming out of the box.",
+      websiteUrl: "https://garudalinux.org",
+      logoUrl: "https://placehold.co/400x400?text=G",
+      baseDistro: "Arch",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "i3", "Sway"],
+    });
+
+    await this.createDistribution({
+      name: "Solus",
+      description: "Solus is an independently developed Linux distribution built from scratch. Home of the Budgie desktop environment with a focus on simplicity and elegance.",
+      websiteUrl: "https://getsol.us",
+      logoUrl: "https://placehold.co/400x400?text=S",
+      baseDistro: "Independent",
+      desktopEnvironments: ["Budgie", "GNOME", "KDE Plasma", "MATE"],
+    });
+
+    await this.createDistribution({
+      name: "Kali Linux",
+      description: "Kali Linux is a Debian-based distribution designed for digital forensics and penetration testing. Includes hundreds of security tools pre-installed.",
+      websiteUrl: "https://www.kali.org",
+      logoUrl: "https://placehold.co/400x400?text=K",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Xfce", "GNOME", "KDE Plasma"],
+    });
+
+    await this.createDistribution({
+      name: "Kubuntu",
+      description: "Kubuntu is an official Ubuntu flavor featuring the KDE Plasma desktop. Combines Ubuntu's reliability with KDE's powerful and customizable interface.",
+      websiteUrl: "https://kubuntu.org",
+      logoUrl: "https://placehold.co/400x400?text=K",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["KDE Plasma"],
+    });
+
+    await this.createDistribution({
+      name: "Xubuntu",
+      description: "Xubuntu is an official Ubuntu flavor with the Xfce desktop environment. Lightweight and elegant, perfect for older hardware or users who prefer simplicity.",
+      websiteUrl: "https://xubuntu.org",
+      logoUrl: "https://placehold.co/400x400?text=X",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "Lubuntu",
+      description: "Lubuntu is an official lightweight Ubuntu flavor using LXQt desktop. Designed for older computers and resource-constrained environments.",
+      websiteUrl: "https://lubuntu.me",
+      logoUrl: "https://placehold.co/400x400?text=L",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["LXQt"],
+    });
+
+    await this.createDistribution({
+      name: "Ubuntu MATE",
+      description: "Ubuntu MATE is an official Ubuntu flavor featuring the MATE desktop. Provides a traditional desktop experience with modern features and stability.",
+      websiteUrl: "https://ubuntu-mate.org",
+      logoUrl: "https://placehold.co/400x400?text=U",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["MATE"],
+    });
+
+    await this.createDistribution({
+      name: "Ubuntu Studio",
+      description: "Ubuntu Studio is an official Ubuntu flavor optimized for creative professionals. Pre-configured for audio, video, graphics, and publishing workflows.",
+      websiteUrl: "https://ubuntustudio.org",
+      logoUrl: "https://placehold.co/400x400?text=U",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["KDE Plasma"],
+    });
+
+    await this.createDistribution({
+      name: "CentOS Stream",
+      description: "CentOS Stream is a continuously delivered Linux distribution that tracks just ahead of Red Hat Enterprise Linux. Ideal for developers targeting RHEL.",
+      websiteUrl: "https://www.centos.org",
+      logoUrl: "https://placehold.co/400x400?text=C",
+      baseDistro: "RHEL",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Rocky Linux",
+      description: "Rocky Linux is an enterprise-grade Linux distribution designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux. Community-driven RHEL rebuild.",
+      websiteUrl: "https://rockylinux.org",
+      logoUrl: "https://placehold.co/400x400?text=R",
+      baseDistro: "RHEL",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "AlmaLinux",
+      description: "AlmaLinux is a free, enterprise-grade Linux distribution that is binary compatible with RHEL. Backed by CloudLinux with long-term support.",
+      websiteUrl: "https://almalinux.org",
+      logoUrl: "https://placehold.co/400x400?text=A",
+      baseDistro: "RHEL",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Void Linux",
+      description: "Void Linux is an independent rolling-release distribution with its own package manager (XBPS) and init system (runit). Minimalist and highly customizable.",
+      websiteUrl: "https://voidlinux.org",
+      logoUrl: "https://placehold.co/400x400?text=V",
+      baseDistro: "Independent",
+      desktopEnvironments: ["Any (user choice)"],
+    });
+
+    await this.createDistribution({
+      name: "Gentoo",
+      description: "Gentoo is a source-based Linux distribution built around the Portage package manager. Offers maximum customization and optimization for your hardware.",
+      websiteUrl: "https://www.gentoo.org",
+      logoUrl: "https://placehold.co/400x400?text=G",
+      baseDistro: "Independent",
+      desktopEnvironments: ["Any (user choice)"],
+    });
+
+    await this.createDistribution({
+      name: "Slackware",
+      description: "Slackware is the oldest actively maintained Linux distribution. Known for its simplicity, stability, and Unix-like philosophy with minimal modifications.",
+      websiteUrl: "http://www.slackware.com",
+      logoUrl: "https://placehold.co/400x400?text=S",
+      baseDistro: "Independent",
+      desktopEnvironments: ["KDE Plasma", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "NixOS",
+      description: "NixOS is a Linux distribution built on the Nix package manager. Features declarative configuration, atomic upgrades, and reproducible system builds.",
+      websiteUrl: "https://nixos.org",
+      logoUrl: "https://placehold.co/400x400?text=N",
+      baseDistro: "Independent",
+      desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "Tails",
+      description: "Tails is a portable Linux distribution focused on privacy and anonymity. Routes all traffic through Tor and leaves no trace on the host computer.",
+      websiteUrl: "https://tails.net",
+      logoUrl: "https://placehold.co/400x400?text=T",
+      baseDistro: "Debian",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Qubes OS",
+      description: "Qubes OS is a security-focused desktop operating system using Xen-based virtualization. Isolates applications in separate virtual machines for maximum security.",
+      websiteUrl: "https://www.qubes-os.org",
+      logoUrl: "https://placehold.co/400x400?text=Q",
+      baseDistro: "Independent",
+      desktopEnvironments: ["Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "Parrot OS",
+      description: "Parrot OS is a Debian-based distribution designed for security, development, and privacy. Includes comprehensive tools for penetration testing and forensics.",
+      websiteUrl: "https://www.parrotsec.org",
+      logoUrl: "https://placehold.co/400x400?text=P",
+      baseDistro: "Debian",
+      desktopEnvironments: ["MATE", "KDE Plasma"],
+    });
+
+    await this.createDistribution({
+      name: "Peppermint OS",
+      description: "Peppermint OS is a lightweight Debian-based distribution focused on cloud computing and web applications. Fast and efficient with minimal resource usage.",
+      websiteUrl: "https://peppermintos.com",
+      logoUrl: "https://placehold.co/400x400?text=P",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "antiX",
+      description: "antiX is a fast, lightweight Debian-based distribution designed for older computers. Systemd-free with multiple lightweight window managers available.",
+      websiteUrl: "https://antixlinux.com",
+      logoUrl: "https://placehold.co/400x400?text=A",
+      baseDistro: "Debian",
+      desktopEnvironments: ["IceWM", "Fluxbox", "JWM"],
+    });
+
+    await this.createDistribution({
+      name: "Bodhi Linux",
+      description: "Bodhi Linux is a lightweight Ubuntu-based distribution featuring the Moksha desktop environment. Minimalist by design with a focus on user choice.",
+      websiteUrl: "https://www.bodhilinux.com",
+      logoUrl: "https://placehold.co/400x400?text=B",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["Moksha"],
+    });
+
+    await this.createDistribution({
+      name: "Deepin",
+      description: "Deepin is a Debian-based distribution featuring the beautiful Deepin Desktop Environment (DDE). Known for its elegant design and user-friendly experience.",
+      websiteUrl: "https://www.deepin.org",
+      logoUrl: "https://placehold.co/400x400?text=D",
+      baseDistro: "Debian",
+      desktopEnvironments: ["DDE"],
+    });
+
+    await this.createDistribution({
+      name: "KDE neon",
+      description: "KDE neon is an Ubuntu-based distribution that provides the latest KDE Plasma desktop and applications. Perfect for users who want cutting-edge KDE software.",
+      websiteUrl: "https://neon.kde.org",
+      logoUrl: "https://placehold.co/400x400?text=K",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["KDE Plasma"],
+    });
+
+    await this.createDistribution({
+      name: "LMDE",
+      description: "Linux Mint Debian Edition (LMDE) is a version of Linux Mint based directly on Debian instead of Ubuntu. Provides the Mint experience with a Debian foundation.",
+      websiteUrl: "https://linuxmint.com",
+      logoUrl: "https://placehold.co/400x400?text=L",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Cinnamon"],
+    });
+
+    await this.createDistribution({
+      name: "Mageia",
+      description: "Mageia is a community-driven Linux distribution forked from Mandriva Linux. Features excellent hardware detection and a user-friendly control center.",
+      websiteUrl: "https://www.mageia.org",
+      logoUrl: "https://placehold.co/400x400?text=M",
+      baseDistro: "Independent",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "PCLinuxOS",
+      description: "PCLinuxOS is an independent rolling-release distribution known for its out-of-the-box usability. Features excellent hardware support and multimedia capabilities.",
+      websiteUrl: "https://www.pclinuxos.com",
+      logoUrl: "https://placehold.co/400x400?text=P",
+      baseDistro: "Independent",
+      desktopEnvironments: ["KDE Plasma", "MATE", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "Puppy Linux",
+      description: "Puppy Linux is an extremely lightweight distribution designed to run entirely in RAM. Perfect for old computers or as a portable rescue system.",
+      websiteUrl: "https://puppylinux-woof-ce.github.io",
+      logoUrl: "https://placehold.co/400x400?text=P",
+      baseDistro: "Independent",
+      desktopEnvironments: ["JWM", "Openbox"],
+    });
+
+    await this.createDistribution({
+      name: "SparkyLinux",
+      description: "SparkyLinux is a lightweight Debian-based distribution available in stable and rolling release versions. Offers various desktop environments for different use cases.",
+      websiteUrl: "https://sparkylinux.org",
+      logoUrl: "https://placehold.co/400x400?text=S",
+      baseDistro: "Debian",
+      desktopEnvironments: ["LXQt", "KDE Plasma", "Xfce", "MATE"],
+    });
+
+    await this.createDistribution({
+      name: "Artix Linux",
+      description: "Artix Linux is an Arch-based distribution that uses alternative init systems instead of systemd. Supports OpenRC, runit, and s6 init systems.",
+      websiteUrl: "https://artixlinux.org",
+      logoUrl: "https://placehold.co/400x400?text=A",
+      baseDistro: "Arch",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "LXQt"],
+    });
+
+    await this.createDistribution({
+      name: "Vanilla OS",
+      description: "Vanilla OS is an immutable Ubuntu-based distribution designed for reliability and security. Features atomic updates and containerized application support.",
+      websiteUrl: "https://vanillaos.org",
+      logoUrl: "https://placehold.co/400x400?text=V",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Nobara",
+      description: "Nobara is a Fedora-based distribution optimized for gaming and content creation. Includes gaming-specific patches, drivers, and pre-configured optimizations.",
+      websiteUrl: "https://nobaraproject.org",
+      logoUrl: "https://placehold.co/400x400?text=N",
+      baseDistro: "Fedora",
+      desktopEnvironments: ["KDE Plasma", "GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Fedora Silverblue",
+      description: "Fedora Silverblue is an immutable desktop operating system based on Fedora. Uses rpm-ostree for atomic updates and Flatpak for applications.",
+      websiteUrl: "https://fedoraproject.org/silverblue",
+      logoUrl: "https://placehold.co/400x400?text=F",
+      baseDistro: "Fedora",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Clear Linux",
+      description: "Clear Linux is an Intel-developed distribution optimized for performance and security. Features aggressive compiler optimizations and a unique stateless design.",
+      websiteUrl: "https://clearlinux.org",
+      logoUrl: "https://placehold.co/400x400?text=C",
+      baseDistro: "Independent",
+      desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce"],
+    });
+
+    await this.createDistribution({
+      name: "Alpine Linux",
+      description: "Alpine Linux is a security-oriented, lightweight distribution based on musl libc and BusyBox. Popular for containers, servers, and embedded systems.",
+      websiteUrl: "https://www.alpinelinux.org",
+      logoUrl: "https://placehold.co/400x400?text=A",
+      baseDistro: "Independent",
+      desktopEnvironments: ["Xfce", "GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Raspberry Pi OS",
+      description: "Raspberry Pi OS is the official operating system for Raspberry Pi computers. Debian-based and optimized for the Raspberry Pi hardware platform.",
+      websiteUrl: "https://www.raspberrypi.com/software",
+      logoUrl: "https://placehold.co/400x400?text=R",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Pixel", "KDE Plasma"],
+    });
+
+    await this.createDistribution({
+      name: "Armbian",
+      description: "Armbian is a Debian and Ubuntu-based distribution optimized for ARM single-board computers. Supports hundreds of different ARM development boards.",
+      websiteUrl: "https://www.armbian.com",
+      logoUrl: "https://placehold.co/400x400?text=A",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Xfce", "GNOME", "Cinnamon"],
+    });
+
+    await this.createDistribution({
+      name: "Asahi Linux",
+      description: "Asahi Linux is a project to port Linux to Apple Silicon Macs. Provides excellent support for M1, M2, and M3 Apple hardware.",
+      websiteUrl: "https://asahilinux.org",
+      logoUrl: "https://placehold.co/400x400?text=A",
+      baseDistro: "Arch",
+      desktopEnvironments: ["KDE Plasma", "GNOME"],
+    });
+
+    await this.createDistribution({
+      name: "Manjaro",
+      description: "Manjaro is a user-friendly Arch-based distribution with a focus on accessibility. Provides Arch's rolling release model with added stability and ease of use.",
+      websiteUrl: "https://manjaro.org",
+      logoUrl: "https://placehold.co/400x400?text=M",
+      baseDistro: "Arch",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
 
     // Seed releases for Ubuntu

@@ -97,6 +97,14 @@ export const insertDownloadSchema = createInsertSchema(downloads).omit({ id: tru
 export const insertNewsSchema = createInsertSchema(news).omit({ id: true });
 export const insertDownloadClickSchema = createInsertSchema(downloadClicks).omit({ id: true });
 
+// Update schema for download URLs
+export const updateDownloadUrlSchema = z.object({
+  isoUrl: z.string().url("Must be a valid URL"),
+  torrentUrl: z.string().url("Must be a valid URL").optional().or(z.literal("")),
+});
+
+export type UpdateDownloadUrl = z.infer<typeof updateDownloadUrlSchema>;
+
 // Types
 export type Distribution = typeof distributions.$inferSelect;
 export type InsertDistribution = z.infer<typeof insertDistributionSchema>;
