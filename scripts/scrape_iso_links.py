@@ -142,9 +142,137 @@ def insert_download(conn, release_id, architecture, iso_url, is_torrent=False):
         return True
 
 
+async def is_directory_listing(page):
+    """Detect if the current page is an Apache/Nginx directory listing."""
+    try:
+        html = await page.content()
+        html_lower = html.lower()
+        
+        indicators = [
+            'index of',
+            '<pre>',
+            'last modified',
+            'parent directory',
+            'name</a>',
+            '[dir]',
+            'directory listing',
+            '<th>name</th>',
+            '<th>last modified</th>',
+            '<th>size</th>',
+        ]
+        
+        matches = sum(1 for ind in indicators if ind in html_lower)
+        return matches >= 2
+        
+    except Exception:
+        return False
+
+
+async def parse_directory_listing(page, base_url):
+    """Parse a directory listing page and return files sorted by date (newest first)."""
+    files = []
+    
+    try:
+        rows = await page.locator("tr, pre a").all()
+        
+        for row in rows:
+            try:
+                text = await row.inner_text()
+                
+                href_elem = row.locator("a[href]").first if await row.locator("a").count() > 0 else row
+                href = await href_elem.get_attribute("href") if href_elem else None
+                
+                if not href:
+                    continue
+                    
+                if not href.lower().endswith('.iso') and not href.lower().endswith('.torrent'):
+                    continue
+                
+                date_match = re.search(r'(\d{4}-\d{2}-\d{2})', text)
+                file_date = date_match.group(1) if date_match else '1970-01-01'
+                
+                full_url = urljoin(base_url, href)
+                file_type = 'torrent' if href.lower().endswith('.torrent') else 'iso'
+                
+                files.append({
+                    'url': full_url,
+                    'type': file_type,
+                    'date': file_date,
+                    'filename': href.split('/')[-1]
+                })
+                
+            except Exception:
+                continue
+        
+        anchors = await page.locator("a[href]").all()
+        existing_urls = {f['url'] for f in files}
+        
+        for anchor in anchors:
+            try:
+                href = await anchor.get_attribute("href")
+                if not href:
+                    continue
+                    
+                href = href.strip()
+                full_url = urljoin(base_url, href)
+                
+                if full_url in existing_urls:
+                    continue
+                    
+                if href.lower().endswith('.iso'):
+                    parent_text = ""
+                    try:
+                        parent = anchor.locator("..")
+                        parent_text = await parent.inner_text()
+                    except:
+                        pass
+                    
+                    date_match = re.search(r'(\d{4}-\d{2}-\d{2})', parent_text)
+                    file_date = date_match.group(1) if date_match else '1970-01-01'
+                    
+                    files.append({
+                        'url': full_url,
+                        'type': 'iso',
+                        'date': file_date,
+                        'filename': href.split('/')[-1]
+                    })
+                    
+                elif href.lower().endswith('.torrent'):
+                    files.append({
+                        'url': full_url,
+                        'type': 'torrent',
+                        'date': '1970-01-01',
+                        'filename': href.split('/')[-1]
+                    })
+                    
+            except Exception:
+                continue
+        
+        files.sort(key=lambda x: x['date'], reverse=True)
+        
+    except Exception as e:
+        print(f"      Error parsing directory listing: {e}")
+    
+    return files
+
+
 async def scrape_page_for_links(page, base_url):
     """Scrape current page for ISO and magnet links."""
     links = []
+    
+    if await is_directory_listing(page):
+        print("      [Directory Mode] Detected file index page")
+        dir_files = await parse_directory_listing(page, base_url)
+        
+        for f in dir_files:
+            if f['type'] == 'iso':
+                links.append({'url': f['url'], 'type': 'iso'})
+            elif f['type'] == 'torrent':
+                links.append({'url': f['url'], 'type': 'magnet'})
+        
+        if links:
+            print(f"      [Directory Mode] Found {len(links)} files, sorted by date")
+            return links
     
     try:
         anchors = await page.locator("a[href]").all()
