@@ -9,7 +9,17 @@ import {
   type TopDistro
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, ilike, desc, asc, sql, gte, count } from "drizzle-orm";
+import { eq, ilike, desc, asc, sql, gte, count, or, isNull } from "drizzle-orm";
+
+export type BrokenDownload = {
+  id: number;
+  releaseId: number;
+  architecture: string;
+  isoUrl: string | null;
+  torrentUrl: string | null;
+  distroName: string;
+  versionNumber: string;
+};
 
 export interface IStorage {
   // Distributions
@@ -27,6 +37,8 @@ export interface IStorage {
   // Downloads
   getDownloadsByRelease(releaseId: number): Promise<Download[]>;
   createDownload(data: InsertDownload): Promise<Download>;
+  getBrokenDownloads(): Promise<BrokenDownload[]>;
+  updateDownloadUrl(id: number, isoUrl: string, torrentUrl?: string): Promise<Download | undefined>;
   
   // News
   getNews(): Promise<News[]>;
@@ -147,6 +159,47 @@ export class DatabaseStorage implements IStorage {
   async createDownload(data: InsertDownload): Promise<Download> {
     const [download] = await db.insert(downloads).values(data).returning();
     return download;
+  }
+
+  async getBrokenDownloads(): Promise<BrokenDownload[]> {
+    const result = await db
+      .select({
+        id: downloads.id,
+        releaseId: downloads.releaseId,
+        architecture: downloads.architecture,
+        isoUrl: downloads.isoUrl,
+        torrentUrl: downloads.torrentUrl,
+        distroName: distributions.name,
+        versionNumber: releases.versionNumber,
+      })
+      .from(downloads)
+      .innerJoin(releases, eq(downloads.releaseId, releases.id))
+      .innerJoin(distributions, eq(releases.distroId, distributions.id))
+      .where(
+        or(
+          isNull(downloads.isoUrl),
+          eq(downloads.isoUrl, ''),
+          sql`${downloads.isoUrl} LIKE '%placeholder%'`,
+          sql`${downloads.isoUrl} LIKE '%example%'`,
+          sql`${downloads.isoUrl} LIKE '%TODO%'`
+        )
+      )
+      .orderBy(asc(distributions.name), asc(releases.versionNumber));
+
+    return result;
+  }
+
+  async updateDownloadUrl(id: number, isoUrl: string, torrentUrl?: string): Promise<Download | undefined> {
+    const updateData: { isoUrl: string; torrentUrl?: string } = { isoUrl };
+    if (torrentUrl !== undefined) {
+      updateData.torrentUrl = torrentUrl;
+    }
+    const [updated] = await db
+      .update(downloads)
+      .set(updateData)
+      .where(eq(downloads.id, id))
+      .returning();
+    return updated || undefined;
   }
 
   async getNews(): Promise<News[]> {
