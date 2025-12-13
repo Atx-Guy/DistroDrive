@@ -432,7 +432,22 @@ export default function IsoBrowser() {
                             )}
                           </div>
                         ) : (
-                          <p className="text-sm text-muted-foreground">No downloads available for this release.</p>
+                          <div className="flex flex-col items-center gap-3 py-4">
+                            <p className="text-sm text-muted-foreground text-center">
+                              No direct download links available for this release.
+                            </p>
+                            <Button
+                              variant="default"
+                              size="sm"
+                              asChild
+                              data-testid={`button-check-website-${release.id}`}
+                            >
+                              <a href={selectedDistroDetails.websiteUrl} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="w-4 h-4 mr-1" />
+                                Check Website for Downloads
+                              </a>
+                            </Button>
+                          </div>
                         )}
                       </div>
                     ))
