@@ -91,11 +91,11 @@ export const downloadClicksRelations = relations(downloadClicks, ({ one }) => ({
 }));
 
 // Insert schemas
-export const insertDistributionSchema = createInsertSchema(distributions).omit({ id: true });
-export const insertReleaseSchema = createInsertSchema(releases).omit({ id: true });
-export const insertDownloadSchema = createInsertSchema(downloads).omit({ id: true });
-export const insertNewsSchema = createInsertSchema(news).omit({ id: true });
-export const insertDownloadClickSchema = createInsertSchema(downloadClicks).omit({ id: true });
+export const insertDistributionSchema = createInsertSchema(distributions);
+export const insertReleaseSchema = createInsertSchema(releases);
+export const insertDownloadSchema = createInsertSchema(downloads);
+export const insertNewsSchema = createInsertSchema(news);
+export const insertDownloadClickSchema = createInsertSchema(downloadClicks);
 
 // Types
 export type Distribution = typeof distributions.$inferSelect;
