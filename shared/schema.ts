@@ -73,11 +73,29 @@ export const news = pgTable("news", {
   index("news_published_at_idx").on(table.publishedAt),
 ]);
 
+// Download clicks table for tracking popularity
+export const downloadClicks = pgTable("download_clicks", {
+  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  distroId: integer("distro_id").notNull().references(() => distributions.id, { onDelete: "cascade" }),
+  clickedAt: timestamp("clicked_at").notNull().default(sql`now()`),
+}, (table) => [
+  index("download_clicks_distro_id_idx").on(table.distroId),
+  index("download_clicks_clicked_at_idx").on(table.clickedAt),
+]);
+
+export const downloadClicksRelations = relations(downloadClicks, ({ one }) => ({
+  distribution: one(distributions, {
+    fields: [downloadClicks.distroId],
+    references: [distributions.id],
+  }),
+}));
+
 // Insert schemas
 export const insertDistributionSchema = createInsertSchema(distributions).omit({ id: true });
 export const insertReleaseSchema = createInsertSchema(releases).omit({ id: true });
 export const insertDownloadSchema = createInsertSchema(downloads).omit({ id: true });
 export const insertNewsSchema = createInsertSchema(news).omit({ id: true });
+export const insertDownloadClickSchema = createInsertSchema(downloadClicks).omit({ id: true });
 
 // Types
 export type Distribution = typeof distributions.$inferSelect;
@@ -91,6 +109,15 @@ export type InsertDownload = z.infer<typeof insertDownloadSchema>;
 
 export type News = typeof news.$inferSelect;
 export type InsertNews = z.infer<typeof insertNewsSchema>;
+
+export type DownloadClick = typeof downloadClicks.$inferSelect;
+export type InsertDownloadClick = z.infer<typeof insertDownloadClickSchema>;
+
+export type TopDistro = {
+  distroId: number;
+  name: string;
+  clickCount: number;
+};
 
 // Extended types for API responses
 export type ReleaseWithDownloads = Release & {

@@ -77,5 +77,31 @@ export async function registerRoutes(
     }
   });
 
+  // Record a download click
+  app.post("/api/download-clicks/:distroId", async (req, res) => {
+    try {
+      const distroId = parseInt(req.params.distroId);
+      if (isNaN(distroId)) {
+        return res.status(400).json({ error: "Invalid distribution ID" });
+      }
+      await storage.recordDownloadClick(distroId);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error recording download click:", error);
+      res.status(500).json({ error: "Failed to record download click" });
+    }
+  });
+
+  // Get top distros by download clicks
+  app.get("/api/top-distros", async (req, res) => {
+    try {
+      const topDistros = await storage.getTopDistrosByClicks(10);
+      res.json(topDistros);
+    } catch (error) {
+      console.error("Error fetching top distros:", error);
+      res.status(500).json({ error: "Failed to fetch top distros" });
+    }
+  });
+
   return httpServer;
 }

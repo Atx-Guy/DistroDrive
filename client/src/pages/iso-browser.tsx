@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -33,6 +34,12 @@ export default function IsoBrowser() {
   const { data: selectedDistroDetails, isLoading: isLoadingDetails } = useQuery<DistributionWithReleases>({
     queryKey: ["/api/distributions", selectedDistroId],
     enabled: selectedDistroId !== null,
+  });
+
+  const trackDownloadMutation = useMutation({
+    mutationFn: async (distroId: number) => {
+      await apiRequest("POST", `/api/download-clicks/${distroId}`);
+    },
   });
 
   const filteredDistributions = useMemo(() => {
@@ -378,6 +385,11 @@ export default function IsoBrowser() {
                                       size="sm"
                                       asChild
                                       data-testid={`button-download-iso-${download.id}`}
+                                      onClick={() => {
+                                        if (selectedDistroId) {
+                                          trackDownloadMutation.mutate(selectedDistroId);
+                                        }
+                                      }}
                                     >
                                       <a href={download.isoUrl} target="_blank" rel="noopener noreferrer">
                                         <Download className="w-4 h-4 mr-1" />

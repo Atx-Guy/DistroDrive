@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { DistributionGrid } from "@/components/DistributionGrid";
 import { NewsFeed } from "@/components/NewsFeed";
+import { TopDistros } from "@/components/top-distros";
 import { Terminal, TrendingUp } from "lucide-react";
 import type { Distribution, News } from "@shared/schema";
 
@@ -72,12 +73,15 @@ export default function Home() {
           </div>
 
           <aside className="lg:col-span-1">
-            <div className="sticky top-24">
-              <div className="flex items-center gap-2 mb-4">
-                <TrendingUp className="w-5 h-5 text-primary" />
-                <h3 className="font-serif font-semibold text-lg text-foreground">Latest News</h3>
+            <div className="sticky top-24 space-y-6">
+              <TopDistros />
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <TrendingUp className="w-5 h-5 text-primary" />
+                  <h3 className="font-serif font-semibold text-lg text-foreground">Latest News</h3>
+                </div>
+                <NewsFeed news={news} compact />
               </div>
-              <NewsFeed news={news} compact />
             </div>
           </aside>
         </div>

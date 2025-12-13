@@ -1,14 +1,15 @@
 import { 
-  distributions, releases, downloads, news,
+  distributions, releases, downloads, news, downloadClicks,
   type Distribution, type InsertDistribution,
   type Release, type InsertRelease,
   type Download, type InsertDownload,
   type News, type InsertNews,
   type DistributionWithReleases, type ReleaseWithDownloads,
-  type DistributionWithLatestRelease
+  type DistributionWithLatestRelease,
+  type TopDistro
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, ilike, desc, asc } from "drizzle-orm";
+import { eq, ilike, desc, asc, sql, gte, count } from "drizzle-orm";
 
 export interface IStorage {
   // Distributions
@@ -30,6 +31,10 @@ export interface IStorage {
   // News
   getNews(): Promise<News[]>;
   createNews(data: InsertNews): Promise<News>;
+  
+  // Download clicks
+  recordDownloadClick(distroId: number): Promise<void>;
+  getTopDistrosByClicks(limit?: number): Promise<TopDistro[]>;
   
   // Seed data
   seedDatabase(): Promise<void>;
@@ -153,6 +158,34 @@ export class DatabaseStorage implements IStorage {
   async createNews(data: InsertNews): Promise<News> {
     const [newsItem] = await db.insert(news).values(data).returning();
     return newsItem;
+  }
+
+  async recordDownloadClick(distroId: number): Promise<void> {
+    await db.insert(downloadClicks).values({ distroId });
+  }
+
+  async getTopDistrosByClicks(limit: number = 10): Promise<TopDistro[]> {
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+    const result = await db
+      .select({
+        distroId: downloadClicks.distroId,
+        name: distributions.name,
+        clickCount: count(downloadClicks.id),
+      })
+      .from(downloadClicks)
+      .innerJoin(distributions, eq(downloadClicks.distroId, distributions.id))
+      .where(gte(downloadClicks.clickedAt, thirtyDaysAgo))
+      .groupBy(downloadClicks.distroId, distributions.name)
+      .orderBy(desc(count(downloadClicks.id)))
+      .limit(limit);
+
+    return result.map(r => ({
+      distroId: r.distroId,
+      name: r.name,
+      clickCount: Number(r.clickCount),
+    }));
   }
 
   async seedDatabase(): Promise<void> {
