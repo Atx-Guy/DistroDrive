@@ -377,7 +377,10 @@ async def main():
     
     async with async_playwright() as p:
         print("Launching browser...")
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            executable_path='/nix/store/zi4f80l169xlmivz8vja8wlphq74qqk0-chromium-125.0.6422.141/bin/chromium'
+        )
         
         for i, distro in enumerate(distros):
             print(f"\n[{i+1}/{len(distros)}]", end="")
