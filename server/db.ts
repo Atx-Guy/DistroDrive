@@ -20,16 +20,19 @@ const dbUrl = new URL(process.env.DATABASE_URL);
 // Note: URL parser automatically decodes the password, but we'll ensure it's decoded
 const password = decodeURIComponent(dbUrl.password);
 
+// Only use SSL for external databases (Neon, etc.), not for local Replit DB
+const isExternalDb = dbUrl.hostname.includes('neon.tech') || 
+                     dbUrl.hostname.includes('supabase') ||
+                     dbUrl.searchParams.get('sslmode') === 'require';
+
 const connectionConfig: pg.PoolConfig = {
   host: dbUrl.hostname,
   port: parseInt(dbUrl.port || "5432", 10),
   database: dbUrl.pathname.slice(1), // Remove leading '/'
   user: dbUrl.username,
   password: password,
-  // Configure SSL to accept Neon's certificate
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  // Configure SSL only for external databases
+  ssl: isExternalDb ? { rejectUnauthorized: false } : false,
 };
 
 export const pool = new Pool(connectionConfig);
