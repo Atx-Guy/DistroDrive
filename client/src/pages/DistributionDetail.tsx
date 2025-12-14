@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "wouter";
+import { format } from "date-fns";
 import { Header } from "@/components/Header";
 import { ReleaseTable } from "@/components/ReleaseTable";
 import { ReleaseHistory } from "@/components/ReleaseHistory";
@@ -15,9 +16,12 @@ import {
   Globe, 
   Monitor,
   Layers,
-  ServerCrash
+  ServerCrash,
+  Download,
+  HardDrive,
+  Calendar
 } from "lucide-react";
-import type { DistributionWithReleases } from "@shared/schema";
+import type { DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
 
 function DetailSkeleton() {
   return (
@@ -40,6 +44,80 @@ function DetailSkeleton() {
         <Skeleton className="h-20" />
       </div>
     </div>
+  );
+}
+
+interface DownloadLatestSectionProps {
+  releases: ReleaseWithDownloads[];
+}
+
+function DownloadLatestSection({ releases }: DownloadLatestSectionProps) {
+  const latestRelease = useMemo(() => {
+    const releasesWithDownloads = releases
+      .filter(r => r.downloads && r.downloads.some(d => d.isoUrl && !d.isoUrl.includes('placeholder')))
+      .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
+    return releasesWithDownloads[0] || null;
+  }, [releases]);
+
+  if (!latestRelease) return null;
+
+  const validDownloads = latestRelease.downloads.filter(
+    d => d.isoUrl && !d.isoUrl.includes('placeholder')
+  );
+  const primaryDownload = validDownloads[0];
+
+  return (
+    <section className="space-y-4">
+      <Card className="p-6">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 flex-wrap">
+              <h2 className="font-serif font-bold text-2xl text-foreground">
+                Download Latest
+              </h2>
+              <span className="font-mono text-xl font-semibold text-primary" data-testid="text-latest-version">
+                v{latestRelease.versionNumber}
+              </span>
+              {latestRelease.isLts && (
+                <Badge variant="default" className="bg-green-600" data-testid="badge-latest-lts">
+                  Long Term Support
+                </Badge>
+              )}
+            </div>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4" />
+                Released {format(new Date(latestRelease.releaseDate), "MMMM d, yyyy")}
+              </span>
+              {primaryDownload?.downloadSize && (
+                <span className="flex items-center gap-1.5">
+                  <HardDrive className="w-4 h-4" />
+                  {primaryDownload.downloadSize}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 flex-wrap">
+            {validDownloads.map((download) => (
+              <Button
+                key={download.id}
+                size="lg"
+                asChild
+                data-testid={`button-download-latest-${download.architecture}`}
+              >
+                <a href={download.isoUrl} target="_blank" rel="noopener noreferrer">
+                  <Download className="w-5 h-5 mr-2" />
+                  Download {download.architecture}
+                </a>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </Card>
+
+      <IsoArchive releases={releases} distroId={0} />
+    </section>
   );
 }
 
@@ -180,11 +258,8 @@ export default function DistributionDetail() {
               />
             )}
 
-            {/* ISO Archive - Previous Versions */}
-            <IsoArchive 
-              releases={distribution.releases}
-              distroId={distribution.id}
-            />
+            {/* Download Latest Section */}
+            <DownloadLatestSection releases={distribution.releases} />
 
             <section>
               <h2 className="font-serif font-bold text-xl text-foreground mb-4">
