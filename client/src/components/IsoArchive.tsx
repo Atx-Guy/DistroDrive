@@ -24,8 +24,8 @@ export function IsoArchive({ releases, distroId }: IsoArchiveProps) {
       .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
   }, [releases]);
 
-  // Get 2nd and 3rd most recent (skip the first which is "latest")
-  const previousVersions = releasesWithDownloads.slice(1, 3);
+  // Get all versions except the latest (which is shown in Download Latest section)
+  const previousVersions = releasesWithDownloads.slice(1);
 
   return (
     <Card className="p-6">
