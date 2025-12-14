@@ -9,6 +9,7 @@ import NewsPage from "@/pages/NewsPage";
 import IsoBrowser from "@/pages/iso-browser";
 import AddRelease from "@/pages/admin/add-release";
 import BrokenLinks from "@/pages/admin/broken-links";
+import Matcher from "@/pages/Matcher";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/iso-browser" component={IsoBrowser} />
       <Route path="/admin/add-release" component={AddRelease} />
       <Route path="/admin/broken-links" component={BrokenLinks} />
+      <Route path="/matcher" component={Matcher} />
       <Route component={NotFound} />
     </Switch>
   );
