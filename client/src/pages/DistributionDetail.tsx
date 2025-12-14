@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "wouter";
 import { Header } from "@/components/Header";
 import { ReleaseTable } from "@/components/ReleaseTable";
+import { ReleaseHistory } from "@/components/ReleaseHistory";
+import { IsoArchive } from "@/components/IsoArchive";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -169,6 +171,20 @@ export default function DistributionDetail() {
                 </a>
               </Card>
             </div>
+
+            {/* Release History Chart */}
+            {distribution.releases.length > 0 && (
+              <ReleaseHistory 
+                releases={distribution.releases} 
+                distroName={distribution.name}
+              />
+            )}
+
+            {/* ISO Archive - Previous Versions */}
+            <IsoArchive 
+              releases={distribution.releases}
+              distroId={distribution.id}
+            />
 
             <section>
               <h2 className="font-serif font-bold text-xl text-foreground mb-4">
