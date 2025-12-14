@@ -66,7 +66,8 @@ Preferred communication style: Simple, everyday language.
 - **connect-pg-simple**: Session storage (if sessions are needed)
 
 ### Third-Party Services
-- **Supabase JS Client**: Listed in dependencies (likely for future authentication or additional database features)
+- **Neon PostgreSQL**: Serverless PostgreSQL database hosted on Neon
+- **Supabase JS Client**: Listed in dependencies (for client-side features if needed)
 
 ### UI Libraries
 - **Radix UI**: Accessible component primitives (dialogs, dropdowns, tabs, etc.)
