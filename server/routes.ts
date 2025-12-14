@@ -22,6 +22,17 @@ export async function registerRoutes(
     }
   });
 
+  // Get all distributions with specs for comparison
+  app.get("/api/distributions/compare", async (req, res) => {
+    try {
+      const distros = await storage.getDistributionsWithSpecs();
+      res.json(distros);
+    } catch (error) {
+      console.error("Error fetching distributions for comparison:", error);
+      res.status(500).json({ error: "Failed to fetch distributions for comparison" });
+    }
+  });
+
   // Search distributions
   app.get("/api/distributions/search", async (req, res) => {
     try {

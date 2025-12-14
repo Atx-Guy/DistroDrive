@@ -15,7 +15,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield, Terminal, Home, Sparkles, Newspaper } from "lucide-react";
+import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield, Terminal, Home, Sparkles, Newspaper, Scale } from "lucide-react";
 import type { DistributionWithLatestRelease, DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
 
 const BASE_DISTROS = ["Debian", "Arch", "Ubuntu", "Independent", "Fedora", "RHEL"];
@@ -144,6 +144,16 @@ export default function IsoBrowser() {
                 >
                   <Sparkles className="w-4 h-4 sm:mr-2" />
                   <span className="hidden sm:inline">Distro Matcher</span>
+                </Button>
+              </Link>
+              <Link href="/compare">
+                <Button 
+                  variant={location === "/compare" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-compare"
+                >
+                  <Scale className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Compare</span>
                 </Button>
               </Link>
               <Link href="/news">

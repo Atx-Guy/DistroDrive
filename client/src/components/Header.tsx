@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Search, Terminal, Newspaper, Home, HardDrive, Sparkles } from "lucide-react";
+import { Search, Terminal, Newspaper, Home, HardDrive, Sparkles, Scale } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -72,6 +72,16 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               >
                 <Sparkles className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">Distro Matcher</span>
+              </Button>
+            </Link>
+            <Link href="/compare">
+              <Button 
+                variant={location === "/compare" ? "secondary" : "ghost"} 
+                size="sm"
+                data-testid="link-nav-compare"
+              >
+                <Scale className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Compare</span>
               </Button>
             </Link>
             <Link href="/news">

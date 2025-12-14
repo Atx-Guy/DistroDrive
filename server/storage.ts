@@ -1,12 +1,13 @@
 import { 
-  distributions, releases, downloads, news, downloadClicks,
+  distributions, releases, downloads, news, downloadClicks, technicalSpecs,
   type Distribution, type InsertDistribution,
   type Release, type InsertRelease,
   type Download, type InsertDownload,
   type News, type InsertNews,
   type DistributionWithReleases, type ReleaseWithDownloads,
   type DistributionWithLatestRelease,
-  type TopDistro
+  type TopDistro,
+  type TechnicalSpecs, type DistributionWithSpecs
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, ilike, desc, asc, sql, gte, count, or, isNull } from "drizzle-orm";
@@ -47,6 +48,9 @@ export interface IStorage {
   // Download clicks
   recordDownloadClick(distroId: number): Promise<void>;
   getTopDistrosByClicks(limit?: number): Promise<TopDistro[]>;
+  
+  // Compare distributions
+  getDistributionsWithSpecs(): Promise<DistributionWithSpecs[]>;
   
   // Seed data
   seedDatabase(): Promise<void>;
@@ -215,6 +219,22 @@ export class DatabaseStorage implements IStorage {
 
   async recordDownloadClick(distroId: number): Promise<void> {
     await db.insert(downloadClicks).values({ distroId });
+  }
+
+  async getDistributionsWithSpecs(): Promise<DistributionWithSpecs[]> {
+    const result = await db
+      .select({
+        distribution: distributions,
+        technicalSpecs: technicalSpecs,
+      })
+      .from(distributions)
+      .leftJoin(technicalSpecs, eq(distributions.id, technicalSpecs.distroId))
+      .orderBy(asc(distributions.name));
+    
+    return result.map(row => ({
+      ...row.distribution,
+      technicalSpecs: row.technicalSpecs,
+    }));
   }
 
   async getTopDistrosByClicks(limit: number = 10): Promise<TopDistro[]> {

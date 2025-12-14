@@ -12,7 +12,7 @@ import type { DistributionWithLatestRelease } from "@shared/schema";
 import { 
   Terminal, User, Code, Zap, Gamepad2, Server, Monitor, Shield, 
   Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles,
-  Home, HardDrive, Newspaper
+  Home, HardDrive, Newspaper, Scale
 } from "lucide-react";
 
 const experienceOptions: { value: ExperienceLevel; label: string; description: string; icon: typeof User }[] = [
@@ -182,6 +182,16 @@ export default function Matcher() {
                 >
                   <Sparkles className="w-4 h-4 sm:mr-2" />
                   <span className="hidden sm:inline">Distro Matcher</span>
+                </Button>
+              </Link>
+              <Link href="/compare">
+                <Button 
+                  variant={location === "/compare" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-compare"
+                >
+                  <Scale className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Compare</span>
                 </Button>
               </Link>
               <Link href="/news">
