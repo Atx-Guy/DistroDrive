@@ -36,6 +36,35 @@ except ImportError:
 TIMEOUT = 45000
 NAVIGATION_TIMEOUT = 30000
 
+# Known archive URLs for major distributions
+KNOWN_ARCHIVE_URLS = {
+    'ubuntu': [
+        'http://old-releases.ubuntu.com/releases/',
+        'https://releases.ubuntu.com/',
+    ],
+    'fedora': [
+        'https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/',
+        'https://download.fedoraproject.org/pub/fedora/linux/releases/',
+    ],
+    'debian': [
+        'https://cdimage.debian.org/cdimage/archive/',
+        'https://cdimage.debian.org/debian-cd/',
+    ],
+    'linux mint': [
+        'https://mirrors.kernel.org/linuxmint/stable/',
+        'https://mirror.rackspace.com/linuxmint/stable/',
+    ],
+    'manjaro': [
+        'https://download.manjaro.org/',
+    ],
+    'arch linux': [
+        'https://archive.archlinux.org/iso/',
+    ],
+}
+
+# Regex pattern to match version folders like 24.04/, 23.10/, 41/, 12.5/
+VERSION_FOLDER_PATTERN = re.compile(r'^(\d+(\.\d+){0,2})/?$')
+
 
 def get_db_connection():
     """Get PostgreSQL database connection from DATABASE_URL."""
@@ -112,6 +141,47 @@ def get_all_releases_for_distro(conn, distro_id):
             ORDER BY release_date DESC
         """, (distro_id,))
         return cur.fetchall()
+
+
+def get_distro_by_name(conn, name):
+    """Get a distribution by name (case-insensitive)."""
+    with conn.cursor(cursor_factory=RealDictCursor) as cur:
+        cur.execute("""
+            SELECT * FROM distributions WHERE LOWER(name) = LOWER(%s)
+        """, (name,))
+        return cur.fetchone()
+
+
+def truncate_url_to_parent(url):
+    """Truncate a URL to its parent directory.
+    
+    Example: https://mirror.example.com/pub/linux/distro/24.04/iso/
+         -> https://mirror.example.com/pub/linux/distro/
+    """
+    parsed = urlparse(url)
+    path_parts = parsed.path.rstrip('/').split('/')
+    
+    # Remove last 1-2 path segments to get to version listing
+    if len(path_parts) > 2:
+        # Try removing last segment first
+        parent_path = '/'.join(path_parts[:-1]) + '/'
+        return f"{parsed.scheme}://{parsed.netloc}{parent_path}"
+    return None
+
+
+def is_version_folder(name):
+    """Check if a folder name looks like a version number."""
+    name = name.strip('/')
+    return VERSION_FOLDER_PATTERN.match(name) is not None
+
+
+def parse_version_string(version_str):
+    """Parse a version string into comparable tuple."""
+    parts = version_str.strip('/').split('.')
+    try:
+        return tuple(int(p) for p in parts)
+    except ValueError:
+        return (0,)
 
 
 def detect_architecture(url):
@@ -464,6 +534,279 @@ async def scrape_archive_page(page, archive_url, distro_id, conn):
     return releases_found
 
 
+async def scrape_archive_directory(page, archive_url, distro_id, conn):
+    """
+    Scrape an archive directory listing for version folders and ISO files.
+    
+    This function:
+    1. Navigates to the archive URL (directory listing page)
+    2. Finds all anchor links that match version folder pattern (e.g., "24.04/", "23.10/", "41/")
+    3. Sorts versions descending, takes top 3-4 versions
+    4. For each version folder, navigates in and looks for .iso files
+    5. Creates release records and download entries
+    
+    Returns count of releases found.
+    """
+    releases_found = 0
+    
+    try:
+        print(f"    Navigating to archive: {archive_url}")
+        await page.goto(archive_url, wait_until="networkidle", timeout=NAVIGATION_TIMEOUT)
+        await asyncio.sleep(1)
+        
+        # Check if it's a directory listing
+        if not await is_directory_listing(page):
+            print(f"    Not a directory listing, skipping")
+            return 0
+        
+        # Find all version folder links
+        anchors = await page.locator("a[href]").all()
+        version_folders = []
+        
+        for anchor in anchors:
+            try:
+                href = await anchor.get_attribute("href")
+                if not href:
+                    continue
+                href = href.strip()
+                
+                # Check if this looks like a version folder
+                if is_version_folder(href):
+                    version_folders.append({
+                        'href': href,
+                        'version': href.strip('/'),
+                        'version_tuple': parse_version_string(href)
+                    })
+            except Exception:
+                continue
+        
+        if not version_folders:
+            print(f"    No version folders found")
+            return 0
+        
+        # Sort by version descending and take top 4
+        version_folders.sort(key=lambda x: x['version_tuple'], reverse=True)
+        top_versions = version_folders[:4]
+        
+        print(f"    Found {len(version_folders)} version folders, processing top {len(top_versions)}")
+        
+        # Process each version folder (skip the latest, take next 3 for "previous versions")
+        for i, vf in enumerate(top_versions[1:4]):  # Skip index 0 (latest), take next 3
+            version = vf['version']
+            folder_url = urljoin(archive_url, vf['href'])
+            
+            print(f"      Processing version {version}...")
+            
+            try:
+                await page.goto(folder_url, wait_until="networkidle", timeout=NAVIGATION_TIMEOUT)
+                await asyncio.sleep(0.5)
+                
+                # Look for ISO files - might be directly here or in subfolders
+                iso_files = await find_iso_files_in_directory(page, folder_url)
+                
+                if not iso_files:
+                    # Try common subfolders - includes nested paths for distros like Fedora
+                    subfolders = [
+                        'desktop/', 'server/', 'live/', 'iso/', 'isos/', 
+                        'workstation/', 'cloud/', 'spins/',
+                        # Fedora-style nested paths
+                        'Workstation/x86_64/iso/', 'Server/x86_64/iso/',
+                        'Workstation/aarch64/iso/', 'Server/aarch64/iso/',
+                        'Everything/x86_64/iso/', 'Spins/x86_64/',
+                        # More generic nested paths
+                        'x86_64/', 'amd64/', 'current/', 'images/',
+                    ]
+                    for subfolder in subfolders:
+                        subfolder_url = urljoin(folder_url.rstrip('/') + '/', subfolder)
+                        try:
+                            response = await page.goto(subfolder_url, wait_until="networkidle", timeout=10000)
+                            if response and response.status == 200:
+                                iso_files = await find_iso_files_in_directory(page, subfolder_url)
+                                if iso_files:
+                                    print(f"        Found ISOs in {subfolder}")
+                                    break
+                        except Exception:
+                            continue
+                
+                if iso_files:
+                    # Create release record
+                    release = create_release_for_distro(conn, distro_id, version)
+                    if release:
+                        print(f"        Created/found release: {version}")
+                        releases_found += 1
+                        
+                        # Add downloads (max 2 per architecture)
+                        archs_added = set()
+                        for iso in iso_files[:4]:  # Max 4 ISOs per version
+                            arch = iso['architecture']
+                            if arch in archs_added:
+                                continue
+                            archs_added.add(arch)
+                            insert_download(conn, release['id'], arch, iso['url'])
+                else:
+                    print(f"        No ISO files found for version {version}")
+                    
+            except Exception as e:
+                print(f"        Error processing version {version}: {e}")
+                continue
+        
+        # Go back to the archive root for further processing
+        await page.goto(archive_url, wait_until="networkidle", timeout=NAVIGATION_TIMEOUT)
+        
+    except Exception as e:
+        print(f"    Archive directory scrape error: {e}")
+    
+    return releases_found
+
+
+async def find_iso_files_in_directory(page, base_url):
+    """Find ISO files in the current directory listing."""
+    iso_files = []
+    
+    try:
+        anchors = await page.locator("a[href]").all()
+        
+        for anchor in anchors:
+            try:
+                href = await anchor.get_attribute("href")
+                if not href:
+                    continue
+                href = href.strip()
+                
+                if href.lower().endswith('.iso'):
+                    full_url = urljoin(base_url, href)
+                    filename = href.split('/')[-1]
+                    
+                    iso_files.append({
+                        'url': full_url,
+                        'filename': filename,
+                        'architecture': detect_architecture(full_url)
+                    })
+            except Exception:
+                continue
+        
+    except Exception as e:
+        print(f"        Error finding ISO files: {e}")
+    
+    return iso_files
+
+
+async def scrape_distro_archives(browser, distro_name, conn):
+    """
+    Scrape archive URLs for a specific distribution.
+    
+    Looks up the distro by name, checks if it's in KNOWN_ARCHIVE_URLS,
+    and tries each known archive URL to find older releases.
+    
+    Returns list of results.
+    """
+    results = []
+    
+    # Look up the distro
+    distro = get_distro_by_name(conn, distro_name)
+    if not distro:
+        print(f"Distribution '{distro_name}' not found in database")
+        return results
+    
+    distro_id = distro['id']
+    distro_key = distro_name.lower()
+    
+    print(f"\nProcessing archives for: {distro_name} (ID: {distro_id})")
+    print("-" * 50)
+    
+    # Check if we have known archive URLs for this distro
+    if distro_key not in KNOWN_ARCHIVE_URLS:
+        print(f"  No known archive URLs for '{distro_name}'")
+        print(f"  Available distros: {', '.join(KNOWN_ARCHIVE_URLS.keys())}")
+        return results
+    
+    archive_urls = KNOWN_ARCHIVE_URLS[distro_key]
+    print(f"  Found {len(archive_urls)} known archive URLs")
+    
+    # Create browser context
+    context = await browser.new_context(
+        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    )
+    page = await context.new_page()
+    page.set_default_timeout(TIMEOUT)
+    
+    total_releases = 0
+    
+    try:
+        for archive_url in archive_urls:
+            print(f"\n  Trying archive: {archive_url}")
+            
+            try:
+                releases_found = await scrape_archive_directory(page, archive_url, distro_id, conn)
+                total_releases += releases_found
+                
+                if releases_found > 0:
+                    print(f"    Successfully found {releases_found} releases")
+                    results.append({
+                        'distro': distro_name,
+                        'archive_url': archive_url,
+                        'releases_found': releases_found
+                    })
+                    
+                    # If we found releases, we can stop trying other URLs
+                    if releases_found >= 2:
+                        print(f"    Sufficient releases found, stopping")
+                        break
+                        
+            except Exception as e:
+                print(f"    Error with archive URL: {e}")
+                continue
+                
+    finally:
+        await context.close()
+    
+    print(f"\n  Total releases found: {total_releases}")
+    return results
+
+
+async def scrape_single_distro_archives(distro_name):
+    """
+    Entry point for scraping archives of a single distribution.
+    Called when using --distro command line argument.
+    """
+    print("=" * 60)
+    print(f"ISO Archive Scraper - {distro_name}")
+    print("=" * 60)
+    print()
+    
+    conn = get_db_connection()
+    print("Connected to PostgreSQL database")
+    
+    async with async_playwright() as p:
+        print("Launching browser...")
+        browser = await p.chromium.launch(
+            headless=True,
+            executable_path='/nix/store/zi4f80l169xlmivz8vja8wlphq74qqk0-chromium-125.0.6422.141/bin/chromium'
+        )
+        
+        try:
+            results = await scrape_distro_archives(browser, distro_name, conn)
+            
+            print("\n")
+            print("=" * 60)
+            print("SUMMARY")
+            print("=" * 60)
+            
+            if results:
+                total_releases = sum(r['releases_found'] for r in results)
+                print(f"Total releases added: {total_releases}")
+                for r in results:
+                    print(f"  - {r['archive_url']}: {r['releases_found']} releases")
+            else:
+                print("No releases found")
+                
+        finally:
+            await browser.close()
+    
+    conn.close()
+    print("\nDone!")
+
+
 async def scrape_distro(browser, distro, conn):
     """Scrape a single distribution for ISO links."""
     distro_id = distro['id']
@@ -712,4 +1055,12 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import argparse
+    parser = argparse.ArgumentParser(description="Scrape ISO download links from distribution websites")
+    parser.add_argument('--distro', help='Scrape archives for specific distro (e.g., "Ubuntu", "Fedora")')
+    args = parser.parse_args()
+    
+    if args.distro:
+        asyncio.run(scrape_single_distro_archives(args.distro))
+    else:
+        asyncio.run(main())
