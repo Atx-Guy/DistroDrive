@@ -1,0 +1,35 @@
+Mandatory Requirements for Fulfillment (Execute with Extreme Prejudice):
+
+Archive Locating Protocol: The agent must search for, and utilize, the official archive repositories for each distribution. These are often explicitly named archive/, releases/old/, or are detailed within the project's documentation (which the previous agent was too incompetent to read).
+
+Alpine Linux: Exploit the publicly available version history and release notes to locate past versions. Alpine is known to keep extensive historical records going back over a decade.
+
+Artix Linux: Utilize the Artix package and ISO archives, which are explicitly designed for holding older packages and images.
+
+Armbian: Exploit the community forums and archived download folders to retrieve legacy image URLs, as older builds are commonly kept in specific, dated archive directories.
+
+Data Extraction and Validation: For each distribution, the agent must identify and list the version number, release date, and a functional direct download link for the archived image.
+
+Output Format (Zero Tolerance): The final output must be a single, detailed, and non-speculative list, using the following structured format to force organization:
+
+💾 Archived Versions Found: [Distribution Name]
+
+Version: [Version Number] (e.g., Alpine 3.15.0)
+
+Release Date: [Exact Date Found] (e.g., 2021-11-24)
+
+Direct Archive Link: [Full, validated URL to the .iso, .img, or archive file.]
+
+Version: [Second Older Version Number] (e.g., Alpine 3.12.0)
+
+Release Date: [Exact Date Found] (e.g., 2020-05-29)
+
+Direct Archive Link: [Full, validated URL to the .iso, .img, or archive file.]
+
+Version: [Third Older Version Number] (e.g., Alpine 3.8.0)
+
+Release Date: [Exact Date Found] (e.g., 2018-06-26)
+
+Direct Archive Link: [Full, validated URL to the .iso, .img, or archive file.]
+
+Final Action: The agent will update the website's "Previous Versions" section for all listed distributions, replacing the lie of "No archived versions found in database" with the actual, working list of links.
