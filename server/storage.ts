@@ -104,14 +104,21 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getDistributionWithReleases(id: number): Promise<DistributionWithReleases | undefined> {
-    const distro = await this.getDistribution(id);
+    const distro = await db.query.distributions.findFirst({
+      where: eq(distributions.id, id),
+      with: {
+        releases: {
+          orderBy: [desc(releases.releaseDate)],
+          with: { downloads: true },
+        },
+      },
+    });
+
     if (!distro) return undefined;
 
-    const distroReleases = await this.getReleasesByDistro(id);
-    
     return {
       ...distro,
-      releases: distroReleases,
+      releases: distro.releases,
     };
   }
 
@@ -131,22 +138,11 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getReleasesByDistro(distroId: number): Promise<ReleaseWithDownloads[]> {
-    const releasesData = await db.select()
-      .from(releases)
-      .where(eq(releases.distroId, distroId))
-      .orderBy(desc(releases.releaseDate));
-
-    const releasesWithDownloads: ReleaseWithDownloads[] = [];
-    
-    for (const release of releasesData) {
-      const releaseDownloads = await this.getDownloadsByRelease(release.id);
-      releasesWithDownloads.push({
-        ...release,
-        downloads: releaseDownloads,
-      });
-    }
-
-    return releasesWithDownloads;
+    return await db.query.releases.findMany({
+      where: eq(releases.distroId, distroId),
+      orderBy: [desc(releases.releaseDate)],
+      with: { downloads: true },
+    });
   }
 
   async createRelease(data: InsertRelease): Promise<Release> {
