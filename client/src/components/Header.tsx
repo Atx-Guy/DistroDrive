@@ -1,7 +1,9 @@
 import { Link, useLocation } from "wouter";
-import { Search, Terminal, Newspaper, Home, HardDrive, Sparkles, Scale } from "lucide-react";
+import { Search, Terminal, Newspaper, Home, HardDrive, Sparkles, Scale, Usb } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useIsoSelection } from "@/contexts/IsoSelectionContext";
 
 interface HeaderProps {
   searchQuery: string;
@@ -10,6 +12,7 @@ interface HeaderProps {
 
 export function Header({ searchQuery, onSearchChange }: HeaderProps) {
   const [location] = useLocation();
+  const { selectedCount } = useIsoSelection();
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
@@ -82,6 +85,21 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               >
                 <Scale className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">Compare</span>
+              </Button>
+            </Link>
+            <Link href="/ventoy">
+              <Button 
+                variant={location === "/ventoy" ? "secondary" : "ghost"} 
+                size="sm"
+                data-testid="link-nav-ventoy"
+              >
+                <Usb className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Ventoy Builder</span>
+                {selectedCount > 0 && (
+                  <Badge variant="default" className="ml-1 bg-green-600 text-xs">
+                    {selectedCount}
+                  </Badge>
+                )}
               </Button>
             </Link>
             <Link href="/news">

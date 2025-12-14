@@ -12,8 +12,9 @@ import type { DistributionWithLatestRelease } from "@shared/schema";
 import { 
   Terminal, User, Code, Zap, Gamepad2, Server, Monitor, Shield, 
   Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles,
-  Home, HardDrive, Newspaper, Scale
+  Home, HardDrive, Newspaper, Scale, Usb
 } from "lucide-react";
+import { useIsoSelection } from "@/contexts/IsoSelectionContext";
 
 const experienceOptions: { value: ExperienceLevel; label: string; description: string; icon: typeof User }[] = [
   { value: "beginner", label: "Beginner", description: "New to Linux, want something easy", icon: User },
@@ -101,6 +102,7 @@ export default function Matcher() {
   const [experience, setExperience] = useState<ExperienceLevel | null>(null);
   const [useCases, setUseCases] = useState<UseCase[]>([]);
   const [hardware, setHardware] = useState<Hardware | null>(null);
+  const { selectedCount } = useIsoSelection();
 
   const { data: distributions = [], isLoading } = useQuery<DistributionWithLatestRelease[]>({
     queryKey: ["/api/distributions"],
@@ -192,6 +194,21 @@ export default function Matcher() {
                 >
                   <Scale className="w-4 h-4 sm:mr-2" />
                   <span className="hidden sm:inline">Compare</span>
+                </Button>
+              </Link>
+              <Link href="/ventoy">
+                <Button 
+                  variant={location === "/ventoy" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-ventoy"
+                >
+                  <Usb className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Ventoy Builder</span>
+                  {selectedCount > 0 && (
+                    <Badge variant="default" className="ml-1 bg-green-600 text-xs">
+                      {selectedCount}
+                    </Badge>
+                  )}
                 </Button>
               </Link>
               <Link href="/news">

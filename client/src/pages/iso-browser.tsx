@@ -15,8 +15,9 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield, Terminal, Home, Sparkles, Newspaper, Scale } from "lucide-react";
+import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield, Terminal, Home, Sparkles, Newspaper, Scale, Usb, Plus, Check } from "lucide-react";
 import type { DistributionWithLatestRelease, DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
+import { useIsoSelection } from "@/contexts/IsoSelectionContext";
 
 const BASE_DISTROS = ["Debian", "Arch", "Ubuntu", "Independent", "Fedora", "RHEL"];
 const DESKTOP_ENVIRONMENTS = ["GNOME", "KDE Plasma", "Xfce", "Cinnamon", "MATE", "LXQt", "Budgie"];
@@ -28,6 +29,7 @@ export default function IsoBrowser() {
   const [selectedDEs, setSelectedDEs] = useState<string[]>([]);
   const [selectedArchitectures, setSelectedArchitectures] = useState<string[]>([]);
   const [selectedDistroId, setSelectedDistroId] = useState<number | null>(null);
+  const { toggleSelection, isSelected, selectedCount } = useIsoSelection();
 
   const { data: distributions, isLoading } = useQuery<DistributionWithLatestRelease[]>({
     queryKey: ["/api/distributions"],
@@ -154,6 +156,21 @@ export default function IsoBrowser() {
                 >
                   <Scale className="w-4 h-4 sm:mr-2" />
                   <span className="hidden sm:inline">Compare</span>
+                </Button>
+              </Link>
+              <Link href="/ventoy">
+                <Button 
+                  variant={location === "/ventoy" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-ventoy"
+                >
+                  <Usb className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Ventoy Builder</span>
+                  {selectedCount > 0 && (
+                    <Badge variant="default" className="ml-1 bg-green-600 text-xs">
+                      {selectedCount}
+                    </Badge>
+                  )}
                 </Button>
               </Link>
               <Link href="/news">
@@ -477,6 +494,34 @@ export default function IsoBrowser() {
                                         </a>
                                       </Button>
                                     )}
+                                    {download.isoUrl && !download.isoUrl.includes('placeholder') && (
+                                      <Button
+                                        size="sm"
+                                        variant={isSelected(download.id) ? "default" : "outline"}
+                                        className={isSelected(download.id) ? "bg-green-600 dark:bg-green-600" : ""}
+                                        onClick={() => toggleSelection({
+                                          downloadId: download.id,
+                                          distroName: selectedDistroDetails.name,
+                                          version: release.versionNumber,
+                                          architecture: download.architecture,
+                                          isoUrl: download.isoUrl,
+                                          downloadSize: download.downloadSize,
+                                        })}
+                                        data-testid={`button-add-ventoy-${download.id}`}
+                                      >
+                                        {isSelected(download.id) ? (
+                                          <>
+                                            <Check className="w-4 h-4 mr-1" />
+                                            Added
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Plus className="w-4 h-4 mr-1" />
+                                            Ventoy
+                                          </>
+                                        )}
+                                      </Button>
+                                    )}
                                   </div>
                                 </div>
                               ))}
@@ -536,6 +581,20 @@ export default function IsoBrowser() {
           ) : null}
         </DialogContent>
       </Dialog>
+
+      {selectedCount > 0 && (
+        <Link href="/ventoy">
+          <div 
+            className="fixed bottom-6 right-6 z-50"
+            data-testid="fab-ventoy"
+          >
+            <Button className="bg-green-600 shadow-lg gap-2">
+              <Usb className="w-4 h-4" />
+              {selectedCount} ISO{selectedCount > 1 ? "s" : ""} Selected
+            </Button>
+          </div>
+        </Link>
+      )}
     </div>
   );
 }
