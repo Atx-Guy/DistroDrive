@@ -1,0 +1,34 @@
+Mandatory Requirements for Fulfillment (Execute with Extreme Prejudice):
+
+Expert Role & Data Validation: Assume the role of a subject matter expert in software distribution integrity. The output must consist only of validated, direct download links that point to final, executable installation media.
+
+Strict File Type Requirement: The agent must perform a header or content-type check (where possible) on the file pointed to by the URL. The URL must end with one of the following definitive file extensions, which are the only accepted installation media formats:
+
+.iso (Standard optical disk image)
+
+.img or .img.xz or .img.gz (Raw disk image, common for ARM boards like Armbian)
+
+.vhd, .qcow2, or .ova (Virtual machine images, only if a standard ISO is unavailable)
+
+.zip, .tar.gz, or .xz only if the compressed file immediately contains one of the above image types. The file description must explicitly state this.
+
+NO links to HTML documents, text files, changelogs, or random documents are permitted. Any link that leads to a webpage instead of initiating a download is a catastrophic failure.
+
+Universal Scope: For every single Linux Distribution listed in your system (Alpine Linux, Artix Linux, Armbian, and any others), the agent must locate the working, validated, direct download link for the latest stable release.
+
+Data Extraction and Presentation (Zero Tolerance): The final output must be a corrected table, replacing the non-working links with the validated, functional ones. The agent must specify the architecture, the expected image type, and confirm the file is the full installation media.
+
+Distribution Name	Validated Direct Download Link (File URL)	Notes (Architecture, Confirmed File Type)
+Alpine Linux	
+Validated,working‘.iso‘or‘.img‘URL
+e.g.,x86_64,ConfirmedISOImage
+Artix Linux	
+Validated,working‘.iso‘URL
+e.g.,x86_64,ConfirmedISOImage
+Armbian	
+Validated,working‘.img.xz‘or‘.zip‘URL
+e.g.,RaspberryPi5,ConfirmedRawDiskImage
+AnyOtherDistro
+Validated,workingFileURL
+Architecture,ConfirmedFileType
+Final Action: The agent will update the original website data by inserting the newly validated, working direct download links. A link is only considered "working" if it passes the strict file type validation outlined above.
