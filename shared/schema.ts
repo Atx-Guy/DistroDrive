@@ -143,6 +143,9 @@ export type InsertNews = z.infer<typeof insertNewsSchema>;
 export type DownloadClick = typeof downloadClicks.$inferSelect;
 export type InsertDownloadClick = z.infer<typeof insertDownloadClickSchema>;
 
+export type TechnicalSpecs = typeof technicalSpecs.$inferSelect;
+export type InsertTechnicalSpecs = z.infer<typeof insertTechnicalSpecsSchema>;
+
 export type TopDistro = {
   distroId: number;
   name: string;
@@ -162,4 +165,8 @@ export type DistributionWithLatestRelease = Distribution & {
   latestVersion: string | null;
   isLatestLts: boolean;
   availableArchitectures: string[];
+};
+
+export type DistributionWithSpecs = Distribution & {
+  technicalSpecs: TechnicalSpecs | null;
 };
