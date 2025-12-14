@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "wouter";
 import { Header } from "@/components/Header";
 import { DistributionGrid } from "@/components/DistributionGrid";
 import { NewsFeed } from "@/components/NewsFeed";
 import { TopDistros } from "@/components/top-distros";
-import { Terminal, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Terminal, TrendingUp, Sparkles, HardDrive } from "lucide-react";
 import type { Distribution, News } from "@shared/schema";
 
 export default function Home() {
@@ -38,12 +40,42 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       
+      <section className="bg-gradient-to-b from-primary/5 to-background border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+              <Terminal className="w-8 h-8 text-primary" />
+            </div>
+            <h1 className="font-serif font-bold text-3xl md:text-4xl text-foreground mb-4">
+              Find Your Perfect Linux Distribution
+            </h1>
+            <p className="text-lg text-muted-foreground mb-8">
+              Browse 50+ distributions with direct download links, or take our quiz to find your match.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/matcher">
+                <Button size="lg" data-testid="button-hero-matcher">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Find My Match
+                </Button>
+              </Link>
+              <Link href="/iso-browser">
+                <Button variant="outline" size="lg" data-testid="button-hero-browse">
+                  <HardDrive className="w-5 h-5 mr-2" />
+                  Browse Directory
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="max-w-7xl mx-auto px-6 py-8">
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-2">
             <Terminal className="w-6 h-6 text-primary" />
             <h2 className="font-serif font-bold text-2xl text-foreground">
-              Direct Download Links for Linux Distributions
+              All Distributions
             </h2>
           </div>
           <p className="text-muted-foreground max-w-2xl">

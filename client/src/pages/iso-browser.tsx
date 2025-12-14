@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
+import { Link, useLocation } from "wouter";
 import { apiRequest } from "@/lib/queryClient";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +15,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield } from "lucide-react";
+import { Download, ExternalLink, Magnet, Filter, X, HardDrive, Shield, Terminal, Home, Sparkles, Newspaper } from "lucide-react";
 import type { DistributionWithLatestRelease, DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
 
 const BASE_DISTROS = ["Debian", "Arch", "Ubuntu", "Independent", "Fedora", "RHEL"];
@@ -22,6 +23,7 @@ const DESKTOP_ENVIRONMENTS = ["GNOME", "KDE Plasma", "Xfce", "Cinnamon", "MATE",
 const ARCHITECTURES = ["amd64", "arm64"];
 
 export default function IsoBrowser() {
+  const [location] = useLocation();
   const [selectedBaseDistros, setSelectedBaseDistros] = useState<string[]>([]);
   const [selectedDEs, setSelectedDEs] = useState<string[]>([]);
   const [selectedArchitectures, setSelectedArchitectures] = useState<string[]>([]);
@@ -91,14 +93,70 @@ export default function IsoBrowser() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/60">
+      <header className="sticky top-0 z-50 border-b bg-card border-border">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center gap-4">
-            <Filter className="w-5 h-5 text-muted-foreground" />
-            <h1 className="text-xl font-bold">Distro Finder</h1>
-            <span className="text-muted-foreground text-sm">
-              {filteredDistributions.length} distributions
-            </span>
+          <div className="flex items-center justify-between gap-6 flex-wrap">
+            <Link href="/" data-testid="link-home-logo">
+              <div className="flex items-center gap-3 cursor-pointer">
+                <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
+                  <Terminal className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div className="hidden sm:block">
+                  <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
+                    Linux Distro
+                  </h1>
+                  <p className="text-xs text-muted-foreground -mt-0.5">Directory</p>
+                </div>
+              </div>
+            </Link>
+
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
+              <Filter className="w-4 h-4" />
+              <span>{filteredDistributions.length} distributions</span>
+            </div>
+
+            <nav className="flex items-center gap-1 flex-wrap">
+              <Link href="/">
+                <Button 
+                  variant={location === "/" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-home"
+                >
+                  <Home className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Home</span>
+                </Button>
+              </Link>
+              <Link href="/iso-browser">
+                <Button 
+                  variant={location === "/iso-browser" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-iso"
+                >
+                  <HardDrive className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">ISO Library</span>
+                </Button>
+              </Link>
+              <Link href="/matcher">
+                <Button 
+                  variant={location === "/matcher" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-matcher"
+                >
+                  <Sparkles className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Distro Matcher</span>
+                </Button>
+              </Link>
+              <Link href="/news">
+                <Button 
+                  variant={location === "/news" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-news"
+                >
+                  <Newspaper className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">News</span>
+                </Button>
+              </Link>
+            </nav>
           </div>
         </div>
       </header>

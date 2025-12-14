@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +11,8 @@ import type { ExperienceLevel, UseCase, Hardware } from "@/data/distro-tags";
 import type { DistributionWithLatestRelease } from "@shared/schema";
 import { 
   Terminal, User, Code, Zap, Gamepad2, Server, Monitor, Shield, 
-  Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles
+  Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles,
+  Home, HardDrive, Newspaper
 } from "lucide-react";
 
 const experienceOptions: { value: ExperienceLevel; label: string; description: string; icon: typeof User }[] = [
@@ -95,6 +96,7 @@ function ResultCard({ scored, maxScore }: { scored: ScoredDistribution; maxScore
 }
 
 export default function Matcher() {
+  const [location] = useLocation();
   const [step, setStep] = useState(1);
   const [experience, setExperience] = useState<ExperienceLevel | null>(null);
   const [useCases, setUseCases] = useState<UseCase[]>([]);
@@ -134,22 +136,65 @@ export default function Matcher() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b border-border bg-surface">
+      <header className="sticky top-0 z-50 border-b border-border bg-card">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between gap-4 flex-wrap">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                <Terminal className="w-5 h-5 text-primary-foreground" />
+          <div className="flex items-center justify-between gap-6 flex-wrap">
+            <Link href="/" data-testid="link-home-logo">
+              <div className="flex items-center gap-3 cursor-pointer">
+                <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
+                  <Terminal className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div className="hidden sm:block">
+                  <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
+                    Linux Distro
+                  </h1>
+                  <p className="text-xs text-muted-foreground -mt-0.5">Directory</p>
+                </div>
               </div>
-              <span className="font-serif font-bold text-xl text-foreground">
-                Distro Matcher
-              </span>
             </Link>
-            <Link href="/">
-              <Button variant="outline" size="sm" data-testid="link-home">
-                Browse All Distros
-              </Button>
-            </Link>
+
+            <nav className="flex items-center gap-1 flex-wrap">
+              <Link href="/">
+                <Button 
+                  variant={location === "/" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-home"
+                >
+                  <Home className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Home</span>
+                </Button>
+              </Link>
+              <Link href="/iso-browser">
+                <Button 
+                  variant={location === "/iso-browser" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-iso"
+                >
+                  <HardDrive className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">ISO Library</span>
+                </Button>
+              </Link>
+              <Link href="/matcher">
+                <Button 
+                  variant={location === "/matcher" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-matcher"
+                >
+                  <Sparkles className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Distro Matcher</span>
+                </Button>
+              </Link>
+              <Link href="/news">
+                <Button 
+                  variant={location === "/news" ? "secondary" : "ghost"} 
+                  size="sm"
+                  data-testid="link-nav-news"
+                >
+                  <Newspaper className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">News</span>
+                </Button>
+              </Link>
+            </nav>
           </div>
         </div>
       </header>

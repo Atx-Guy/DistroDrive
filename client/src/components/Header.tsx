@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Search, Terminal, Newspaper, Home } from "lucide-react";
+import { Search, Terminal, Newspaper, Home, HardDrive, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -43,15 +43,35 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
             </div>
           </div>
 
-          <nav className="flex items-center gap-1">
+          <nav className="flex items-center gap-1 flex-wrap">
             <Link href="/">
               <Button 
                 variant={location === "/" ? "secondary" : "ghost"} 
                 size="sm"
                 data-testid="link-nav-home"
               >
-                <Home className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">Browse</span>
+                <Home className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Home</span>
+              </Button>
+            </Link>
+            <Link href="/iso-browser">
+              <Button 
+                variant={location === "/iso-browser" ? "secondary" : "ghost"} 
+                size="sm"
+                data-testid="link-nav-iso"
+              >
+                <HardDrive className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">ISO Library</span>
+              </Button>
+            </Link>
+            <Link href="/matcher">
+              <Button 
+                variant={location === "/matcher" ? "secondary" : "ghost"} 
+                size="sm"
+                data-testid="link-nav-matcher"
+              >
+                <Sparkles className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Distro Matcher</span>
               </Button>
             </Link>
             <Link href="/news">
@@ -60,7 +80,7 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 size="sm"
                 data-testid="link-nav-news"
               >
-                <Newspaper className="w-4 h-4 mr-2" />
+                <Newspaper className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">News</span>
               </Button>
             </Link>
