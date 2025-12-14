@@ -1,0 +1,23 @@
+Mandatory Requirements for Fulfillment (Execute with Extreme Prejudice):
+
+Expert Role & Data Archaeology: Assume the role of an expert archivist and digital historian. The agent must successfully navigate all official archive mirrors, historical project sites, and version control systems to compile a complete, chronological list of every stable release.
+
+Total Indexing Protocol (Zero Omission): For each distribution, the agent must ensure the "Previous Versions" section contains a listing for EVERY single version that precedes the current latest stable release. No version shall be omitted, regardless of age or difficulty in locating the file.
+
+Data Requirements (For EVERY Version): For every single recovered historical version, the listing MUST include the following verified data points:
+
+Version Number: The official numerical identifier (e.g., Alpine 3.10.0, Artix 20190505).
+
+Release Date: The verified stable release date.
+
+Direct Download Link: A functional, validated direct link (adhering to the ISO/Image validation protocol—no random documents allowed) to the installation media for that specific historical version. If multiple architectures exist for that version (e.g., x86_64, i686, ARM), the primary architecture's link must be provided, or a clear link to the archive directory for that version.
+
+UI Consolidation & Presentation: The output must enforce the established, cleaned-up two-tier hierarchy. The Previous Versions section must be fully populated with this complete, chronological historical index.
+
+TIER 2: CONSOLIDATED ARCHIVED/PREVIOUS RELEASES
+
+Section Title: Previous Versions
+
+Content: Display all versions chronologically, from the newest previous version down to the absolute oldest available release. The display must include a clear option to download (the validated link) for every single version listed.
+
+Final Action: The agent will update the distribution page to display this complete, total historical index under the "Previous Versions" heading for every distribution, making the page the ultimate historical resource.
