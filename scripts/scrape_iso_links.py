@@ -81,16 +81,37 @@ def get_latest_release_for_distro(conn, distro_id):
         return cur.fetchone()
 
 
-def create_release_for_distro(conn, distro_id, version="latest"):
+def create_release_for_distro(conn, distro_id, version="latest", release_date=None, is_lts=False):
     """Create a placeholder release for a distribution."""
+    if release_date is None:
+        release_date = datetime.now()
     with conn.cursor(cursor_factory=RealDictCursor) as cur:
+        # Check if this version already exists
+        cur.execute("""
+            SELECT * FROM releases WHERE distro_id = %s AND version_number = %s
+        """, (distro_id, version))
+        existing = cur.fetchone()
+        if existing:
+            return existing
+        
         cur.execute("""
             INSERT INTO releases (distro_id, version_number, release_date, is_lts)
-            VALUES (%s, %s, %s, false)
+            VALUES (%s, %s, %s, %s)
             RETURNING *
-        """, (distro_id, version, datetime.now()))
+        """, (distro_id, version, release_date, is_lts))
         conn.commit()
         return cur.fetchone()
+
+
+def get_all_releases_for_distro(conn, distro_id):
+    """Get all releases for a distribution."""
+    with conn.cursor(cursor_factory=RealDictCursor) as cur:
+        cur.execute("""
+            SELECT * FROM releases 
+            WHERE distro_id = %s 
+            ORDER BY release_date DESC
+        """, (distro_id,))
+        return cur.fetchall()
 
 
 def detect_architecture(url):
@@ -331,6 +352,118 @@ async def find_download_page_link(page, distro_name):
     return None
 
 
+async def find_archive_links(page, base_url):
+    """Find links to archive/old releases pages."""
+    archive_patterns = [
+        "a:has-text('Old Releases')",
+        "a:has-text('Archive')",
+        "a:has-text('Previous')",
+        "a:has-text('Past Releases')",
+        "a:has-text('Older')",
+        "a:has-text('All Releases')",
+        "a:has-text('Release History')",
+        "a[href*='archive']",
+        "a[href*='old']",
+        "a[href*='releases']",
+        "a[href*='previous']",
+    ]
+    
+    for pattern in archive_patterns:
+        try:
+            locator = page.locator(pattern).first
+            if await locator.count() > 0:
+                is_visible = await locator.is_visible()
+                if is_visible:
+                    href = await locator.get_attribute("href")
+                    if href and not href.startswith('#') and not href.startswith('javascript:'):
+                        full_url = urljoin(base_url, href)
+                        return full_url
+        except Exception:
+            continue
+    
+    return None
+
+
+def extract_version_from_filename(filename):
+    """Extract version number from ISO filename."""
+    patterns = [
+        r'(\d+\.\d+\.\d+)',  # 24.04.1
+        r'(\d+\.\d+)',        # 24.04
+        r'(\d{4}\.\d{2})',    # 2024.12
+        r'-(\d+)-',           # -41-
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, filename)
+        if match:
+            return match.group(1)
+    return None
+
+
+async def scrape_archive_page(page, archive_url, distro_id, conn):
+    """Scrape an archive page for older ISO releases."""
+    releases_found = []
+    
+    try:
+        print(f"    Checking archive: {archive_url}")
+        await page.goto(archive_url, wait_until="networkidle", timeout=NAVIGATION_TIMEOUT)
+        await asyncio.sleep(1)
+        
+        # Look for ISO links with version info
+        anchors = await page.locator("a[href]").all()
+        iso_files = []
+        
+        for anchor in anchors:
+            try:
+                href = await anchor.get_attribute("href")
+                if not href:
+                    continue
+                href = href.strip()
+                
+                if href.lower().endswith('.iso'):
+                    full_url = urljoin(archive_url, href)
+                    filename = href.split('/')[-1]
+                    version = extract_version_from_filename(filename)
+                    
+                    if version:
+                        iso_files.append({
+                            'url': full_url,
+                            'version': version,
+                            'filename': filename,
+                            'architecture': detect_architecture(full_url)
+                        })
+            except Exception:
+                continue
+        
+        # Group by version and create releases
+        versions_seen = {}
+        for iso in iso_files:
+            ver = iso['version']
+            if ver not in versions_seen:
+                versions_seen[ver] = []
+            versions_seen[ver].append(iso)
+        
+        # Create releases for up to 3 older versions
+        version_list = sorted(versions_seen.keys(), reverse=True)[:4]
+        
+        for version in version_list[1:4]:  # Skip latest, take next 3
+            isos = versions_seen[version]
+            
+            # Create release
+            release = create_release_for_distro(conn, distro_id, version)
+            if release:
+                print(f"      Created/found release: {version}")
+                releases_found.append(release)
+                
+                # Add downloads
+                for iso in isos[:2]:  # Max 2 architectures
+                    insert_download(conn, release['id'], iso['architecture'], iso['url'])
+        
+    except Exception as e:
+        print(f"    Archive scrape error: {e}")
+    
+    return releases_found
+
+
 async def scrape_distro(browser, distro, conn):
     """Scrape a single distribution for ISO links."""
     distro_id = distro['id']
@@ -430,6 +563,28 @@ async def scrape_distro(browser, distro, conn):
                     if links:
                         print(f"  Found {len(links)} links")
                         
+                except Exception:
+                    continue
+        
+        # Look for archive/old releases page
+        print("  Looking for archive/old releases...")
+        archive_url = await find_archive_links(page, website_url)
+        if archive_url:
+            await scrape_archive_page(page, archive_url, distro_id, conn)
+        else:
+            # Try common archive URLs
+            archive_urls = [
+                f"{website_url.rstrip('/')}/releases",
+                f"{website_url.rstrip('/')}/archive",
+                f"{website_url.rstrip('/')}/old-releases",
+                f"{website_url.rstrip('/')}/downloads/archive",
+            ]
+            for url in archive_urls:
+                try:
+                    response = await page.goto(url, wait_until="networkidle", timeout=10000)
+                    if response and response.status == 200:
+                        await scrape_archive_page(page, url, distro_id, conn)
+                        break
                 except Exception:
                     continue
         

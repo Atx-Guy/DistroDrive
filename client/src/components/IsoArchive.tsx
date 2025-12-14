@@ -27,8 +27,6 @@ export function IsoArchive({ releases, distroId }: IsoArchiveProps) {
   // Get 2nd and 3rd most recent (skip the first which is "latest")
   const previousVersions = releasesWithDownloads.slice(1, 3);
 
-  if (previousVersions.length === 0) return null;
-
   return (
     <Card className="p-6">
       <div className="flex items-center gap-2 mb-4">
@@ -36,6 +34,11 @@ export function IsoArchive({ releases, distroId }: IsoArchiveProps) {
         <h3 className="font-semibold text-lg">Previous Versions</h3>
       </div>
 
+      {previousVersions.length === 0 ? (
+        <p className="text-muted-foreground text-sm" data-testid="text-no-archived-versions">
+          No archived versions found in database.
+        </p>
+      ) : (
       <div className="space-y-4">
         {previousVersions.map((release) => {
           const validDownloads = release.downloads.filter(
@@ -87,6 +90,7 @@ export function IsoArchive({ releases, distroId }: IsoArchiveProps) {
           );
         })}
       </div>
+      )}
     </Card>
   );
 }
