@@ -258,15 +258,8 @@ export default function DistributionDetail() {
               />
             )}
 
-            {/* Download Latest Section */}
+            {/* TIER 1: Download Latest Section */}
             <DownloadLatestSection releases={distribution.releases} />
-
-            <section>
-              <h2 className="font-serif font-bold text-xl text-foreground mb-4">
-                Available Releases
-              </h2>
-              <ReleaseTable releases={distribution.releases} />
-            </section>
           </div>
         )}
       </main>

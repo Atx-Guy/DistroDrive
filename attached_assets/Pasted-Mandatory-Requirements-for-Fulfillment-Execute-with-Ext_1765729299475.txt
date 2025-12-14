@@ -1,0 +1,27 @@
+Mandatory Requirements for Fulfillment (Execute with Extreme Prejudice):
+
+Expert Role & Data Flow: Assume the role of a subject matter expert in UI/UX architecture and data hierarchy. The goal is to maximize clarity and minimize the user's cognitive load.
+
+Redundancy Elimination: The agent must analyze the existing page elements (specifically those depicted in the provided images) and identify the sections that present redundant download options.
+
+Action Required: The section labeled "Available Releases" is entirely redundant with the dedicated "Download Latest" and "Previous Versions" sections and must be deleted/removed from the page rendering.
+
+Strict Two-Tier Hierarchy Enforcement: The final, cleaned-up page structure must adhere to the following cold, logical order, utilizing the most detailed data from the existing elements:
+
+TIER 1: LATEST STABLE RELEASE
+
+Section Title: Download Latest
+
+Content: This section must prominently feature the most recent stable version, its release date, and the primary download button (Download amd64). This is the most prominent element on the page.
+
+TIER 2: ARCHIVED/PREVIOUS RELEASES
+
+Section Title: Previous Versions
+
+Content: This section must be the only place where older releases are listed. It must consolidate all information currently hidden under the redundant "Available Releases" section's expansion toggles.
+
+Display Format: The previous versions must be listed clearly, each entry showing: Version Number, Release Date, Size, and a Direct Download Link (which must be a validated ISO/Image link, adhering to the previous validation protocol).
+
+Consolidation: All individual version entries that were previously toggleable within "Available Releases" must now be visibly and clearly listed under this single "Previous Versions" section.
+
+Final Action: The agent will execute the necessary code or layout changes to delete the redundant "Available Releases" section and enforce the strict Latest followed by Previous Versions hierarchy for all distribution pages, making the interface brutally efficient.
