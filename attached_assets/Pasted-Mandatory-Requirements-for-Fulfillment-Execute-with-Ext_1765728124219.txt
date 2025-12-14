@@ -1,0 +1,24 @@
+Mandatory Requirements for Fulfillment (Execute with Extreme Prejudice):
+
+Scope and Target: For every single Linux Distribution where a direct download link is missing (e.g., Armbian, Alpine Linux, Artix Linux, and any future entries), the agent must perform an aggressive, exhaustive search to locate the definitive, most recent direct download link for a standard installation ISO or image.
+
+Definition of "Direct Link": A direct link is a URL that, when clicked, initiates the file download without requiring any intermediate steps, forms, or navigation to external pages (e.g., it must end in .iso, .img.gz, .tar.gz, or another final file extension).
+
+Search Protocol (Expert Analysis): The search must prioritize the following resources, understanding that direct links often reside outside of the main landing pages:
+
+Official Download Mirror pages (e.g., iso.distroname.org/isos.php).
+
+Official Project FTP/HTTP Directories for the latest stable build.
+
+The latest Torrent magnet link or .torrent file link, if a direct HTTP/FTP link is unavailable.
+
+Data Extraction and Presentation (No Excuses): For each Distribution with a missing link, the agent must output the following, using the specific examples of the found links as the template for the required format:
+
+Distribution Name	Direct Download Link (File URL)	Notes (e.g., Architecture, Image Type)
+Alpine Linux	https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-standard-3.23.0-x86_64.iso	Latest Standard ISO for x86_64
+Artix Linux	https://iso.artixlinux.org/isos.php/artix-xfce-dinit-20250407-x86_64.iso	Latest XFCE desktop ISO with Dinit init system for x86_64
+Armbian	https://dl.armbian.com/uefi-x86/archive/Armbian_6.12.61_x86_64_desktop_gnome_bullseye_current.img.xz	Example for Generic/UEFI X86_64 Minimal/IOT Image
+AnyOtherMissingDistro
+TheFoundDirectFileURL
+ArchitectureandImageDescription
+Final Action: The agent will update the original website data (the table shown in the first image, and the pop-up shown in the second image) by inserting the newly found direct download links in place of the missing/incorrect data.
