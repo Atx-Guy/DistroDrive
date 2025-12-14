@@ -18,8 +18,29 @@ export const distributions = pgTable("distributions", {
   index("distributions_base_distro_idx").on(table.baseDistro),
 ]);
 
-export const distributionsRelations = relations(distributions, ({ many }) => ({
+export const distributionsRelations = relations(distributions, ({ many, one }) => ({
   releases: many(releases),
+  technicalSpecs: one(technicalSpecs),
+}));
+
+// Technical specifications table (one-to-one with distributions)
+export const technicalSpecs = pgTable("technical_specs", {
+  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  distroId: integer("distro_id").notNull().references(() => distributions.id, { onDelete: "cascade" }).unique(),
+  packageManager: text("package_manager"),
+  initSystem: text("init_system"),
+  releaseModel: text("release_model"),
+  kernelVersion: text("kernel_version"),
+  license: text("license"),
+}, (table) => [
+  index("technical_specs_distro_id_idx").on(table.distroId),
+]);
+
+export const technicalSpecsRelations = relations(technicalSpecs, ({ one }) => ({
+  distribution: one(distributions, {
+    fields: [technicalSpecs.distroId],
+    references: [distributions.id],
+  }),
 }));
 
 // Releases table
@@ -96,6 +117,7 @@ export const insertReleaseSchema = createInsertSchema(releases).omit({ id: true 
 export const insertDownloadSchema = createInsertSchema(downloads).omit({ id: true });
 export const insertNewsSchema = createInsertSchema(news).omit({ id: true });
 export const insertDownloadClickSchema = createInsertSchema(downloadClicks).omit({ id: true });
+export const insertTechnicalSpecsSchema = createInsertSchema(technicalSpecs).omit({ id: true });
 
 // Update schema for download URLs
 export const updateDownloadUrlSchema = z.object({
