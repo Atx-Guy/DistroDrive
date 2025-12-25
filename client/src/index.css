@@ -3,62 +3,89 @@
 @tailwind utilities;
 
 /* LIGHT MODE - Using dark theme as default per design guidelines */
+/* LIGHT MODE - Using dark theme as default per design guidelines */
 :root {
   --button-outline: rgba(255, 255, 255, .10);
   --badge-outline: rgba(255, 255, 255, .05);
   --opaque-button-border-intensity: 9;
   --elevate-1: rgba(255, 255, 255, .04);
   --elevate-2: rgba(255, 255, 255, .09);
-  --background: 220deg 48.39% 6.08%;
+
+  /* Modern Minimalist / Bento Theme - Solid Slate */
+  --background: 224 48% 8%;
+  /* #0B1120 */
   --foreground: 210 40% 98%;
-  --border: 217 33% 17%;
-  --card: 217 33% 10%;
+
+  --card: 216 33% 17%;
+  /* #1E293B */
   --card-foreground: 210 40% 98%;
-  --card-border: 217 33% 14%;
-  --sidebar: 217 33% 9%;
+  --card-border: 215 25% 27%;
+  /* #334155 */
+
+  --border: 215 25% 27%;
+  /* #334155 */
+
+  --sidebar: 224 48% 8%;
+  /* Match background */
   --sidebar-foreground: 210 40% 98%;
-  --sidebar-border: 217 33% 14%;
+  --sidebar-border: 215 25% 27%;
+
   --sidebar-primary: 199 89% 48%;
+  /* Neon Cyan #22D3EE-ish, keeping consistent for now */
   --sidebar-primary-foreground: 210 40% 98%;
-  --sidebar-accent: 217 33% 14%;
+  --sidebar-accent: 216 33% 17%;
   --sidebar-accent-foreground: 210 40% 98%;
   --sidebar-ring: 199 89% 48%;
-  --popover: 217 33% 12%;
+
+  --popover: 216 33% 17%;
   --popover-foreground: 210 40% 98%;
-  --popover-border: 217 33% 16%;
-  --primary: 199 89% 48%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 160 84% 39%;
+  --popover-border: 215 25% 27%;
+
+  --primary: 189 84% 53%;
+  /* #22D3EE Neon Cyan */
+  --primary-foreground: 222 47% 11%;
+
+  --secondary: 215 25% 27%;
+  /* Slate 700 */
   --secondary-foreground: 210 40% 98%;
-  --muted: 217 33% 17%;
+
+  --muted: 215 25% 27%;
   --muted-foreground: 215 20% 65%;
-  --accent: 38 92% 50%;
-  --accent-foreground: 222 47% 7%;
+
+  --accent: 189 84% 53%;
+  --accent-foreground: 222 47% 11%;
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
-  --input: 217 33% 20%;
-  --ring: 199 89% 48%;
-  --chart-1: 199 89% 48%;
+
+  --input: 216 33% 17%;
+  /* Match card bg */
+
+  --ring: 189 84% 53%;
+
+  --chart-1: 189 84% 53%;
   --chart-2: 160 84% 39%;
   --chart-3: 38 92% 50%;
   --chart-4: 280 65% 60%;
   --chart-5: 340 75% 55%;
-  --font-sans: 'Inter', sans-serif;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-serif: 'Ubuntu', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --radius: .375rem;
-  --shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.20);
-  --shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.25);
-  --shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.20), 0px 1px 2px -1px hsl(0 0% 0% / 0.15);
-  --shadow: 0px 4px 6px -1px hsl(0 0% 0% / 0.20), 0px 2px 4px -1px hsl(0 0% 0% / 0.15);
-  --shadow-md: 0px 6px 10px -1px hsl(0 0% 0% / 0.20), 0px 4px 6px -1px hsl(0 0% 0% / 0.15);
-  --shadow-lg: 0px 10px 15px -3px hsl(0 0% 0% / 0.20), 0px 4px 6px -2px hsl(0 0% 0% / 0.15);
-  --shadow-xl: 0px 20px 25px -5px hsl(0 0% 0% / 0.25), 0px 10px 10px -5px hsl(0 0% 0% / 0.15);
-  --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.35);
-  --tracking-normal: 0em;
+
+  --radius: 0.25rem;
+  /* 4px - Sharper corners */
+
+  --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --shadow-xs: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0px 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.4);
+
+  --tracking-normal: -0.015em;
+  /* Tight tracking */
   --spacing: 0.25rem;
 
-  /* Linux Distribution Brand Colors */
+  /* Linux Distribution Brand Colors - Kept */
   --distro-ubuntu: #E95420;
   --distro-mint: #87CF3E;
   --distro-arch: #1793D1;
@@ -99,80 +126,22 @@
   --distro-armbian: #FF6700;
   --distro-deepin: #2CA7F8;
 
-  /* Fallback for older browsers */
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  /* Fallback borders calculated from primaries */
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + 10) / alpha);
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + 10) / alpha);
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + 10) / alpha);
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + 10) / alpha);
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + 10) / alpha);
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + 10) / alpha);
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + 10) / alpha);
 }
 
-/* Light mode override if needed in future */
+/* Force Dark Mode - Light mode override removed or suppressed for this design */
 .light {
-  --button-outline: rgba(0, 0, 0, .10);
-  --badge-outline: rgba(0, 0, 0, .05);
-  --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0, 0, 0, .03);
-  --elevate-2: rgba(0, 0, 0, .08);
-  --background: 0 0% 98%;
-  --foreground: 222 47% 11%;
-  --border: 0 0% 89%;
-  --card: 0 0% 96%;
-  --card-foreground: 222 47% 11%;
-  --card-border: 0 0% 92%;
-  --sidebar: 0 0% 94%;
-  --sidebar-foreground: 222 47% 11%;
-  --sidebar-border: 0 0% 88%;
-  --sidebar-primary: 199 89% 48%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 0 0% 88%;
-  --sidebar-accent-foreground: 222 47% 11%;
-  --sidebar-ring: 199 89% 48%;
-  --popover: 0 0% 92%;
-  --popover-foreground: 222 47% 11%;
-  --popover-border: 0 0% 86%;
-  --primary: 199 89% 48%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 160 84% 39%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 2% 88%;
-  --muted-foreground: 222 30% 25%;
-  --accent: 38 92% 50%;
-  --accent-foreground: 222 47% 11%;
-  --destructive: 0 84% 48%;
-  --destructive-foreground: 0 0% 98%;
-  --input: 0 0% 75%;
-  --ring: 199 89% 48%;
-
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  /* Minimal override to ensure functionality if class is present, but effectively same as dark for now */
+  --background: 224 48% 8%;
+  --foreground: 210 40% 98%;
+  /* ... repeat essential variables if needed, or simply let root cascade */
 }
 
 @layer base {
@@ -203,64 +172,9 @@
     pointer-events: none;
   }
 
-  .no-default-hover-elevate {}
-
-  .no-default-active-elevate {}
-
-  .toggle-elevate::before,
-  .toggle-elevate-2::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0px;
-    border-radius: inherit;
-    z-index: -1;
-  }
-
-  .toggle-elevate.toggle-elevated::before {
-    background-color: var(--elevate-2);
-  }
-
-  .border.toggle-elevate::before {
-    inset: -1px;
-  }
-
-  .hover-elevate:not(.no-default-hover-elevate),
-  .active-elevate:not(.no-default-active-elevate),
-  .hover-elevate-2:not(.no-default-hover-elevate),
-  .active-elevate-2:not(.no-default-active-elevate) {
-    position: relative;
-    z-index: 0;
-  }
-
-  .hover-elevate:not(.no-default-hover-elevate)::after,
-  .active-elevate:not(.no-default-active-elevate)::after,
-  .hover-elevate-2:not(.no-default-hover-elevate)::after,
-  .active-elevate-2:not(.no-default-active-elevate)::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0px;
-    border-radius: inherit;
-    z-index: 999;
-  }
-
-  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
-  .active-elevate:active:not(.no-default-active-elevate)::after {
-    background-color: var(--elevate-1);
-  }
-
-  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
-  .active-elevate-2:active:not(.no-default-active-elevate)::after {
-    background-color: var(--elevate-2);
-  }
-
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
-    inset: -1px;
+  /* Bento Grid Utility */
+  .bento-card {
+    @apply bg-card border border-border rounded-lg p-6 flex flex-col;
   }
 
   .font-nerd {

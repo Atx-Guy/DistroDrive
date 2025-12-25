@@ -15,7 +15,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Download,
@@ -26,9 +25,12 @@ import {
   Usb,
   Plus,
   Check,
-  TrendingDown
+  TrendingDown,
+  Filter,
+  PanelLeftClose,
+  PanelLeftOpen
 } from "lucide-react";
-import type { DistributionWithLatestRelease, DistributionWithReleases, ReleaseWithDownloads } from "@shared/schema";
+import type { DistributionWithLatestRelease, DistributionWithReleases } from "@shared/schema";
 import { useIsoSelection } from "@/contexts/IsoSelectionContext";
 
 export default function Home() {
@@ -37,6 +39,7 @@ export default function Home() {
   const [selectedDEs, setSelectedDEs] = useState<string[]>([]);
   const [selectedArchitectures, setSelectedArchitectures] = useState<string[]>([]);
   const [selectedDistroId, setSelectedDistroId] = useState<number | null>(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(true);
   const { toggleSelection, isSelected, selectedCount } = useIsoSelection();
 
   const { data: distributions, isLoading } = useQuery<DistributionWithLatestRelease[]>({
@@ -96,8 +99,13 @@ export default function Home() {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
-          <aside className="lg:w-64 flex-shrink-0">
-            <div className="sticky top-24 space-y-6">
+          <aside
+            className={`
+              flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden
+              ${isFilterOpen ? 'lg:w-64 opacity-100 mb-6 lg:mb-0' : 'lg:w-0 opacity-0 h-0 lg:h-auto mb-0'}
+            `}
+          >
+            <div className="w-full lg:w-64 sticky top-24 space-y-6">
               <FilterSidebar
                 selectedBaseDistros={selectedBaseDistros}
                 setSelectedBaseDistros={setSelectedBaseDistros}
@@ -109,7 +117,61 @@ export default function Home() {
             </div>
           </aside>
 
-          <main className="flex-1">
+          <main className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+                className="gap-2 text-muted-foreground hover:text-foreground"
+                title={isFilterOpen ? "Collapse Filters" : "Expand Filters"}
+              >
+                {isFilterOpen ? <PanelLeftClose className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
+                <span className="text-sm font-medium">
+                  {isFilterOpen ? "Hide Filters" : "Show Filters"}
+                </span>
+              </Button>
+            </div>
+            {/* Bento Hero Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="md:col-span-2 rounded-xl bg-card border border-border p-8 flex flex-col justify-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-110" />
+
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4 relative z-10">
+                  Find Your Perfect <br />
+                  <span className="text-primary">Linux Distro</span>
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-lg mb-8 relative z-10">
+                  Explore our curated database of distributions. Fast, secure, and tailored to your needs.
+                </p>
+                <div className="flex bg-muted/50 rounded-lg p-1 w-fit relative z-10">
+                  <Button variant="default" size="lg" className="shadow-lg hover:shadow-primary/25 transition-all">
+                    Start Exploring
+                  </Button>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="rounded-xl bg-card border border-border p-6 h-full flex flex-col justify-between hover:border-primary/50 transition-colors cursor-pointer group">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-lg">Trending Now</h3>
+                      <TrendingDown className="w-5 h-5 text-primary group-hover:text-primary/80" />
+                    </div>
+                    <p className="text-muted-foreground text-sm">Most viewed this week</p>
+                  </div>
+                  <div className="space-y-3 mt-4">
+                    {distributions?.slice(0, 3).map(d => (
+                      <div key={d.id} className="flex items-center gap-3">
+                        <Badge variant="secondary" className="w-6 h-6 flex items-center justify-center p-0 rounded-full text-xs">#{d.id}</Badge>
+                        <span className="font-medium">{d.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {isLoading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {Array.from({ length: 6 }).map((_, i) => (
@@ -127,7 +189,7 @@ export default function Home() {
                 ))}
               </div>
             ) : filteredDistributions.length === 0 ? (
-              <div className="text-center py-12">
+              <div className="text-center py-12 rounded-xl border border-dashed border-border bg-card/50">
                 <p className="text-muted-foreground">No distributions match your filters.</p>
                 <Button
                   variant="ghost"
@@ -146,40 +208,44 @@ export default function Home() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredDistributions.map((distro) => (
-                  <Card
+                  <div
                     key={distro.id}
-                    className="p-6 hover-elevate cursor-pointer transition-all duration-200 h-full flex flex-col"
+                    className="bento-card group hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 cursor-pointer relative overflow-hidden"
                     onClick={() => setSelectedDistroId(distro.id)}
                     data-testid={`card-distro-${distro.id}`}
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ExternalLink className="w-5 h-5 text-muted-foreground" />
+                    </div>
+
+                    <div className="flex items-start gap-4 mb-4">
                       <DistroLogo
                         distroName={distro.name}
                         logoUrl={distro.logoUrl}
-                        size={48}
-                        className="w-12 h-12"
+                        size={56}
+                        className="w-14 h-14"
                       />
 
-                      <div className="flex-1 min-w-0">
+                      <div className="flex-1 min-w-0 pt-1">
                         <h3
-                          className="font-bold text-lg text-foreground mb-1 truncate"
+                          className="font-bold text-xl text-foreground mb-1 truncate tracking-tight"
                           data-testid={`text-distro-name-${distro.id}`}
                         >
                           {distro.name}
                         </h3>
                         <div className="flex items-center gap-2 flex-wrap">
                           {distro.baseDistro && (
-                            <Badge variant="secondary" className="text-xs" data-testid={`badge-base-${distro.id}`}>
+                            <Badge variant="secondary" className="text-xs font-mono" data-testid={`badge-base-${distro.id}`}>
                               {distro.baseDistro}
                             </Badge>
                           )}
                           {distro.latestVersion && (
                             <Badge
                               variant={distro.isLatestLts ? "default" : "outline"}
-                              className={distro.isLatestLts ? "text-xs bg-green-600" : "text-xs"}
+                              className={distro.isLatestLts ? "text-xs bg-green-600/90 hover:bg-green-600" : "text-xs"}
                               data-testid={`badge-version-${distro.id}`}
                             >
-                              v{distro.latestVersion}{distro.isLatestLts ? " LTS" : ""}
+                              v{distro.latestVersion}
                             </Badge>
                           )}
                         </div>
@@ -187,25 +253,25 @@ export default function Home() {
                     </div>
 
                     <p
-                      className="text-sm text-muted-foreground mt-4 line-clamp-2 flex-1"
+                      className="text-sm text-muted-foreground mt-2 line-clamp-2 flex-1 leading-relaxed"
                       data-testid={`text-distro-desc-${distro.id}`}
                     >
                       {distro.description}
                     </p>
 
-                    <div className="mt-4 flex items-center gap-2 flex-wrap">
-                      {distro.desktopEnvironments.slice(0, 2).map((de) => (
-                        <Badge key={de} variant="outline" className="text-xs">
+                    <div className="mt-6 flex items-center gap-2 flex-wrap">
+                      {distro.desktopEnvironments.slice(0, 3).map((de) => (
+                        <div key={de} className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded">
                           {de}
-                        </Badge>
+                        </div>
                       ))}
-                      {distro.desktopEnvironments.length > 2 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{distro.desktopEnvironments.length - 2}
-                        </Badge>
+                      {distro.desktopEnvironments.length > 3 && (
+                        <div className="text-xs text-muted-foreground pl-1">
+                          +{distro.desktopEnvironments.length - 3} more
+                        </div>
                       )}
                     </div>
-                  </Card>
+                  </div>
                 ))}
               </div>
             )}

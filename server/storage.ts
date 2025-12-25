@@ -291,7 +291,7 @@ export class DatabaseStorage implements IStorage {
       name: "Ubuntu",
       description: "Ubuntu is a popular Linux distribution based on Debian. Known for its ease of use and regular release schedule, it's one of the most widely used desktop Linux distributions.",
       websiteUrl: "https://ubuntu.com",
-      logoUrl: "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png",
+      logoUrl: "https://cdn.simpleicons.org/ubuntu",
       baseDistro: "Debian",
       desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce", "MATE"],
     });
@@ -300,7 +300,7 @@ export class DatabaseStorage implements IStorage {
       name: "Fedora",
       description: "Fedora is a Linux distribution developed by the community-supported Fedora Project and sponsored by Red Hat. Features cutting-edge technology and a focus on innovation.",
       websiteUrl: "https://fedoraproject.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fedora_logo.svg/512px-Fedora_logo.svg.png",
+      logoUrl: "https://cdn.simpleicons.org/fedora",
       baseDistro: "Independent",
       desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce", "LXQt", "Cinnamon"],
     });
@@ -309,7 +309,7 @@ export class DatabaseStorage implements IStorage {
       name: "Debian",
       description: "Debian is one of the oldest and most influential Linux distributions. Known for its stability and vast software repository, it serves as the foundation for many other distributions.",
       websiteUrl: "https://debian.org",
-      logoUrl: "https://www.debian.org/logos/openlogo-100.png",
+      logoUrl: "https://cdn.simpleicons.org/debian",
       baseDistro: "Independent",
       desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce", "LXDE", "MATE", "Cinnamon"],
     });
@@ -318,7 +318,7 @@ export class DatabaseStorage implements IStorage {
       name: "Arch Linux",
       description: "Arch Linux is a lightweight and flexible Linux distribution that tries to Keep It Simple. A rolling release distribution targeting experienced users.",
       websiteUrl: "https://archlinux.org",
-      logoUrl: "https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.png",
+      logoUrl: "https://cdn.simpleicons.org/archlinux",
       baseDistro: "Independent",
       desktopEnvironments: ["Any (user choice)"],
     });
@@ -327,7 +327,7 @@ export class DatabaseStorage implements IStorage {
       name: "Linux Mint",
       description: "Linux Mint is a community-driven Linux distribution based on Ubuntu. It strives to be a modern, elegant and comfortable operating system which is both powerful and easy to use.",
       websiteUrl: "https://linuxmint.com",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Linux_Mint_logo_without_wordmark.svg",
+      logoUrl: "https://cdn.simpleicons.org/linuxmint",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Cinnamon", "MATE", "Xfce"],
     });
@@ -337,7 +337,7 @@ export class DatabaseStorage implements IStorage {
       name: "Pop!_OS",
       description: "Pop!_OS is a Linux distribution developed by System76 based on Ubuntu. Designed for creators, developers, and gamers with excellent hardware support and a tiling window manager.",
       websiteUrl: "https://pop.system76.com",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Pop_OS-Logo-nobg.svg",
+      logoUrl: "https://cdn.simpleicons.org/popos",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["COSMIC", "GNOME"],
     });
@@ -346,7 +346,7 @@ export class DatabaseStorage implements IStorage {
       name: "openSUSE Tumbleweed",
       description: "openSUSE Tumbleweed is a rolling release distribution that provides the latest stable versions of all software. Perfect for developers and experienced users who want cutting-edge packages.",
       websiteUrl: "https://www.opensuse.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/58/OpenSUSE_Tumbleweed_green_logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/opensuse",
       baseDistro: "SUSE",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
@@ -355,7 +355,7 @@ export class DatabaseStorage implements IStorage {
       name: "openSUSE Leap",
       description: "openSUSE Leap is a stable, enterprise-grade distribution that shares its codebase with SUSE Linux Enterprise. Ideal for users who want reliability with regular point releases.",
       websiteUrl: "https://www.opensuse.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c5/OpenSUSE_Leap_green_logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/opensuse",
       baseDistro: "SUSE",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
@@ -364,7 +364,7 @@ export class DatabaseStorage implements IStorage {
       name: "Elementary OS",
       description: "Elementary OS is a beautifully designed Linux distribution focused on simplicity and elegance. Features the custom Pantheon desktop environment inspired by macOS.",
       websiteUrl: "https://elementary.io",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Elementary_OS_logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/elementary",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Pantheon"],
     });
@@ -373,7 +373,7 @@ export class DatabaseStorage implements IStorage {
       name: "Zorin OS",
       description: "Zorin OS is designed to make Linux easy for Windows and macOS users. Features a familiar interface with multiple layout options and excellent compatibility.",
       websiteUrl: "https://zorin.com/os",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Zorin_Logomark.svg",
+      logoUrl: "https://cdn.simpleicons.org/zorin",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["GNOME", "Xfce"],
     });
@@ -382,7 +382,7 @@ export class DatabaseStorage implements IStorage {
       name: "MX Linux",
       description: "MX Linux is a midweight distribution based on Debian stable. Known for its efficiency, elegance, and extensive collection of custom tools and utilities.",
       websiteUrl: "https://mxlinux.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/69/MX_LINUX_Logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/mxlinux",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce", "KDE Plasma", "Fluxbox"],
     });
@@ -391,7 +391,7 @@ export class DatabaseStorage implements IStorage {
       name: "EndeavourOS",
       description: "EndeavourOS is a user-friendly Arch-based distribution. Provides a terminal-centric experience while remaining accessible to newcomers wanting to learn Arch.",
       websiteUrl: "https://endeavouros.com",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1a/EndeavourOS_Logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/endeavouros",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "i3", "Budgie", "Cinnamon"],
     });
@@ -400,7 +400,7 @@ export class DatabaseStorage implements IStorage {
       name: "Garuda Linux",
       description: "Garuda Linux is a performance-focused Arch-based distribution optimized for gaming. Features BTRFS snapshots, performance tweaks, and beautiful theming out of the box.",
       websiteUrl: "https://garudalinux.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Garuda-purple.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "i3", "Sway"],
     });
@@ -409,7 +409,7 @@ export class DatabaseStorage implements IStorage {
       name: "Solus",
       description: "Solus is an independently developed Linux distribution built from scratch. Home of the Budgie desktop environment with a focus on simplicity and elegance.",
       websiteUrl: "https://getsol.us",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/22/Solus.svg",
+      logoUrl: "https://cdn.simpleicons.org/solus",
       baseDistro: "Independent",
       desktopEnvironments: ["Budgie", "GNOME", "KDE Plasma", "MATE"],
     });
@@ -418,7 +418,7 @@ export class DatabaseStorage implements IStorage {
       name: "Kali Linux",
       description: "Kali Linux is a Debian-based distribution designed for digital forensics and penetration testing. Includes hundreds of security tools pre-installed.",
       websiteUrl: "https://www.kali.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Kali-dragon-icon.svg",
+      logoUrl: "https://cdn.simpleicons.org/kalilinux",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce", "GNOME", "KDE Plasma"],
     });
@@ -427,7 +427,7 @@ export class DatabaseStorage implements IStorage {
       name: "Kubuntu",
       description: "Kubuntu is an official Ubuntu flavor featuring the KDE Plasma desktop. Combines Ubuntu's reliability with KDE's powerful and customizable interface.",
       websiteUrl: "https://kubuntu.org",
-      logoUrl: "https://placehold.co/400x400?text=K",
+      logoUrl: "https://cdn.simpleicons.org/kubuntu",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["KDE Plasma"],
     });
@@ -436,7 +436,7 @@ export class DatabaseStorage implements IStorage {
       name: "Xubuntu",
       description: "Xubuntu is an official Ubuntu flavor with the Xfce desktop environment. Lightweight and elegant, perfect for older hardware or users who prefer simplicity.",
       websiteUrl: "https://xubuntu.org",
-      logoUrl: "https://placehold.co/400x400?text=X",
+      logoUrl: "https://cdn.simpleicons.org/xubuntu",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Xfce"],
     });
@@ -445,7 +445,7 @@ export class DatabaseStorage implements IStorage {
       name: "Lubuntu",
       description: "Lubuntu is an official lightweight Ubuntu flavor using LXQt desktop. Designed for older computers and resource-constrained environments.",
       websiteUrl: "https://lubuntu.me",
-      logoUrl: "https://placehold.co/400x400?text=L",
+      logoUrl: "https://cdn.simpleicons.org/lubuntu",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["LXQt"],
     });
@@ -454,7 +454,7 @@ export class DatabaseStorage implements IStorage {
       name: "Ubuntu MATE",
       description: "Ubuntu MATE is an official Ubuntu flavor featuring the MATE desktop. Provides a traditional desktop experience with modern features and stability.",
       websiteUrl: "https://ubuntu-mate.org",
-      logoUrl: "https://placehold.co/400x400?text=U",
+      logoUrl: "https://cdn.simpleicons.org/ubuntumate",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["MATE"],
     });
@@ -463,7 +463,7 @@ export class DatabaseStorage implements IStorage {
       name: "Ubuntu Studio",
       description: "Ubuntu Studio is an official Ubuntu flavor optimized for creative professionals. Pre-configured for audio, video, graphics, and publishing workflows.",
       websiteUrl: "https://ubuntustudio.org",
-      logoUrl: "https://placehold.co/400x400?text=U",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["KDE Plasma"],
     });
@@ -472,7 +472,7 @@ export class DatabaseStorage implements IStorage {
       name: "CentOS Stream",
       description: "CentOS Stream is a continuously delivered Linux distribution that tracks just ahead of Red Hat Enterprise Linux. Ideal for developers targeting RHEL.",
       websiteUrl: "https://www.centos.org",
-      logoUrl: "https://placehold.co/400x400?text=C",
+      logoUrl: "https://cdn.simpleicons.org/centos",
       baseDistro: "RHEL",
       desktopEnvironments: ["GNOME"],
     });
@@ -481,7 +481,7 @@ export class DatabaseStorage implements IStorage {
       name: "Rocky Linux",
       description: "Rocky Linux is an enterprise-grade Linux distribution designed to be 100% bug-for-bug compatible with Red Hat Enterprise Linux. Community-driven RHEL rebuild.",
       websiteUrl: "https://rockylinux.org",
-      logoUrl: "https://placehold.co/400x400?text=R",
+      logoUrl: "https://cdn.simpleicons.org/rockylinux",
       baseDistro: "RHEL",
       desktopEnvironments: ["GNOME"],
     });
@@ -490,7 +490,7 @@ export class DatabaseStorage implements IStorage {
       name: "AlmaLinux",
       description: "AlmaLinux is a free, enterprise-grade Linux distribution that is binary compatible with RHEL. Backed by CloudLinux with long-term support.",
       websiteUrl: "https://almalinux.org",
-      logoUrl: "https://placehold.co/400x400?text=A",
+      logoUrl: "https://cdn.simpleicons.org/almalinux",
       baseDistro: "RHEL",
       desktopEnvironments: ["GNOME"],
     });
@@ -499,7 +499,7 @@ export class DatabaseStorage implements IStorage {
       name: "Void Linux",
       description: "Void Linux is an independent rolling-release distribution with its own package manager (XBPS) and init system (runit). Minimalist and highly customizable.",
       websiteUrl: "https://voidlinux.org",
-      logoUrl: "https://placehold.co/400x400?text=V",
+      logoUrl: "https://cdn.simpleicons.org/voidlinux",
       baseDistro: "Independent",
       desktopEnvironments: ["Any (user choice)"],
     });
@@ -508,7 +508,7 @@ export class DatabaseStorage implements IStorage {
       name: "Gentoo",
       description: "Gentoo is a source-based Linux distribution built around the Portage package manager. Offers maximum customization and optimization for your hardware.",
       websiteUrl: "https://www.gentoo.org",
-      logoUrl: "https://placehold.co/400x400?text=G",
+      logoUrl: "https://cdn.simpleicons.org/gentoo",
       baseDistro: "Independent",
       desktopEnvironments: ["Any (user choice)"],
     });
@@ -517,7 +517,7 @@ export class DatabaseStorage implements IStorage {
       name: "Slackware",
       description: "Slackware is the oldest actively maintained Linux distribution. Known for its simplicity, stability, and Unix-like philosophy with minimal modifications.",
       websiteUrl: "http://www.slackware.com",
-      logoUrl: "https://placehold.co/400x400?text=S",
+      logoUrl: "https://cdn.simpleicons.org/slackware",
       baseDistro: "Independent",
       desktopEnvironments: ["KDE Plasma", "Xfce"],
     });
@@ -526,7 +526,7 @@ export class DatabaseStorage implements IStorage {
       name: "NixOS",
       description: "NixOS is a Linux distribution built on the Nix package manager. Features declarative configuration, atomic upgrades, and reproducible system builds.",
       websiteUrl: "https://nixos.org",
-      logoUrl: "https://placehold.co/400x400?text=N",
+      logoUrl: "https://cdn.simpleicons.org/nixos",
       baseDistro: "Independent",
       desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce"],
     });
@@ -535,7 +535,7 @@ export class DatabaseStorage implements IStorage {
       name: "Tails",
       description: "Tails is a portable Linux distribution focused on privacy and anonymity. Routes all traffic through Tor and leaves no trace on the host computer.",
       websiteUrl: "https://tails.net",
-      logoUrl: "https://placehold.co/400x400?text=T",
+      logoUrl: "https://cdn.simpleicons.org/tails",
       baseDistro: "Debian",
       desktopEnvironments: ["GNOME"],
     });
@@ -544,7 +544,7 @@ export class DatabaseStorage implements IStorage {
       name: "Qubes OS",
       description: "Qubes OS is a security-focused desktop operating system using Xen-based virtualization. Isolates applications in separate virtual machines for maximum security.",
       websiteUrl: "https://www.qubes-os.org",
-      logoUrl: "https://placehold.co/400x400?text=Q",
+      logoUrl: "https://cdn.simpleicons.org/qubesos",
       baseDistro: "Independent",
       desktopEnvironments: ["Xfce"],
     });
@@ -553,7 +553,7 @@ export class DatabaseStorage implements IStorage {
       name: "Parrot OS",
       description: "Parrot OS is a Debian-based distribution designed for security, development, and privacy. Includes comprehensive tools for penetration testing and forensics.",
       websiteUrl: "https://www.parrotsec.org",
-      logoUrl: "https://placehold.co/400x400?text=P",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["MATE", "KDE Plasma"],
     });
@@ -562,7 +562,7 @@ export class DatabaseStorage implements IStorage {
       name: "Peppermint OS",
       description: "Peppermint OS is a lightweight Debian-based distribution focused on cloud computing and web applications. Fast and efficient with minimal resource usage.",
       websiteUrl: "https://peppermintos.com",
-      logoUrl: "https://placehold.co/400x400?text=P",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce"],
     });
@@ -571,7 +571,7 @@ export class DatabaseStorage implements IStorage {
       name: "antiX",
       description: "antiX is a fast, lightweight Debian-based distribution designed for older computers. Systemd-free with multiple lightweight window managers available.",
       websiteUrl: "https://antixlinux.com",
-      logoUrl: "https://placehold.co/400x400?text=A",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["IceWM", "Fluxbox", "JWM"],
     });
@@ -580,7 +580,7 @@ export class DatabaseStorage implements IStorage {
       name: "Bodhi Linux",
       description: "Bodhi Linux is a lightweight Ubuntu-based distribution featuring the Moksha desktop environment. Minimalist by design with a focus on user choice.",
       websiteUrl: "https://www.bodhilinux.com",
-      logoUrl: "https://placehold.co/400x400?text=B",
+      logoUrl: "/bodhi-logo.png",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Moksha"],
     });
@@ -589,7 +589,7 @@ export class DatabaseStorage implements IStorage {
       name: "Deepin",
       description: "Deepin is a Debian-based distribution featuring the beautiful Deepin Desktop Environment (DDE). Known for its elegant design and user-friendly experience.",
       websiteUrl: "https://www.deepin.org",
-      logoUrl: "https://placehold.co/400x400?text=D",
+      logoUrl: "https://cdn.simpleicons.org/deepin",
       baseDistro: "Debian",
       desktopEnvironments: ["DDE"],
     });
@@ -598,7 +598,7 @@ export class DatabaseStorage implements IStorage {
       name: "KDE neon",
       description: "KDE neon is an Ubuntu-based distribution that provides the latest KDE Plasma desktop and applications. Perfect for users who want cutting-edge KDE software.",
       websiteUrl: "https://neon.kde.org",
-      logoUrl: "https://placehold.co/400x400?text=K",
+      logoUrl: "https://cdn.simpleicons.org/kdeneon",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["KDE Plasma"],
     });
@@ -607,7 +607,7 @@ export class DatabaseStorage implements IStorage {
       name: "LMDE",
       description: "Linux Mint Debian Edition (LMDE) is a version of Linux Mint based directly on Debian instead of Ubuntu. Provides the Mint experience with a Debian foundation.",
       websiteUrl: "https://linuxmint.com",
-      logoUrl: "https://placehold.co/400x400?text=L",
+      logoUrl: "https://cdn.simpleicons.org/linuxmint",
       baseDistro: "Debian",
       desktopEnvironments: ["Cinnamon"],
     });
@@ -616,7 +616,7 @@ export class DatabaseStorage implements IStorage {
       name: "Mageia",
       description: "Mageia is a community-driven Linux distribution forked from Mandriva Linux. Features excellent hardware detection and a user-friendly control center.",
       websiteUrl: "https://www.mageia.org",
-      logoUrl: "https://placehold.co/400x400?text=M",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Independent",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
@@ -625,7 +625,7 @@ export class DatabaseStorage implements IStorage {
       name: "PCLinuxOS",
       description: "PCLinuxOS is an independent rolling-release distribution known for its out-of-the-box usability. Features excellent hardware support and multimedia capabilities.",
       websiteUrl: "https://www.pclinuxos.com",
-      logoUrl: "https://placehold.co/400x400?text=P",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Independent",
       desktopEnvironments: ["KDE Plasma", "MATE", "Xfce"],
     });
@@ -634,7 +634,7 @@ export class DatabaseStorage implements IStorage {
       name: "Puppy Linux",
       description: "Puppy Linux is an extremely lightweight distribution designed to run entirely in RAM. Perfect for old computers or as a portable rescue system.",
       websiteUrl: "https://puppylinux-woof-ce.github.io",
-      logoUrl: "https://placehold.co/400x400?text=P",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Independent",
       desktopEnvironments: ["JWM", "Openbox"],
     });
@@ -643,7 +643,7 @@ export class DatabaseStorage implements IStorage {
       name: "SparkyLinux",
       description: "SparkyLinux is a lightweight Debian-based distribution available in stable and rolling release versions. Offers various desktop environments for different use cases.",
       websiteUrl: "https://sparkylinux.org",
-      logoUrl: "https://placehold.co/400x400?text=S",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["LXQt", "KDE Plasma", "Xfce", "MATE"],
     });
@@ -652,7 +652,7 @@ export class DatabaseStorage implements IStorage {
       name: "Artix Linux",
       description: "Artix Linux is an Arch-based distribution that uses alternative init systems instead of systemd. Supports OpenRC, runit, and s6 init systems.",
       websiteUrl: "https://artixlinux.org",
-      logoUrl: "https://placehold.co/400x400?text=A",
+      logoUrl: "https://cdn.simpleicons.org/artixlinux",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "LXQt"],
     });
@@ -661,7 +661,7 @@ export class DatabaseStorage implements IStorage {
       name: "Vanilla OS",
       description: "Vanilla OS is an immutable Ubuntu-based distribution designed for reliability and security. Features atomic updates and containerized application support.",
       websiteUrl: "https://vanillaos.org",
-      logoUrl: "https://placehold.co/400x400?text=V",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["GNOME"],
     });
@@ -670,7 +670,7 @@ export class DatabaseStorage implements IStorage {
       name: "Nobara",
       description: "Nobara is a Fedora-based distribution optimized for gaming and content creation. Includes gaming-specific patches, drivers, and pre-configured optimizations.",
       websiteUrl: "https://nobaraproject.org",
-      logoUrl: "https://placehold.co/400x400?text=N",
+      logoUrl: "https://cdn.simpleicons.org/nobaralinux",
       baseDistro: "Fedora",
       desktopEnvironments: ["KDE Plasma", "GNOME"],
     });
@@ -679,7 +679,7 @@ export class DatabaseStorage implements IStorage {
       name: "Fedora Silverblue",
       description: "Fedora Silverblue is an immutable desktop operating system based on Fedora. Uses rpm-ostree for atomic updates and Flatpak for applications.",
       websiteUrl: "https://fedoraproject.org/silverblue",
-      logoUrl: "https://placehold.co/400x400?text=F",
+      logoUrl: "https://cdn.simpleicons.org/fedora",
       baseDistro: "Fedora",
       desktopEnvironments: ["GNOME"],
     });
@@ -688,7 +688,7 @@ export class DatabaseStorage implements IStorage {
       name: "Clear Linux",
       description: "Clear Linux is an Intel-developed distribution optimized for performance and security. Features aggressive compiler optimizations and a unique stateless design.",
       websiteUrl: "https://clearlinux.org",
-      logoUrl: "https://placehold.co/400x400?text=C",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Independent",
       desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce"],
     });
@@ -697,7 +697,7 @@ export class DatabaseStorage implements IStorage {
       name: "Alpine Linux",
       description: "Alpine Linux is a security-oriented, lightweight distribution based on musl libc and BusyBox. Popular for containers, servers, and embedded systems.",
       websiteUrl: "https://www.alpinelinux.org",
-      logoUrl: "https://placehold.co/400x400?text=A",
+      logoUrl: "https://cdn.simpleicons.org/alpinelinux",
       baseDistro: "Independent",
       desktopEnvironments: ["Xfce", "GNOME"],
     });
@@ -706,7 +706,7 @@ export class DatabaseStorage implements IStorage {
       name: "Raspberry Pi OS",
       description: "Raspberry Pi OS is the official operating system for Raspberry Pi computers. Debian-based and optimized for the Raspberry Pi hardware platform.",
       websiteUrl: "https://www.raspberrypi.com/software",
-      logoUrl: "https://placehold.co/400x400?text=R",
+      logoUrl: "https://cdn.simpleicons.org/raspberrypi",
       baseDistro: "Debian",
       desktopEnvironments: ["Pixel", "KDE Plasma"],
     });
@@ -715,7 +715,7 @@ export class DatabaseStorage implements IStorage {
       name: "Armbian",
       description: "Armbian is a Debian and Ubuntu-based distribution optimized for ARM single-board computers. Supports hundreds of different ARM development boards.",
       websiteUrl: "https://www.armbian.com",
-      logoUrl: "https://placehold.co/400x400?text=A",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce", "GNOME", "Cinnamon"],
     });
@@ -724,7 +724,7 @@ export class DatabaseStorage implements IStorage {
       name: "Asahi Linux",
       description: "Asahi Linux is a project to port Linux to Apple Silicon Macs. Provides excellent support for M1, M2, and M3 Apple hardware.",
       websiteUrl: "https://asahilinux.org",
-      logoUrl: "https://placehold.co/400x400?text=A",
+      logoUrl: "https://cdn.simpleicons.org/asahilinux",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME"],
     });
@@ -733,7 +733,7 @@ export class DatabaseStorage implements IStorage {
       name: "Manjaro",
       description: "Manjaro is a user-friendly Arch-based distribution with a focus on accessibility. Provides Arch's rolling release model with added stability and ease of use.",
       websiteUrl: "https://manjaro.org",
-      logoUrl: "https://placehold.co/400x400?text=M",
+      logoUrl: "https://cdn.simpleicons.org/manjaro",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
@@ -892,7 +892,7 @@ export class DatabaseStorage implements IStorage {
       name: "Bazzite",
       description: "Bazzite is a custom image built upon Fedora Atomic Desktops that brings the best of Linux gaming to all your devices - including the Steam Deck and other handhelds. Features a SteamOS-like experience.",
       websiteUrl: "https://bazzite.gg",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Bazzite_Logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Fedora",
       desktopEnvironments: ["KDE Plasma", "GNOME"],
     });
@@ -942,7 +942,7 @@ export class DatabaseStorage implements IStorage {
       name: "CachyOS",
       description: "CachyOS is an Arch-based distribution optimized for speed, security, and ease of use. Features x86-64-v3 optimizations and a custom kernel scheduler for enhanced performance.",
       websiteUrl: "https://cachyos.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/CachyOS_Logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "Hyprland"],
     });
@@ -982,7 +982,7 @@ export class DatabaseStorage implements IStorage {
     await this.createDownload({
       releaseId: rhinoRelease.id,
       architecture: "amd64",
-      isoUrl: "https://sourceforge.net/projects/rhinolinux/files/images/stable/Rhino-Linux-2024.1.iso/download",
+      isoUrl: "https://sourceforge.net/projects/rhino-linux-builder/files/2025.4/Rhino-Linux-2025.4-amd64.iso/download",
       torrentUrl: null,
       downloadSize: "2.5 GB",
     });
@@ -992,7 +992,7 @@ export class DatabaseStorage implements IStorage {
       name: "ChimeraOS",
       description: "ChimeraOS is a Linux distribution that provides a console-like gaming experience for your PC. It boots directly into Steam Big Picture mode and supports games from other stores.",
       websiteUrl: "https://chimeraos.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Chimera_Linux_logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Arch",
       desktopEnvironments: ["GNOME (Steam BPM)"],
     });
@@ -1007,7 +1007,7 @@ export class DatabaseStorage implements IStorage {
     await this.createDownload({
       releaseId: chimeraRelease.id,
       architecture: "amd64",
-      isoUrl: "https://github.com/ChimeraOS/install-media/releases/download/2024-01-20/chimeraos-2024-01-20_2fb6c48.iso",
+      isoUrl: "https://github.com/ChimeraOS/install-media/releases/download/2025-02-13_7e927cf/chimeraos-2025.02.13-x86_64.iso",
       torrentUrl: null,
       downloadSize: "1.2 GB",
     });
@@ -1017,7 +1017,7 @@ export class DatabaseStorage implements IStorage {
       name: "Whonix",
       description: "Whonix is a desktop operating system designed for advanced security and privacy. It forces all connections through Tor and isolates the workstation from the network gateway.",
       websiteUrl: "https://www.whonix.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/0/07/Whonix_Logo.png",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce"],
     });
@@ -1042,7 +1042,7 @@ export class DatabaseStorage implements IStorage {
       name: "Oracle Linux",
       description: "Oracle Linux is an enterprise-class Linux distribution supported by Oracle. It provides 100% application binary compatibility with Red Hat Enterprise Linux.",
       websiteUrl: "https://www.oracle.com/linux",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Oracle_linux_logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "RHEL",
       desktopEnvironments: ["GNOME"],
     });
@@ -1067,7 +1067,7 @@ export class DatabaseStorage implements IStorage {
       name: "Nitrux",
       description: "Nitrux is a Debian-based Linux distribution directly based on the unstable branch. It features the NX Desktop, built on top of KDE Plasma, with a focus on aesthetics and usability.",
       websiteUrl: "https://nxos.org",
-      logoUrl: "https://raw.githubusercontent.com/Nitrux/luv-icon-theme/master/Luv/scalable/apps/distributor-logo-nitrux.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Debian",
       desktopEnvironments: ["NX Desktop"],
     });
@@ -1092,7 +1092,7 @@ export class DatabaseStorage implements IStorage {
       name: "KaOS",
       description: "KaOS is an independent Linux distribution focused on Qt and KDE. It is a rolling release built from scratch, providing a highly integrated Plasma experience.",
       websiteUrl: "https://kaosx.us",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/aa/KaOS_logo_2015.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Independent",
       desktopEnvironments: ["KDE Plasma"],
     });
@@ -1117,7 +1117,7 @@ export class DatabaseStorage implements IStorage {
       name: "Ultramarine",
       description: "Ultramarine Linux is a Fedora-based distribution designed to be usable out of the box. It includes RPM Fusion and codecs by default, making it a great choice for beginners.",
       websiteUrl: "https://ultramarine-linux.org",
-      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Ultramarine-Linux-Logo.svg",
+      logoUrl: "https://cdn.simpleicons.org/linux",
       baseDistro: "Fedora",
       desktopEnvironments: ["Budgie", "GNOME", "KDE Plasma", "Pantheon"],
     });

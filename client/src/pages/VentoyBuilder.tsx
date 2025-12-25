@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { Header } from "@/components/Header";
 import {
   Table,
   TableBody,
@@ -11,13 +13,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  Terminal, Home, HardDrive, Sparkles, Newspaper, Scale, Usb,
+  Usb,
   Trash2, Download, FileCode, ArrowLeft
 } from "lucide-react";
 import { useIsoSelection } from "@/contexts/IsoSelectionContext";
 
 export default function VentoyBuilder() {
   const [location] = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
   const { selectedDownloads, removeSelection, clearSelection, selectedCount } = useIsoSelection();
 
   const generateVentoyJson = () => {
@@ -63,84 +66,7 @@ export default function VentoyBuilder() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b bg-card border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between gap-6 flex-wrap">
-            <Link href="/" data-testid="link-home-logo">
-              <div className="flex items-center gap-3 cursor-pointer">
-                <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                  <Terminal className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
-                    Linux Distro
-                  </h1>
-                  <p className="text-xs text-muted-foreground -mt-0.5">Directory</p>
-                </div>
-              </div>
-            </Link>
-
-            <nav className="flex items-center gap-1 flex-wrap">
-              <Link href="/">
-                <Button
-                  variant={location === "/" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-home"
-                >
-                  <Home className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Home</span>
-                </Button>
-              </Link>
-
-              <Link href="/matcher">
-                <Button
-                  variant={location === "/matcher" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-matcher"
-                >
-                  <Sparkles className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Distro Matcher</span>
-                </Button>
-              </Link>
-              <Link href="/compare">
-                <Button
-                  variant={location === "/compare" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-compare"
-                >
-                  <Scale className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Compare</span>
-                </Button>
-              </Link>
-              <Link href="/ventoy">
-                <Button
-                  variant={location === "/ventoy" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-ventoy"
-                >
-                  <Usb className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Ventoy Builder</span>
-                  {selectedCount > 0 && (
-                    <Badge variant="default" className="ml-1 bg-green-600 text-xs">
-                      {selectedCount}
-                    </Badge>
-                  )}
-                </Button>
-              </Link>
-              <Link href="/news">
-                <Button
-                  variant={location === "/news" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-news"
-                >
-                  <Newspaper className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">News</span>
-                </Button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       <main className="max-w-5xl mx-auto px-6 py-8">
         <div className="mb-8">

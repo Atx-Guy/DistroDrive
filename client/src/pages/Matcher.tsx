@@ -10,11 +10,11 @@ import { getTopMatches, type MatcherInputs, type ScoredDistribution } from "@/li
 import type { ExperienceLevel, UseCase, Hardware } from "@/data/distro-tags";
 import type { DistributionWithLatestRelease } from "@shared/schema";
 import {
-  Terminal, User, Code, Zap, Gamepad2, Server, Monitor, Shield,
-  Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles,
-  Home, HardDrive, Newspaper, Scale, Usb
+  User, Code, Zap, Gamepad2, Server, Monitor, Shield,
+  Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles
 } from "lucide-react";
 import { useIsoSelection } from "@/contexts/IsoSelectionContext";
+import { Header } from "@/components/Header";
 
 const experienceOptions: { value: ExperienceLevel; label: string; description: string; icon: typeof User }[] = [
   { value: "beginner", label: "Beginner", description: "New to Linux, want something easy", icon: User },
@@ -51,41 +51,43 @@ function OptionCard({
   testId: string;
 }) {
   return (
-    <Card
-      className={`p-4 cursor-pointer transition-all hover-elevate active-elevate-2 ${selected ? "ring-2 ring-primary bg-primary/5" : ""
+    <div
+      className={`bento-card p-4 h-full cursor-pointer transition-all duration-200 group relative ${selected ? "border-primary/50 bg-primary/5 shadow-inner" : "hover:border-primary/50 hover:bg-card/80"
         }`}
       onClick={onClick}
       data-testid={testId}
     >
-      <div className="flex items-center gap-3">
-        <div className={`w-10 h-10 rounded-md flex items-center justify-center ${selected ? "bg-primary text-primary-foreground" : "bg-muted"
+      <div className="flex items-center gap-4">
+        <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${selected ? "bg-primary text-primary-foreground" : "bg-muted group-hover:bg-primary/20 group-hover:text-primary"
           }`}>
-          <Icon className="w-5 h-5" />
+          <Icon className="w-6 h-6" />
         </div>
         <div>
-          <p className="font-medium">{label}</p>
+          <h3 className="font-semibold text-lg">{label}</h3>
           {description && (
-            <p className="text-sm text-muted-foreground">{description}</p>
+            <p className="text-sm text-muted-foreground mt-1">{description}</p>
           )}
         </div>
       </div>
-    </Card>
+    </div>
   );
 }
 
 function ResultCard({ scored, maxScore }: { scored: ScoredDistribution; maxScore: number }) {
   const percentage = Math.min(100, Math.round((scored.score / maxScore) * 100));
   return (
-    <div className="relative">
-      <div className="absolute -top-2 -right-2 z-10">
-        <Badge className="bg-primary text-primary-foreground">
-          {percentage}% match
+    <div className="relative group">
+      <div className="absolute -top-3 -right-3 z-10 animate-in fade-in zoom-in duration-300 delay-100">
+        <Badge className="bg-primary text-primary-foreground shadow-lg text-sm py-1">
+          {percentage}% Match
         </Badge>
       </div>
-      <DistributionCard distribution={scored.distribution} />
-      <div className="mt-2 flex flex-wrap gap-1">
+      <div className="h-full">
+        <DistributionCard distribution={scored.distribution} />
+      </div>
+      <div className="absolute inset-x-0 bottom-0 p-4 pt-12 bg-gradient-to-t from-background to-transparent pointer-events-none flex flex-wrap gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
         {scored.matchedTags.map((tag) => (
-          <Badge key={tag} variant="outline" className="text-xs capitalize">
+          <Badge key={tag} variant="secondary" className="text-xs capitalize shadow-sm">
             {tag}
           </Badge>
         ))}
@@ -100,6 +102,7 @@ export default function Matcher() {
   const [experience, setExperience] = useState<ExperienceLevel | null>(null);
   const [useCases, setUseCases] = useState<UseCase[]>([]);
   const [hardware, setHardware] = useState<Hardware | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const { selectedCount } = useIsoSelection();
 
   const { data: distributions = [], isLoading } = useQuery<DistributionWithLatestRelease[]>({
@@ -136,84 +139,7 @@ export default function Matcher() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b border-border bg-card">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between gap-6 flex-wrap">
-            <Link href="/" data-testid="link-home-logo">
-              <div className="flex items-center gap-3 cursor-pointer">
-                <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                  <Terminal className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
-                    Linux Distro
-                  </h1>
-                  <p className="text-xs text-muted-foreground -mt-0.5">Directory</p>
-                </div>
-              </div>
-            </Link>
-
-            <nav className="flex items-center gap-1 flex-wrap">
-              <Link href="/">
-                <Button
-                  variant={location === "/" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-home"
-                >
-                  <Home className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Home</span>
-                </Button>
-              </Link>
-
-              <Link href="/matcher">
-                <Button
-                  variant={location === "/matcher" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-matcher"
-                >
-                  <Sparkles className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Distro Matcher</span>
-                </Button>
-              </Link>
-              <Link href="/compare">
-                <Button
-                  variant={location === "/compare" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-compare"
-                >
-                  <Scale className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Compare</span>
-                </Button>
-              </Link>
-              <Link href="/ventoy">
-                <Button
-                  variant={location === "/ventoy" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-ventoy"
-                >
-                  <Usb className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Ventoy Builder</span>
-                  {selectedCount > 0 && (
-                    <Badge variant="default" className="ml-1 bg-green-600 text-xs">
-                      {selectedCount}
-                    </Badge>
-                  )}
-                </Button>
-              </Link>
-              <Link href="/news">
-                <Button
-                  variant={location === "/news" ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid="link-nav-news"
-                >
-                  <Newspaper className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">News</span>
-                </Button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       <main className="max-w-3xl mx-auto px-6 py-8">
         <div className="mb-8 flex items-center justify-center gap-2">

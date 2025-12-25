@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useLocation, useSearch } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Header } from "@/components/Header";
 import {
   Popover,
   PopoverContent,
@@ -24,7 +25,7 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table";
-import { Terminal, Home, HardDrive, Sparkles, Newspaper, Scale, ChevronsUpDown, Check, ArrowLeftRight } from "lucide-react";
+import { Scale, ChevronsUpDown, Check, ArrowLeftRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { DistributionWithSpecs } from "@shared/schema";
 
@@ -138,6 +139,7 @@ function getSpecValue(
 export default function Compare() {
   const [location, setLocation] = useLocation();
   const searchString = useSearch();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const params = useMemo(() => new URLSearchParams(searchString), [searchString]);
   const d1Param = params.get("d1");
@@ -187,53 +189,7 @@ export default function Compare() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b bg-card border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between gap-6 flex-wrap">
-            <Link href="/" data-testid="link-home-logo">
-              <div className="flex items-center gap-3 cursor-pointer">
-                <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                  <Terminal className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
-                    Linux Distro
-                  </h1>
-                  <p className="text-xs text-muted-foreground -mt-0.5">Directory</p>
-                </div>
-              </div>
-            </Link>
-
-            <nav className="flex items-center gap-1 flex-wrap">
-              <Link href="/">
-                <Button variant="ghost" size="sm" data-testid="link-nav-home">
-                  <Home className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Home</span>
-                </Button>
-              </Link>
-
-              <Link href="/matcher">
-                <Button variant="ghost" size="sm" data-testid="link-nav-matcher">
-                  <Sparkles className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Distro Matcher</span>
-                </Button>
-              </Link>
-              <Link href="/compare">
-                <Button variant="secondary" size="sm" data-testid="link-nav-compare">
-                  <Scale className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Compare</span>
-                </Button>
-              </Link>
-              <Link href="/news">
-                <Button variant="ghost" size="sm" data-testid="link-nav-news">
-                  <Newspaper className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">News</span>
-                </Button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       <main className="max-w-5xl mx-auto px-6 py-8">
         <div className="mb-8">
