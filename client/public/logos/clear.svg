@@ -1,0 +1,2111 @@
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'html' -->
+<!-- FILE NAME SUGGESTIONS:
+   * html--front.html.twig
+   * html--node--31101.html.twig
+   * html--node--%.html.twig
+   * html--node.html.twig
+   x html.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/layout/html.html.twig' -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+<head>
+    <meta charset="utf-8" />
+
+
+<link rel="canonical" href="https://clearlinux.org/" />
+<link rel="shortlink" href="https://clearlinux.org/" />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-withdraw-tab {background: #0779BF} div#sliding-popup.eu-cookie-withdraw-wrapper { background: transparent; } #sliding-popup h1, #sliding-popup h2, #sliding-popup h3, #sliding-popup p, #sliding-popup label, #sliding-popup div, .eu-cookie-compliance-more-button, .eu-cookie-compliance-secondary-button, .eu-cookie-withdraw-tab { color: #ffffff;} .eu-cookie-withdraw-tab { border-color: #ffffff;}</style>
+<link rel="icon" href="modules/custom/clearlinux.org/themes/clearlinux_theme/favicon.ico" type="image/vnd.microsoft.icon" />
+<script src="sites/default/files/eu_cookie_compliance/eu_cookie_compliance.script.js" defer></script>
+
+    <title>Home Clear Linux* Project | Clear Linux* Project</title>
+    <link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/ajax-progress.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/align.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/autocomplete-loading.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/fieldgroup.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/container-inline.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/clearfix.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/details.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/hidden.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/item-list.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/js.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/nowrap.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/position-container.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/progress.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/reset-appearance.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/resize.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/sticky-header.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/system-status-counter.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/system-status-report-counters.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/system-status-report-general-info.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/tabledrag.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/tablesort.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/system/components/tree-child.module.css" />
+<link rel="stylesheet" media="all" href="core/themes/stable/css/filter/filter.caption.css" />
+<link rel="stylesheet" media="all" href="modules/contrib/entity_embed/css/entity_embed.filter.caption.css" />
+<link rel="stylesheet" media="all" href="modules/contrib/eu_cookie_compliance/css/eu_cookie_compliance.css" />
+<link rel="stylesheet" media="all" href="modules/contrib/extlink/extlink.css" />
+<link rel="stylesheet" media="all" href="modules/contrib/paragraphs/css/paragraphs.unpublished.css" />
+<link rel="stylesheet" media="all" href="libraries/codesnippet/lib/highlight/styles/monokai_sublime.css" />
+<link rel="stylesheet" media="all" href="modules/custom/clearlinux.org/themes/clearlinux_theme/css/styles.css" />
+<link rel="stylesheet" media="all" href="http://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" integrity="sha256-AWqwvQ3kg5aA5KcXpX25sYKowsX97sTCTbeo33Yfyk0=" crossorigin="anonymous" />
+
+    <script src="core/assets/vendor/modernizr/modernizr.min.js"></script>
+<script src="core/misc/modernizr-additional-tests.js"></script>
+
+</head>
+<body class="alias--homepage3 frontpage nodetype--homepage logged-out">
+<div id="skip">
+    <a class="visually-hidden focusable skip-link" href="index.html#main-menu">
+        Skip to main navigation
+    </a>
+</div>
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'off_canvas_page_wrapper' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/content/off-canvas-page-wrapper.html.twig' -->
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'page' -->
+<!-- FILE NAME SUGGESTIONS:
+   * page--node--landing-page-redesign.html.twig
+   x page--node--homepage.html.twig
+   * page--front.html.twig
+   * page--node--31101.html.twig
+   * page--node--%.html.twig
+   * page--node.html.twig
+   * page.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/layout/page--node--homepage.html.twig' -->
+<!-- ______________________ HEADER _______________________ -->
+
+
+
+<header id="header">
+  <div class="container padding-md--left-right">
+    <div class="header__menu_mobile">
+      <i class="fa fa-bars header__menu_mobile__control" aria-hidden="true"></i>
+    </div>
+
+    <div id="header__site_info">
+        <div class="header__site_img_wrapper">
+          <a href ="index.html">
+                          <img class="header__site_img_object" src="modules/custom/clearlinux.org/themes/clearlinux_theme/clear_linux_logo.svg" alt="Logo Clear Linux* Project"/>
+                        <img class="header__site_txt_object" src="modules/custom/clearlinux.org/themes/clearlinux_theme/sass/components/layout/header/assets/clear-linux-text-white.svg" />
+          </a>
+        </div>
+    </div>
+
+          <nav class="header__menu">
+        <ul class="header__menu_list">
+                         <li class="header__menu_list_item   ">
+                <a tabindex='1' href="about.html">About</a>
+              </li>
+                         <li class="header__menu_list_item   ">
+                <a tabindex='1' href="developer.html">Developer</a>
+              </li>
+                         <li class="header__menu_list_item   ">
+                <a tabindex='1' href="software/software.html">Software</a>
+              </li>
+                   </ul>
+      </nav>
+    
+    <div class="header__search">
+      
+
+<div class="header__search_form__wrapper">
+  </div>
+</div>
+    </div>
+
+  </div>
+</header>
+<!-- /header -->
+
+<!-- ______________________ MAIN _______________________ -->
+
+  
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   x region--content.html.twig
+   * region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/layout/region--content.html.twig' -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--clearlinux-theme-messages.html.twig
+   x block--system-messages-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/block/block--system-messages-block.html.twig' -->
+<div data-drupal-messages-fallback class="hidden"></div>
+
+<!-- END OUTPUT from 'core/themes/stable/templates/block/block--system-messages-block.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   x block--clearlinux-theme-content.html.twig
+   * block--system-main-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/block/block--clearlinux-theme-content.html.twig' -->
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'node' -->
+<!-- FILE NAME SUGGESTIONS:
+   * node--31101--full.html.twig
+   * node--31101.html.twig
+   * node--homepage--full.html.twig
+   x node--homepage.html.twig
+   * node--full.html.twig
+   * node.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/content/node--homepage.html.twig' -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--node--field-hero-zone--homepage.html.twig
+   x field--node--field-hero-zone.html.twig
+   * field--node--homepage.html.twig
+   * field--field-hero-zone.html.twig
+   * field--entity-reference-revisions.html.twig
+   * field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/field/field--node--field-hero-zone.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--banner--default.html.twig
+   x paragraph--banner.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--banner.html.twig' -->
+
+
+  
+
+
+  
+<div class="wrapper banner "  style="background-image: url(sites/default/files/bg_software_0.png);"  >
+  <div class="banner__gradient  banner__opacity"></div>
+    <div class="container banner__container flex__grid">
+    <div class="banner__content">
+              <h1 class="banner__title">Clear Linux* Project</h1>
+      
+                      <p class="banner__subheader">Clear Linux OS was an open source, rolling release Linux distribution optimized for performance and security, from the Cloud to the Edge, designed for customization, and manageability. It was actively developed from 2/6/2015-7/18/2025.</p>
+      
+              <div class="banner__actions__wrapper">
+                      <div class="banner__actions-item ">
+              
+
+<a 
+  tabindex='1' 
+  href="https://community.clearlinux.org/t/all-good-things-come-to-an-end-shutting-down-clear-linux-os/10716" 
+  class="call_to_action    ">
+    Read the EOL notice
+</a>
+
+            </div>
+                  </div>
+      
+          </div>
+
+          <div class="banner__support_img">
+        <img class="banner__svg" src="sites/default/files/2017-12/clearlinux-logo.svg" />
+      </div>
+      </div>
+</div>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--banner.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/field/field--node--field-hero-zone.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--node--field-components--homepage.html.twig
+   x field--node--field-components.html.twig
+   * field--node--homepage.html.twig
+   * field--field-components.html.twig
+   * field--entity-reference-revisions.html.twig
+   * field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/field/field--node--field-components.html.twig' -->
+<div class="content--wrapper">
+      <section class="padding--top-bottom two_column  ">
+    <div class="container clearfix">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--two-column--default.html.twig
+   x paragraph--two-column.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--two-column.html.twig' -->
+
+
+
+
+<div class="Column column_left_main">
+    <div class="Column__item column__first">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-column-one--two-column.html.twig
+   * field--paragraph--field-column-one.html.twig
+   * field--paragraph--two-column.html.twig
+   * field--field-column-one.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--text-block-full-width--default.html.twig
+   x paragraph--text-block-full-width.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--text-block-full-width.html.twig' -->
+
+
+<div class="Text">
+  <div class="container">
+    <h2 class="Text__title"></h2>
+
+    
+    <div class="Text__description">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-text-block--text-block-full-width.html.twig
+   * field--paragraph--field-text-block.html.twig
+   * field--paragraph--text-block-full-width.html.twig
+   * field--field-text-block.html.twig
+   * field--text-long.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-text-block field--type-text-long field--label-hidden field__item"><p class="text-align-center"><iframe height="315" src="https://www.youtube.com/embed/VxA-vim715w" width="100%"></iframe></p></div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+    </div>
+  </div>
+</div>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--text-block-full-width.html.twig' -->
+
+</div>
+              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<section class="section card__group section-two  ">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+  <div class="card bg_color_5">
+          <div class="card__header  double ">
+                  <div class="card__header--title">
+            <h2>Latest News</h2>
+          </div>
+                          <div>
+            
+
+<a 
+  tabindex='1' 
+  href="news-blogs.html" 
+  class="call_to_action  button__color_3  ">
+    VIEW ALL
+</a>
+
+          </div>
+              </div>
+    
+    <div class="card__body ">
+              
+      
+              <div class="card-dynamic-content">
+          
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-card-dynamic-content--card.html.twig
+   * field--paragraph--field-card-dynamic-content.html.twig
+   * field--paragraph--card.html.twig
+   * field--field-card-dynamic-content.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-card-dynamic-content field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-card-dynamic-content field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--dynamic-block--default.html.twig
+   x paragraph--dynamic-block.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--dynamic-block.html.twig' -->
+        <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+      <a href="https://github.com/intel/thin-layout-optimizer/wiki">        <img src="sites/default/files/ClearLinuxProject_logo_primary_dark_1.png" alt="Thin-Layout-Optimizer is a new code-layout optimizer used in Clear Linux">
+      </a>    </div>
+  
+    
+  <div class="content_divided">
+    <a href="https://github.com/intel/thin-layout-optimizer/wiki">      <h3>Thin-Layout-Optimizer is a new code-layout optimizer used in Clear Linux</h3>
+    </a>
+        
+          <p class="text-aditional">12 Apr, 2024</p>
+    
+    
+  </div>
+</div>    
+
+
+		      
+	<div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+      <a href="https://community.clearlinux.org/t/apx-and-avx10-compiled-binaries-coming-to-clear-linux-this-week/9421">        <img src="sites/default/files/ClearLinuxProject_logo_primary_dark_1.png" alt="Major improvements in GCC 10.1">
+      </a>    </div>
+  
+    
+  <div class="content_divided">
+    <a href="https://community.clearlinux.org/t/apx-and-avx10-compiled-binaries-coming-to-clear-linux-this-week/9421">      <h3>APX and AVX10 compiled binaries coming to Clear Linux</h3>
+    </a>
+        
+          <p class="text-aditional">4 Feb, 2024</p>
+    
+    
+  </div>
+</div>    
+	<div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+      <a href="blogs-news/major-improvements-gcc-101.html">        <img src="sites/default/files/CL_Twitter_Header_3&#32;(1)_0.png" alt="Major improvements in GCC 10.1">
+      </a>    </div>
+  
+    
+  <div class="content_divided">
+    <a href="blogs-news/major-improvements-gcc-101.html">      <h3>Major improvements in GCC 10.1</h3>
+    </a>
+    
+<!--       <p class="text-aditional">
+                    <a href="blogs_category_2.html" title="Power and Performance">Power and Performance</a>
+                          </p>
+    
+          Part 1
+ -->   
+          <p class="text-aditional">27 Jul, 2020</p>
+    
+    
+  </div>
+</div>      
+		      
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--dynamic-block.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+    
+
+
+
+
+
+        
+                            
+            
+                            
+            
+                            
+    
+
+
+  
+
+  <div class="card bg_color_5">
+          <div class="card__header  double ">
+                  <div class="card__header--title">
+            <h2>Software</h2>
+          </div>
+                          <div>
+            
+
+<a 
+  tabindex='1' 
+  href="software/software.html" 
+  class="call_to_action  button__color_4  ">
+    VIEW ALL
+</a>
+
+          </div>
+              </div>
+    
+    <div class="card__body ">
+              
+      
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+              <div class="card-dynamic-content">
+                <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+      <a href="software/bundle/containers-basic.html">        <img src="sites/default/files/software/categories/icon.app.bundle.developer_tools.svg" alt="containers-basic">
+      </a>    </div>
+  
+    
+  <div class="content_divided">
+    <a href="software/bundle/containers-basic.html">      <h3>containers-basic</h3>
+    </a>
+    
+    
+          Run container applications from Dockerhub.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+      <a href="software/github/cloud-control-0.html">        <img src="sites/default/files/software/github/cloud-control.svg" alt="cloud-control">
+      </a>    </div>
+  
+    
+  <div class="content_divided">
+    <a href="software/github/cloud-control-0.html">      <h3>cloud-control</h3>
+    </a>
+    
+    
+          Run a cloud orchestration server.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+      <a href="software/github/r-basic-0.html">        <img src="sites/default/files/software/github/R-basic.svg" alt="R-basic">
+      </a>    </div>
+  
+    
+  <div class="content_divided">
+    <a href="software/github/r-basic-0.html">      <h3>R-basic</h3>
+    </a>
+    
+    
+          Run R language programs for statistical computing and data analysis.
+
+    
+    
+    
+  </div>
+</div>          </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+</section>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+</div>
+              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<section class="section card__group   ">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <div class="card bg_color_5">
+          <div class="card__header ">
+                  <div class="card__header--title">
+            <h2>Features</h2>
+          </div>
+                      </div>
+    
+    <div class="card__body ">
+              
+      
+              <div class="card-dynamic-content">
+          
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-card-dynamic-content--card.html.twig
+   * field--paragraph--field-card-dynamic-content.html.twig
+   * field--paragraph--card.html.twig
+   * field--field-card-dynamic-content.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-card-dynamic-content field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-card-dynamic-content field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--dynamic-block--default.html.twig
+   x paragraph--dynamic-block.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--dynamic-block.html.twig' -->
+        <div class="card__dynamic_item  ">
+  
+      <div class="card__dynamic_item--image">
+      <i class="fa fa-database"></i>
+    </div>
+    
+  <div class="content_divided">
+          <h3>Stateless</h3>
+    
+    
+    
+          Operate without any custom configuration, for example, a generic host with an empty /etc directory. Stateless systems strictly separate the OS configuration, the per-system configuration, and the VT user-data stored on that system.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+              <img src="sites/default/files/styles/thumbnail/public/icon_features_kernel_1.png" alt="Close to upstream">
+          </div>
+  
+    
+  <div class="content_divided">
+          <h3>Close to upstream</h3>
+    
+    
+    
+          Clear Linux stays in lockstep with upstream, always staying on the latest version of the kernel and compilers. Daily security mitigations deliver available security updates to customers rapidly.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+              <img src="sites/default/files/styles/thumbnail/public/icon_features_opensource_1.png" alt="Open Source">
+          </div>
+  
+    
+  <div class="content_divided">
+          <h3>Open Source</h3>
+    
+    
+    
+          A modular, cross-architecture, open source OS providing users the ability to differentiate.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+              <img src="sites/default/files/styles/thumbnail/public/icon_features_stateless_1.png" alt="Stateless">
+          </div>
+  
+    
+  <div class="content_divided">
+          <h3>Stateless</h3>
+    
+    
+    
+          Designed so that the user is able to quickly and easily manage their custom configuration vs. system configuration.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+              <img src="sites/default/files/styles/thumbnail/public/icon_features_customise_1.png" alt="Built for Customization">
+          </div>
+  
+    
+  <div class="content_divided">
+          <h3>Built for Customization</h3>
+    
+    
+    
+          &gt; 4,000 complete packages available.
+    
+    
+    
+  </div>
+</div>      <div class="card__dynamic_item  ">
+      <div class="card__dynamic_item--image">
+              <img src="sites/default/files/styles/thumbnail/public/icon_features_intel_2.png" alt="Intel Optimized">
+          </div>
+  
+    
+  <div class="content_divided">
+          <h3>Intel Optimized</h3>
+    
+    
+    
+          Highly tuned for Intel platforms where all optimization is turned on by default.
+    
+    
+    
+  </div>
+</div>  
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--dynamic-block.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+</section>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+</div>
+              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<section class="section card__group   ">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+  <div class="card bg_color_5">
+          <div class="card__header  double ">
+                  <div class="card__header--title">
+            <h2>Developers</h2>
+          </div>
+                          <div>
+            
+
+<a 
+  tabindex='1' 
+  href="developer.html" 
+  class="call_to_action  button__color_2  ">
+    View all
+</a>
+
+          </div>
+              </div>
+    
+    <div class="card__body ">
+              
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-card-description--card.html.twig
+   * field--paragraph--field-card-description.html.twig
+   * field--paragraph--card.html.twig
+   * field--field-card-description.html.twig
+   * field--text-with-summary.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-card-description field--type-text-with-summary field--label-hidden field__item"><p>Everything you need to get up and running with Clear Linux OS.</p>
+
+<table class="content-table"><tbody><tr><td width="50%"><img alt="" src="sites/default/files/styles/thumbnail/public/developer_connect.png" /><p><a href="developer.html"><strong>Desktop</strong></a></p>
+
+			<p>We understand desktops are not a one-size fits all. Clear Linux OS offers options that are tailored specifically for the developers’ production. Learn more about it on the developer page</p>
+			</td>
+			<td width="50%"><img alt="" src="sites/default/files/styles/thumbnail/public/developer_contribute.png" /><p><a href="https://github.com/clearlinux/distribution/blob/master/contributing.md"><strong>How to Contribute</strong></a></p>
+
+			<p>As an open source project, we’re always looking for ways to improve and for feedback. Learn how you can contribute to our project.</p>
+			</td>
+		</tr></tbody></table></div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+      
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+</section>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+</div>
+              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<section class="section card__group   ">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+  <div class="card bg_color_5">
+          <div class="card__header  double ">
+                  <div class="card__header--title">
+            <h2>Documentation</h2>
+          </div>
+                          <div>
+            
+
+<a 
+  tabindex='1' 
+  href="https://www.clearlinux.org/clear-linux-documentation/index.html" 
+  class="call_to_action  button__color_2  ">
+    VIEW ALL
+</a>
+
+          </div>
+              </div>
+    
+    <div class="card__body ">
+              
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-card-description--card.html.twig
+   * field--paragraph--field-card-description.html.twig
+   * field--paragraph--card.html.twig
+   * field--field-card-description.html.twig
+   * field--text-with-summary.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-card-description field--type-text-with-summary field--label-hidden field__item"><p><a href="https://www.clearlinux.org/clear-linux-documentation/guides/index.html"><strong>Guides</strong></a></p>
+
+<p>Step-by-step instructions on the different ways to use Clear Linux OS.</p>
+
+<p> </p>
+
+<p><a href="https://www.clearlinux.org/clear-linux-documentation/tutorials/index.html"><strong>Tutorials</strong></a></p>
+
+<p>Thorough documentation on different use case scenarios of using Clear Linux OS.</p>
+
+<p> </p>
+
+<p><a href="https://www.clearlinux.org/clear-linux-documentation/reference/index.html"><strong>References</strong></a></p>
+
+<p>Additional information on the Clear Linux OS project and features.</p></div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+      
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+</section>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+</div>
+              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<section class="section card__group   ">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <div class="card bg_color_2">
+    
+    <div class="card__body ">
+              
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-card-description--card.html.twig
+   * field--paragraph--field-card-description.html.twig
+   * field--paragraph--card.html.twig
+   * field--field-card-description.html.twig
+   * field--text-with-summary.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-card-description field--type-text-with-summary field--label-hidden field__item"><p>“Clear Linux does have available all of my needed packages/bundles for my production workflow including GNOME Shell and its programs like GNOME Terminal and Gedit, gFTP, Mozilla Firefox, Mozilla Thunderbird, GIMP, Pidgin, and LibreOffice. On the developer toolchain front, Clear Linux certainly has effectively all use-cases covered from traditional C/C++ development to quickly deploying LAMP stacks to Nodejs to all the other modern programming language support and countless cloud/container options. Personally I use a GNOME Shell environment very close to the stock configuration without any extensions, so Clear Linux's defaults were all in good standing and GNOME Tweaks is available for the little bit of tweaking I do to the configuration.”</p>
+
+<p><a href="https://www.phoronix.com/scan.php?page=article&amp;item=clearlinux-main-desktop&amp;num=1">Michael Larabel, Founder, Phoronix Media</a></p></div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+      
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+</section>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+</div>
+ <!--             <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+-->
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<!-- <section class="section card__group   ">
+-->  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+<!--      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+-->
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+  
+
+
+
+
+
+
+
+
+  
+<!--
+  <div class="card bg_color_5">
+          <div class="card__header ">
+                  <div class="card__header--title">
+            <h2>Partnerships</h2>
+          </div>
+                      </div>
+    
+    <div class="card__body ">
+              
+-->
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-card-description--card.html.twig
+   * field--paragraph--field-card-description.html.twig
+   * field--paragraph--card.html.twig
+   * field--field-card-description.html.twig
+   * field--text-with-summary.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+<!--
+            <div class="field field--name-field-card-description field--type-text-with-summary field--label-hidden field__item"><table class="content-table"><tbody><tr><td width="50%">
+-->			
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'entity_embed_container' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+<!--<div data-embed-button="media_browser" data-entity-embed-display="view_mode:media.embedded" data-entity-type="media" data-entity-uuid="775e8d56-8894-456b-8958-9fff47f228fa" data-langcode="en" data-entity-embed-display-settings="[]" class="embedded-entity">
+-->
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'media' -->
+<!-- FILE NAME SUGGESTIONS:
+   * media--source-image.html.twig
+   * media--image--embedded.html.twig
+   * media--image.html.twig
+   * media--embedded.html.twig
+   x media.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/content/media.html.twig' -->
+<!--<article> --> <!-- THEME DEBUG --><!-- THEME HOOK: 'field' --><!-- FILE NAME SUGGESTIONS:
+   * field--media--image--image.html.twig
+   * field--media--image.html.twig
+   * field--media--image.html.twig
+   * field--image.html.twig
+   * field--image.html.twig
+   x field.html.twig
+--><!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' --> <!-- <div class="field field--name-image field--type-image field--label-hidden field__item">
+-->
+	      
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image_formatter' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image.html.twig' -->
+<!-- <img loading="lazy" src="sites/default/files/sq_kata.png" width="150" height="150" alt="" typeof="foaf:Image" /> --> <!-- END OUTPUT from 'core/themes/stable/templates/field/image.html.twig' --><!-- END OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' -->
+      <!-- </div> -->
+ 
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+<!--  </article> --> <!-- END OUTPUT from 'core/themes/stable/templates/content/media.html.twig' --> <!-- </div> -->
+
+<!-- END OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+<!--
+<strong><a href="https://katacontainers.io">Kata Containers*</a></strong></td>
+			<td width="50%">
+-->			
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'entity_embed_container' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+<!-- <div data-embed-button="media_browser" data-entity-embed-display="view_mode:media.embedded" data-entity-type="media" data-entity-uuid="242fe395-44dc-405c-93ed-7ff9d7796a06" data-langcode="en" data-entity-embed-display-settings="[]" class="embedded-entity"> -->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'media' -->
+<!-- FILE NAME SUGGESTIONS:
+   * media--source-image.html.twig
+   * media--image--embedded.html.twig
+   * media--image.html.twig
+   * media--embedded.html.twig
+   x media.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/content/media.html.twig' -->
+<!-- <article> --> <!-- THEME DEBUG --><!-- THEME HOOK: 'field' --><!-- FILE NAME SUGGESTIONS:
+   * field--media--image--image.html.twig
+   * field--media--image.html.twig
+   * field--media--image.html.twig
+   * field--image.html.twig
+   * field--image.html.twig
+   x field.html.twig
+--><!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+	     <!-- <div class="field field--name-image field--type-image field--label-hidden field__item"> -->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image_formatter' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image.html.twig' -->
+<!--<img loading="lazy" src="sites/default/files/sq_acrn.png" width="150" height="150" alt="" typeof="foaf:Image" /> --> <!-- END OUTPUT from 'core/themes/stable/templates/field/image.html.twig' --><!-- END OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' --> <!-- </div> -->
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+<!--  </article> --> <!-- END OUTPUT from 'core/themes/stable/templates/content/media.html.twig' --> <!--</div> -->
+
+<!-- END OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+
+<!-- <strong><a href="https://projectacrn.org">Project ACRN*</a></strong></td>
+		</tr><tr><td valign="top">
+			<p class="text-align-left">Kata Containers is an open source project which utilizes lightweight VMs, offering the speed of containers and the security of VMs. Clear Linux supports seamless integration of Kata Containers for any OS version above 23380. Leverage the speed &amp; security Kata Containers provide with the performance Clear Linux delivers.</p>
+			</td>
+			<td valign="top">
+			<p class="text-align-left">Project ACRN is a flexible, lightweight reference hypervisor built with real-time and safety-criticality in mind, optimized to streamline embedded development through an open source project. The Clear Linux OS is Project ACRN’s default Service OS, providing the performance power for the lightweight hypervisor.</p>
+			</td>
+		</tr><tr><td> </td>
+			<td> </td>
+		</tr><tr><td>
+	-->		
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'entity_embed_container' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+<!-- <div data-embed-button="media_browser" data-entity-embed-display="view_mode:media.embedded" data-entity-type="media" data-entity-uuid="9d6da110-60dd-4515-b3be-8ff43350d3ce" data-langcode="en" data-entity-embed-display-settings="[]" class="embedded-entity"> -->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'media' -->
+<!-- FILE NAME SUGGESTIONS:
+   * media--source-image.html.twig
+   * media--image--embedded.html.twig
+   * media--image.html.twig
+   * media--embedded.html.twig
+   x media.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/content/media.html.twig' -->
+<!-- <article> -->
+	      <!-- THEME DEBUG --><!-- THEME HOOK: 'field' --><!-- FILE NAME SUGGESTIONS:
+   * field--media--image--image.html.twig
+   * field--media--image.html.twig
+   * field--media--image.html.twig
+   * field--image.html.twig
+   * field--image.html.twig
+   x field.html.twig
+--><!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' --> <!--<div class="field field--name-image field--type-image field--label-hidden field__item"> -->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image_formatter' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image.html.twig' -->
+<!-- <img loading="lazy" src="sites/default/files/sq_kubernetes.png" width="150" height="150" alt="" typeof="foaf:Image" /> --> <!-- END OUTPUT from 'core/themes/stable/templates/field/image.html.twig' --><!-- END OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' --> <!-- </div> -->
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+<!--  </article> --><!-- END OUTPUT from 'core/themes/stable/templates/content/media.html.twig' --> <!-- </div> -->
+
+<!-- END OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+
+<!-- <strong><a href="https://kubernetes.io">Kubernetes*</a></strong></td>
+			<td>
+			-->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'entity_embed_container' -->
+<!-- BEGIN OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+<!-- <div data-align="center" data-embed-button="media_browser" data-entity-embed-display="entity_reference:media_thumbnail" data-entity-embed-display-settings="{&quot;image_style&quot;:&quot;thumbnail&quot;,&quot;image_link&quot;:&quot;&quot;}" data-entity-type="media" data-entity-uuid="e033bfe2-f968-4574-9756-01b17bd897ed" data-langcode="en" class="embedded-entity"> -->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image_formatter' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image_style' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image-style.html.twig' -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image' -->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/field/image.html.twig' -->
+<!-- <img src="sites/default/files/styles/thumbnail/public/sq_montavista.png" width="100" height="100" alt="Thumbnail" title="square_montavista" loading="lazy" typeof="foaf:Image" /> --> <!-- END OUTPUT from 'core/themes/stable/templates/field/image.html.twig' --><!-- END OUTPUT from 'core/themes/stable/templates/field/image-style.html.twig' --><!-- END OUTPUT from 'core/themes/stable/templates/field/image-formatter.html.twig' --> <!-- </div> -->
+
+<!-- END OUTPUT from 'modules/contrib/entity_embed/templates/entity-embed-container.html.twig' -->
+
+<!-- <strong><a href="https://mvista.com/en">MontaVista*</a></strong></td>
+		</tr><tr><td valign="top">
+			<p class="text-align-left">Kubernetes is a leading container orchestration solution that enables users to increase agility, scalability, and resource efficiency while achieving portability and resiliency. Intel’s early contributions to Kubernetes helped extend its capabilities by shaping the architecture and requirements for device plug-ins and address limitations for high-bandwidth, low-latency workloads and networking applications. Today, we’re continuing to collaborate across the Kubernetes community and ecosystem to deliver best-fit performance and security for cloud-native workloads and ease the developer experience. We’ve created the Clear Linux Cloud Native example.</p>
+			</td>
+			<td valign="top">
+			<p class="text-align-left">Clear Linux is proud to announce that MontaVista Software will be our first partner in providing commercial support for the Clear Linux OS. MontaVista has been a leader in the embedded Linux commercialization business for nearly two decades. Learn more about our partnership <a href="https://mvista.com/en/about_press/detail/montavista-software-announces-commercial-support-for-clear-linux-os">here</a>.</p>
+			</td>
+		</tr></tbody></table></div>
+     --> 
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+      <!--
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+-->
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+<!--</div>
+          </div>
+  -->
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+ <!--           <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div> -->
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+<!-- </section> -->
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+<!-- </div> -->
+<!--              <div class="field field--name-field-column-one field--type-entity-reference-revisions field--label-hidden field__item">
+-->
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<!--
+		      <section class="section card__group   ">
+-->  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+<!--
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+-->
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+  
+
+        
+
+
+
+
+
+
+  
+<!--
+  <div class="card bg_color_2">
+          <div class="card__header ">
+                  <div class="card__header--title">
+            <h2>Start using Clear Linux OS now &amp; enjoy the benefits of a Linux OS designed with the developer in mind</h2>
+          </div>
+                      </div>
+    
+    <div class="card__body ">
+              
+      
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+      
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+                              
+
+<a 
+  tabindex='1' 
+  href="downloads.html" 
+  class="call_to_action  button__color_4  ">
+    DOWNLOAD CLEAR LINUX OS
+</a>
+
+                  
+              </div>
+
+          </div>
+  </div>
+-->
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+<!--
+</div>
+          </div>
+ --> 
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+<!--
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+-->      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+<!--
+</section>
+-->
+		      
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+<!-- </div> -->
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+  </div>
+      <div class="Column__item column__second">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-column-two--two-column.html.twig
+   * field--paragraph--field-column-two.html.twig
+   * field--paragraph--two-column.html.twig
+   * field--field-column-two.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-column-two field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-column-two field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card-group--default.html.twig
+   x paragraph--card-group.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+<section class="section card__group   ">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-cards--card-group.html.twig
+   * field--paragraph--field-cards.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-cards.html.twig
+   * field--entity-reference-revisions.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+      <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   * paragraph--card--default.html.twig
+   x paragraph--card.html.twig
+   * paragraph--default.html.twig
+   * paragraph.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <div class="card bg_color_5">
+          <div class="card__header ">
+                  <div class="card__header--title">
+            <h2>Connect. Collaborate. Contribute.</h2>
+          </div>
+                      </div>
+    
+    <div class="card__body ">
+              
+      
+              <div class="card-dynamic-content">
+          
+        </div>
+      
+      
+              
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'menu__community' -->
+<!-- FILE NAME SUGGESTIONS:
+   x menu--community.html.twig
+   x menu--community.html.twig
+   * menu.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/navigation/menu--community.html.twig' -->
+        <div class="card__menu-section">
+                                                              <div class="card__menu-section">
+            <ul>
+<!--                                    <li>
+            <a href="node/656.html" class="fa fa-envelope" target="_self" title="https://clearlinux.org/community/mailing-list">Subscribe to our mailing list</a>
+                                              </li>
+-->
+		    <li>
+            <a href="https://community.clearlinux.org" class="fa fa-comments-o" target="_self" title="https://community.clearlinux.org">Clear Linux Forum</a>
+                                              </li>
+                                        <li>
+<!-- Fontawesome hashtag isn't working           <a href="https://kiwiirc.com/client/irc.libera.chat/?nick=web_guest%7C%3F#clearlinux" class="fa fa-hashtag" target="_self" title="https://kiwiirc.com/client/irc.libera.chat/?nick=web_guest|?#clearlinux">_irc.libera.chat_* network: #clearlinux</a> -->
+            <a href="https://kiwiirc.com/client/irc.libera.chat/?nick=web_guest%7C%3F#clearlinux" class="fa fa-message" target="_self" title="https://kiwiirc.com/client/irc.libera.chat/?nick=web_guest|?#clearlinux">IRC:Libera.chat #clearlinux</a>
+                                              </li>
+          <!--                              <li>
+            <a href="mailto:info@clearlinux.org" class="fa fa-envelope" target="_self" title="Email: info@clearlinux.org">Contact us</a>
+                                              </li>
+          -->
+	                                            <li>
+            <a href="mailto:info@clearlinux.discoursemail.com" class="fa fa-envelope" target="_self" title="Email: info@clearlinux.discoursemail.com">Contact us</a>
+                                              </li>
+
+	    
+	    </ul>
+          </div>
+  
+                                                                                <div class="card__menu-section">
+            <ul>
+                                    <li>
+            <a href="https://github.com/clearlinux" class="fa fa-file-text-o" target="_blank" title="https://github.com/clearlinux">Github</a>
+                                              </li>
+                                        <li>
+            <a href="https://github.com/clearlinux/distribution/blob/master/contributing.md" class="fa fa-file-text-o" target="_self" title="https://github.com/clearlinux/distribution/blob/master/contributing.md">Contribute </a>
+                                              </li>
+                                        <li>
+            <a href="https://github.com/clearlinux/distribution/issues" class="fa fa-bug" target="_self" title="https://github.com/clearlinux/distribution/issues">Report a bug</a>
+                                              </li>
+                                        <li>
+            <a href="https://www.intel.com/content/www/us/en/security-center/default.html" class="fa fa-lock" target="_self" title="Intel security issue reporting page">Report a security issue</a>
+                                              </li>
+                              </ul>
+          </div>
+  
+                                                                                <div class="card__menu-section">
+            <ul>
+                                    <li>
+            <a href="code-of-conduct.html" class="fa fa-file-text-o" target="_self" data-drupal-link-system-path="code-of-conduct.html">Code of conduct</a>
+                                              </li>
+                                        <li>
+            <a href="terms-and-policies.html" class="fa fa-file-text-o" target="_self" data-drupal-link-system-path="terms-and-policies.html">Terms of use</a>
+                                              </li>
+                                        <li>
+            <a href="terms-and-policies.html" class="fa fa-file-text-o" target="_self" data-drupal-link-system-path="terms-and-policies.html">Licenses</a>
+                                              </li>
+                              </ul>
+          </div>
+  
+                                          </div>
+  
+
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/navigation/menu--community.html.twig' -->
+
+
+      
+      
+      
+    </div>
+
+    <div class="card__footer ">
+      <div class="card__footer__left">
+        
+              </div>
+
+          </div>
+  </div>
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--paragraph--field-feature--card-group.html.twig
+   * field--paragraph--field-feature.html.twig
+   * field--paragraph--card-group.html.twig
+   * field--field-feature.html.twig
+   * field--boolean.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+            <div class="field field--name-field-feature field--type-boolean field--label-hidden field__item">Off</div>
+      
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+</section>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--card-group.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END OUTPUT from 'themes/contrib/cog/templates/field/field.html.twig' -->
+
+
+  </div>
+  </div>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/paragraphs/paragraph--two-column.html.twig' -->
+
+
+    </div>
+    </section>
+  
+</div>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/field/field--node--field-components.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/content/node--homepage.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/block/block--clearlinux-theme-content.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/layout/region--content.html.twig' -->
+
+
+
+<!-- /main -->
+
+
+<footer class="footer">
+  <div class="container padding-md--top-bottom padding-md--left-right">
+    <div class="footer__logo">
+      <div class="footer__logo__wrapper">
+                  <img class="footer__site_img_object" src="modules/custom/clearlinux.org/themes/clearlinux_theme/clear_linux_logo.svg" alt="Logo Clear Linux* Project"/>
+                <img class="footer__site_txt_object" src="modules/custom/clearlinux.org/themes/clearlinux_theme/sass/components/layout/footer/assets/clear-linux-text-white.svg" />
+      </div>
+    </div>
+    <div class="footer__details">
+              <div class="footer__top">
+                      <div class="footer__social_media">
+              <ul class="footer__social_media__list">
+                                  <li class="footer__social_media__list_item">
+                    <a target="_blank" tabindex='1' href="https://github.com/clearlinux" title="Github"><i class="fa "></i></a>
+                  </li>
+                                  <li class="footer__social_media__list_item">
+                    <a target="_blank" tabindex='1' href="https://www.youtube.com/channel/UChpmukwyvvdSmTA9gxKL_Fg" title="YouTube"><i class="fa "></i></a>
+                  </li>
+                                  <li class="footer__social_media__list_item">
+                    <a target="_blank" tabindex='1' href="http://twitter.com/clearlinux" title="Twitter"><i class="fa "></i></a>
+                  </li>
+                                  <li class="footer__social_media__list_item">
+                    <a target="_blank" tabindex='1' href="https://community.clearlinux.org/" title="Discourse"><i class="fa "></i></a>
+                  </li>
+                              </ul>
+            </div>
+            <hr>
+                                <div class="footer__menu">
+              <ul class="footer__menu__list">
+                                  <li class="footer__menu__list_item">
+                    <a tabindex='1' href="http://www.intel.com/content/www/us/en/legal/trademarks.html">*Trademarks</a>
+                  </li>
+                                  <li class="footer__menu__list_item">
+                    <a tabindex='1' href="http://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html">Cookies</a>
+                  </li>
+                                  <li class="footer__menu__list_item">
+                    <a tabindex='1' href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privacy terms</a>
+                  </li>
+                              </ul>
+            </div>
+                  </div>
+            <div class="footer__bottom">
+        <p class="footer__copyright">© 2025  Intel Corporation. All Rights Reserved.<br>*Other names and brands may be claimed as the property of others.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer_bottom">
+    <div class="container padding-md--left-right">
+      <div class="footer_bottom__copyright">
+        <i class="fa fa-copyright"></i>  &nbsp; This project belongs to <a href="https://open.intel.com">open.intel</a>, Intel's opensource platform.      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/layout/page--node--homepage.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/stable/templates/content/off-canvas-page-wrapper.html.twig' -->
+
+
+
+<script src="core/assets/vendor/jquery/jquery.min.js"></script>
+<script src="core/misc/polyfills/element.matches.js"></script>
+<script src="core/assets/vendor/once/once.min.js"></script>
+<script src="core/misc/drupalSettingsLoader.js"></script>
+<script src="core/misc/drupal.js"></script>
+<script src="core/misc/drupal.init.js"></script>
+<script src="modules/contrib/extlink/extlink.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js" integrity="sha256-s5TTOyp+xlSmsDfr/aZhg0Gz+JejYr5iTJI8JxG1SkM=" crossorigin="anonymous"></script>
+<script src="modules/custom/clearlinux.org/themes/clearlinux_theme/js/src/jquery.colorbox.min.js"></script>
+<script src="modules/custom/clearlinux.org/themes/clearlinux_theme/js/src/clearlinux_theme.js"></script>
+<script src="modules/custom/clearlinux.org/themes/clearlinux_theme/bower_components/clipboard/dist/clipboard.min.js"></script>
+<script src="core/assets/vendor/js-cookie/js.cookie.min.js"></script>
+<script src="modules/contrib/eu_cookie_compliance/js/eu_cookie_compliance.min.js" defer></script>
+<script src="modules/custom/clearlinux.org/themes/clearlinux_theme/js/dist/components/card/card.js"></script>
+<script src="modules/custom/clearlinux.org/themes/clearlinux_theme/js/dist/components/video/video.js"></script>
+<script src="modules/custom/clearlinux.org/themes/clearlinux_theme/js/dist/layout/header/header.js"></script>
+<script src="libraries/codesnippet/lib/highlight/highlight.pack.js"></script>
+<script src="modules/contrib/codesnippet/js/codesnippet.js"></script>
+
+</body>
+</html>
+
+<!-- END OUTPUT from 'modules/custom/clearlinux.org/themes/clearlinux_theme/templates/layout/html.html.twig' -->
+
