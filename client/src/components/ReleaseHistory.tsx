@@ -3,7 +3,8 @@ import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell
 import { format, differenceInDays } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { AlertTriangle, Clock } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
+import { NerdFontIcon } from "@/components/NerdFontIcon";
 import type { Release } from "@shared/schema";
 
 interface ReleaseHistoryProps {
@@ -13,13 +14,13 @@ interface ReleaseHistoryProps {
 
 export function ReleaseHistory({ releases, distroName }: ReleaseHistoryProps) {
   // Sort releases by date
-  const sortedReleases = useMemo(() => 
-    [...releases].sort((a, b) => 
+  const sortedReleases = useMemo(() =>
+    [...releases].sort((a, b) =>
       new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime()
     ), [releases]);
 
   // Prepare chart data - map versions to numeric Y values
-  const chartData = useMemo(() => 
+  const chartData = useMemo(() =>
     sortedReleases.map((release, index) => ({
       date: new Date(release.releaseDate).getTime(),
       dateStr: format(new Date(release.releaseDate), "MMM yyyy"),
@@ -30,7 +31,7 @@ export function ReleaseHistory({ releases, distroName }: ReleaseHistoryProps) {
 
   // Check if potentially discontinued (last release > 2 years ago)
   const latestRelease = sortedReleases[sortedReleases.length - 1];
-  const daysSinceLastRelease = latestRelease ? 
+  const daysSinceLastRelease = latestRelease ?
     differenceInDays(new Date(), new Date(latestRelease.releaseDate)) : 0;
   const isPotentiallyDiscontinued = daysSinceLastRelease > 730; // More than 2 years (365 * 2)
 
@@ -47,22 +48,22 @@ export function ReleaseHistory({ releases, distroName }: ReleaseHistoryProps) {
 
       <Card className="p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Clock className="w-5 h-5 text-primary" />
+          <NerdFontIcon name="history" className="text-primary" />
           <h3 className="font-semibold text-lg">Release History</h3>
         </div>
-        
+
         <div className="h-64" data-testid="chart-release-history">
           <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 60 }}>
-              <XAxis 
-                dataKey="date" 
+              <XAxis
+                dataKey="date"
                 type="number"
                 domain={['dataMin', 'dataMax']}
                 tickFormatter={(value) => format(new Date(value), "MMM yyyy")}
                 tick={{ fontSize: 12 }}
               />
-              <YAxis 
-                dataKey="y" 
+              <YAxis
+                dataKey="y"
                 type="number"
                 domain={[0, 'dataMax + 1']}
                 tickFormatter={(value) => {
@@ -72,7 +73,7 @@ export function ReleaseHistory({ releases, distroName }: ReleaseHistoryProps) {
                 tick={{ fontSize: 11 }}
                 width={50}
               />
-              <Tooltip 
+              <Tooltip
                 content={({ active, payload }) => {
                   if (!active || !payload?.length) return null;
                   const data = payload[0].payload;
@@ -89,8 +90,8 @@ export function ReleaseHistory({ releases, distroName }: ReleaseHistoryProps) {
               />
               <Scatter data={chartData} fill="hsl(var(--primary))">
                 {chartData.map((entry, index) => (
-                  <Cell 
-                    key={index} 
+                  <Cell
+                    key={index}
                     fill={entry.isLts ? "hsl(142 76% 36%)" : "hsl(var(--primary))"}
                   />
                 ))}

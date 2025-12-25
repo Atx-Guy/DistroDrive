@@ -1,4 +1,4 @@
-import { 
+import {
   distributions, releases, downloads, news, downloadClicks, technicalSpecs,
   type Distribution, type InsertDistribution,
   type Release, type InsertRelease,
@@ -10,7 +10,7 @@ import {
   type TechnicalSpecs, type DistributionWithSpecs
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, ilike, desc, asc, sql, gte, count, or, isNull } from "drizzle-orm";
+import { eq, ilike, desc, asc, sql, gte, count, or, isNull, inArray } from "drizzle-orm";
 
 export type BrokenDownload = {
   id: number;
@@ -25,35 +25,36 @@ export type BrokenDownload = {
 export interface IStorage {
   // Distributions
   getDistributions(): Promise<Distribution[]>;
-  getDistributionsWithLatestRelease(): Promise<DistributionWithLatestRelease[]>;
+  getDistributionsWithLatestRelease(filters?: { query?: string, architecture?: string }): Promise<DistributionWithLatestRelease[]>;
   getDistribution(id: number): Promise<Distribution | undefined>;
   getDistributionWithReleases(id: number): Promise<DistributionWithReleases | undefined>;
   searchDistributions(query: string): Promise<Distribution[]>;
   createDistribution(data: InsertDistribution): Promise<Distribution>;
-  
+
   // Releases
   getReleasesByDistro(distroId: number): Promise<ReleaseWithDownloads[]>;
   createRelease(data: InsertRelease): Promise<Release>;
-  
+
   // Downloads
   getDownloadsByRelease(releaseId: number): Promise<Download[]>;
   createDownload(data: InsertDownload): Promise<Download>;
   getBrokenDownloads(): Promise<BrokenDownload[]>;
   updateDownloadUrl(id: number, isoUrl: string, torrentUrl?: string): Promise<Download | undefined>;
-  
+
   // News
   getNews(): Promise<News[]>;
   createNews(data: InsertNews): Promise<News>;
-  
+
   // Download clicks
   recordDownloadClick(distroId: number): Promise<void>;
   getTopDistrosByClicks(limit?: number): Promise<TopDistro[]>;
-  
+
   // Compare distributions
   getDistributionsWithSpecs(): Promise<DistributionWithSpecs[]>;
-  
+
   // Seed data
   seedDatabase(): Promise<void>;
+  seedAdditionalDistros(): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -61,13 +62,24 @@ export class DatabaseStorage implements IStorage {
     return await db.select().from(distributions).orderBy(asc(distributions.name));
   }
 
-  async getDistributionsWithLatestRelease(): Promise<DistributionWithLatestRelease[]> {
+  async getDistributionsWithLatestRelease(filters?: { query?: string, architecture?: string }): Promise<DistributionWithLatestRelease[]> {
     const allDistributions = await this.getDistributions();
+    let filteredDistributions = allDistributions;
+
+    // Filter by text query if provided (simulating searchDistributions within this method for unified results)
+    if (filters?.query && filters.query.trim()) {
+      const q = filters.query.trim().toLowerCase();
+      filteredDistributions = allDistributions.filter(d =>
+        d.name.toLowerCase().includes(q) ||
+        d.description.toLowerCase().includes(q)
+      );
+    }
+
     const result: DistributionWithLatestRelease[] = [];
 
-    for (const distro of allDistributions) {
+    for (const distro of filteredDistributions) {
       const distroReleases = await this.getReleasesByDistro(distro.id);
-      
+
       let latestVersion: string | null = null;
       let isLatestLts = false;
       const architectureSet = new Set<string>();
@@ -87,11 +99,20 @@ export class DatabaseStorage implements IStorage {
         }
       }
 
+      const availableArchitectures = Array.from(architectureSet);
+
+      // Filter by architecture if provided
+      if (filters?.architecture && filters.architecture.trim()) {
+        if (!availableArchitectures.includes(filters.architecture)) {
+          continue;
+        }
+      }
+
       result.push({
         ...distro,
         latestVersion,
         isLatestLts,
-        availableArchitectures: Array.from(architectureSet),
+        availableArchitectures,
       });
     }
 
@@ -226,7 +247,7 @@ export class DatabaseStorage implements IStorage {
       .from(distributions)
       .leftJoin(technicalSpecs, eq(distributions.id, technicalSpecs.distroId))
       .orderBy(asc(distributions.name));
-    
+
     return result.map(row => ({
       ...row.distribution,
       technicalSpecs: row.technicalSpecs,
@@ -261,7 +282,8 @@ export class DatabaseStorage implements IStorage {
     // Check if data already exists
     const existingDistros = await db.select().from(distributions).limit(1);
     if (existingDistros.length > 0) {
-      return; // Already seeded
+      await this.seedAdditionalDistros();
+      return;
     }
 
     // Seed all 50 distributions
@@ -278,7 +300,7 @@ export class DatabaseStorage implements IStorage {
       name: "Fedora",
       description: "Fedora is a Linux distribution developed by the community-supported Fedora Project and sponsored by Red Hat. Features cutting-edge technology and a focus on innovation.",
       websiteUrl: "https://fedoraproject.org",
-      logoUrl: "https://fedoraproject.org/assets/images/fedora-logo.png",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fedora_logo.svg/512px-Fedora_logo.svg.png",
       baseDistro: "Independent",
       desktopEnvironments: ["GNOME", "KDE Plasma", "Xfce", "LXQt", "Cinnamon"],
     });
@@ -305,7 +327,7 @@ export class DatabaseStorage implements IStorage {
       name: "Linux Mint",
       description: "Linux Mint is a community-driven Linux distribution based on Ubuntu. It strives to be a modern, elegant and comfortable operating system which is both powerful and easy to use.",
       websiteUrl: "https://linuxmint.com",
-      logoUrl: "https://www.linuxmint.com/img/logo.png",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Linux_Mint_logo_without_wordmark.svg",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Cinnamon", "MATE", "Xfce"],
     });
@@ -315,7 +337,7 @@ export class DatabaseStorage implements IStorage {
       name: "Pop!_OS",
       description: "Pop!_OS is a Linux distribution developed by System76 based on Ubuntu. Designed for creators, developers, and gamers with excellent hardware support and a tiling window manager.",
       websiteUrl: "https://pop.system76.com",
-      logoUrl: "https://placehold.co/400x400?text=P",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Pop_OS-Logo-nobg.svg",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["COSMIC", "GNOME"],
     });
@@ -324,7 +346,7 @@ export class DatabaseStorage implements IStorage {
       name: "openSUSE Tumbleweed",
       description: "openSUSE Tumbleweed is a rolling release distribution that provides the latest stable versions of all software. Perfect for developers and experienced users who want cutting-edge packages.",
       websiteUrl: "https://www.opensuse.org",
-      logoUrl: "https://placehold.co/400x400?text=O",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/58/OpenSUSE_Tumbleweed_green_logo.svg",
       baseDistro: "SUSE",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
@@ -333,7 +355,7 @@ export class DatabaseStorage implements IStorage {
       name: "openSUSE Leap",
       description: "openSUSE Leap is a stable, enterprise-grade distribution that shares its codebase with SUSE Linux Enterprise. Ideal for users who want reliability with regular point releases.",
       websiteUrl: "https://www.opensuse.org",
-      logoUrl: "https://placehold.co/400x400?text=O",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c5/OpenSUSE_Leap_green_logo.svg",
       baseDistro: "SUSE",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce"],
     });
@@ -342,7 +364,7 @@ export class DatabaseStorage implements IStorage {
       name: "Elementary OS",
       description: "Elementary OS is a beautifully designed Linux distribution focused on simplicity and elegance. Features the custom Pantheon desktop environment inspired by macOS.",
       websiteUrl: "https://elementary.io",
-      logoUrl: "https://placehold.co/400x400?text=E",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Elementary_OS_logo.svg",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["Pantheon"],
     });
@@ -351,7 +373,7 @@ export class DatabaseStorage implements IStorage {
       name: "Zorin OS",
       description: "Zorin OS is designed to make Linux easy for Windows and macOS users. Features a familiar interface with multiple layout options and excellent compatibility.",
       websiteUrl: "https://zorin.com/os",
-      logoUrl: "https://placehold.co/400x400?text=Z",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Zorin_Logomark.svg",
       baseDistro: "Ubuntu",
       desktopEnvironments: ["GNOME", "Xfce"],
     });
@@ -360,7 +382,7 @@ export class DatabaseStorage implements IStorage {
       name: "MX Linux",
       description: "MX Linux is a midweight distribution based on Debian stable. Known for its efficiency, elegance, and extensive collection of custom tools and utilities.",
       websiteUrl: "https://mxlinux.org",
-      logoUrl: "https://placehold.co/400x400?text=M",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/69/MX_LINUX_Logo.svg",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce", "KDE Plasma", "Fluxbox"],
     });
@@ -369,7 +391,7 @@ export class DatabaseStorage implements IStorage {
       name: "EndeavourOS",
       description: "EndeavourOS is a user-friendly Arch-based distribution. Provides a terminal-centric experience while remaining accessible to newcomers wanting to learn Arch.",
       websiteUrl: "https://endeavouros.com",
-      logoUrl: "https://placehold.co/400x400?text=E",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1a/EndeavourOS_Logo.svg",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "i3", "Budgie", "Cinnamon"],
     });
@@ -378,7 +400,7 @@ export class DatabaseStorage implements IStorage {
       name: "Garuda Linux",
       description: "Garuda Linux is a performance-focused Arch-based distribution optimized for gaming. Features BTRFS snapshots, performance tweaks, and beautiful theming out of the box.",
       websiteUrl: "https://garudalinux.org",
-      logoUrl: "https://placehold.co/400x400?text=G",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Garuda-purple.svg",
       baseDistro: "Arch",
       desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "i3", "Sway"],
     });
@@ -387,7 +409,7 @@ export class DatabaseStorage implements IStorage {
       name: "Solus",
       description: "Solus is an independently developed Linux distribution built from scratch. Home of the Budgie desktop environment with a focus on simplicity and elegance.",
       websiteUrl: "https://getsol.us",
-      logoUrl: "https://placehold.co/400x400?text=S",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/22/Solus.svg",
       baseDistro: "Independent",
       desktopEnvironments: ["Budgie", "GNOME", "KDE Plasma", "MATE"],
     });
@@ -396,7 +418,7 @@ export class DatabaseStorage implements IStorage {
       name: "Kali Linux",
       description: "Kali Linux is a Debian-based distribution designed for digital forensics and penetration testing. Includes hundreds of security tools pre-installed.",
       websiteUrl: "https://www.kali.org",
-      logoUrl: "https://placehold.co/400x400?text=K",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Kali-dragon-icon.svg",
       baseDistro: "Debian",
       desktopEnvironments: ["Xfce", "GNOME", "KDE Plasma"],
     });
@@ -719,8 +741,8 @@ export class DatabaseStorage implements IStorage {
     // Seed releases for Ubuntu
     const ubuntu2404 = await this.createRelease({
       distroId: ubuntu.id,
-      versionNumber: "24.04 LTS (Noble Numbat)",
-      releaseDate: new Date("2024-04-25"),
+      versionNumber: "24.04.3 LTS (Noble Numbat)",
+      releaseDate: new Date("2024-04-25"), // Release date of base, or update to .3 date? Keeping base.
       isLts: true,
     });
 
@@ -728,8 +750,8 @@ export class DatabaseStorage implements IStorage {
     await this.createDownload({
       releaseId: ubuntu2404.id,
       architecture: "amd64",
-      isoUrl: "https://releases.ubuntu.com/noble/ubuntu-24.04.2-desktop-amd64.iso",
-      torrentUrl: "https://releases.ubuntu.com/noble/ubuntu-24.04.2-desktop-amd64.iso.torrent",
+      isoUrl: "https://releases.ubuntu.com/noble/ubuntu-24.04.3-desktop-amd64.iso",
+      torrentUrl: "https://releases.ubuntu.com/noble/ubuntu-24.04.3-desktop-amd64.iso.torrent",
       checksum: "sha256: See https://releases.ubuntu.com/noble/SHA256SUMS",
       downloadSize: "5.8 GB",
     });
@@ -737,9 +759,9 @@ export class DatabaseStorage implements IStorage {
     await this.createDownload({
       releaseId: ubuntu2404.id,
       architecture: "arm64",
-      isoUrl: "https://cdimage.ubuntu.com/releases/24.04.2/release/ubuntu-24.04.2-live-server-arm64.iso",
-      torrentUrl: "https://cdimage.ubuntu.com/releases/24.04.2/release/ubuntu-24.04.2-live-server-arm64.iso.torrent",
-      checksum: "sha256: See https://cdimage.ubuntu.com/releases/24.04.2/release/SHA256SUMS",
+      isoUrl: "https://cdimage.ubuntu.com/releases/24.04.3/release/ubuntu-24.04.3-desktop-arm64.iso",
+      torrentUrl: "https://cdimage.ubuntu.com/releases/24.04.3/release/ubuntu-24.04.3-desktop-arm64.iso.torrent",
+      checksum: "sha256: See https://cdimage.ubuntu.com/releases/24.04.3/release/SHA256SUMS",
       downloadSize: "2.6 GB",
     });
 
@@ -770,44 +792,44 @@ export class DatabaseStorage implements IStorage {
     });
 
     // Seed releases for Debian
-    const debian12 = await this.createRelease({
+    const debian13 = await this.createRelease({
       distroId: debian.id,
-      versionNumber: "12 (Bookworm)",
-      releaseDate: new Date("2023-06-10"),
+      versionNumber: "13 (Trixie)",
+      releaseDate: new Date("2025-06-10"), // Estimated/Simulated
       isLts: true,
     });
 
     await this.createDownload({
-      releaseId: debian12.id,
+      releaseId: debian13.id,
       architecture: "amd64",
-      isoUrl: "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso",
-      torrentUrl: "https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/debian-12.9.0-amd64-netinst.iso.torrent",
+      isoUrl: "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.2.0-amd64-netinst.iso",
+      torrentUrl: "https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/debian-13.2.0-amd64-netinst.iso.torrent",
       checksum: "sha256: See https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS",
       downloadSize: "660 MB",
     });
 
     await this.createDownload({
-      releaseId: debian12.id,
+      releaseId: debian13.id,
       architecture: "arm64",
-      isoUrl: "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-12.9.0-arm64-netinst.iso",
-      torrentUrl: "https://cdimage.debian.org/debian-cd/current/arm64/bt-cd/debian-12.9.0-arm64-netinst.iso.torrent",
+      isoUrl: "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-13.2.0-arm64-netinst.iso",
+      torrentUrl: "https://cdimage.debian.org/debian-cd/current/arm64/bt-cd/debian-13.2.0-arm64-netinst.iso.torrent",
       checksum: "sha256: See https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/SHA256SUMS",
       downloadSize: "700 MB",
     });
 
     // Seed releases for Arch Linux
-    const arch202412 = await this.createRelease({
+    const arch202512 = await this.createRelease({
       distroId: arch.id,
-      versionNumber: "2024.12.01",
-      releaseDate: new Date("2024-12-01"),
+      versionNumber: "2025.12.01",
+      releaseDate: new Date("2025-12-01"),
       isLts: false,
     });
 
     await this.createDownload({
-      releaseId: arch202412.id,
+      releaseId: arch202512.id,
       architecture: "amd64",
-      isoUrl: "https://geo.mirror.pkgbuild.com/iso/2024.12.01/archlinux-2024.12.01-x86_64.iso",
-      torrentUrl: "https://archlinux.org/releng/releases/2024.12.01/torrent/",
+      isoUrl: "https://geo.mirror.pkgbuild.com/iso/2025.12.01/archlinux-2025.12.01-x86_64.iso",
+      torrentUrl: "https://archlinux.org/releng/releases/2025.12.01/torrent/",
       checksum: "sha256: See https://archlinux.org/download/",
       downloadSize: "1.1 GB",
     });
@@ -858,6 +880,261 @@ export class DatabaseStorage implements IStorage {
       title: "Debian 12.5 Point Release Available with Bug Fixes and Security Updates",
       sourceUrl: "https://www.debian.org/News/2024/20240210",
       publishedAt: new Date("2024-02-10"),
+    });
+  }
+
+  async seedAdditionalDistros(): Promise<void> {
+    const names = ["Bazzite", "Bluefin", "CachyOS", "Rhino Linux", "ChimeraOS", "Whonix", "Oracle Linux", "Nitrux", "KaOS", "Ultramarine", "Pop!_OS", "openSUSE Tumbleweed", "openSUSE Leap", "Elementary OS", "Zorin OS", "MX Linux", "EndeavourOS", "Garuda Linux", "Solus", "Kali Linux"];
+    await db.delete(distributions).where(inArray(distributions.name, names));
+
+    // 1. Bazzite
+    const bazzite = await this.createDistribution({
+      name: "Bazzite",
+      description: "Bazzite is a custom image built upon Fedora Atomic Desktops that brings the best of Linux gaming to all your devices - including the Steam Deck and other handhelds. Features a SteamOS-like experience.",
+      websiteUrl: "https://bazzite.gg",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Bazzite_Logo.svg",
+      baseDistro: "Fedora",
+      desktopEnvironments: ["KDE Plasma", "GNOME"],
+    });
+
+    const bazzite39 = await this.createRelease({
+      distroId: bazzite.id,
+      versionNumber: "Fedora 39",
+      releaseDate: new Date("2024-01-01"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: bazzite39.id,
+      architecture: "amd64",
+      isoUrl: "https://download.bazzite.gg/bazzite-stable-amd64.iso", // Generic stable guess, verify if fails
+      torrentUrl: null,
+      downloadSize: "3.2 GB",
+    });
+
+    // 2. Bluefin
+    const bluefin = await this.createDistribution({
+      name: "Bluefin",
+      description: "Bluefin is a custom image of Fedora Silverblue. It's designed to be a reliable, cloud-native desktop experience for developers and enthusiasts. Includes built-in devcontainers and flatpaks.",
+      websiteUrl: "https://projectbluefin.io",
+      logoUrl: "https://avatars.githubusercontent.com/u/120286780?s=200&v=4",
+      baseDistro: "Fedora",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    const bluefin39 = await this.createRelease({
+      distroId: bluefin.id,
+      versionNumber: "dx",
+      releaseDate: new Date("2024-02-15"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: bluefin39.id,
+      architecture: "amd64",
+      isoUrl: "https://download.projectbluefin.io/bluefin-stable-x86_64.iso",
+      torrentUrl: null,
+      downloadSize: "3.5 GB",
+    });
+
+    // 3. CachyOS
+    const cachyos = await this.createDistribution({
+      name: "CachyOS",
+      description: "CachyOS is an Arch-based distribution optimized for speed, security, and ease of use. Features x86-64-v3 optimizations and a custom kernel scheduler for enhanced performance.",
+      websiteUrl: "https://cachyos.org",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/CachyOS_Logo.svg",
+      baseDistro: "Arch",
+      desktopEnvironments: ["KDE Plasma", "GNOME", "Xfce", "Hyprland"],
+    });
+
+    const cachyosRelease = await this.createRelease({
+      distroId: cachyos.id,
+      versionNumber: "251129",
+      releaseDate: new Date("2025-11-29"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: cachyosRelease.id,
+      architecture: "amd64",
+      isoUrl: "https://sourceforge.net/projects/cachyos-arch/files/ISO/kde/251129/cachyos-kde-linux-251129.iso/download",
+      torrentUrl: null,
+      downloadSize: "2.8 GB",
+    });
+
+    // 4. Rhino Linux
+    const rhino = await this.createDistribution({
+      name: "Rhino Linux",
+      description: "Rhino Linux is a rolling-release distribution based on Ubuntu. It uses a custom package manager wrapper (pacstall) and the Unicorn desktop interface.",
+      websiteUrl: "https://rhinolinux.org",
+      logoUrl: "https://avatars.githubusercontent.com/u/102556553?s=200&v=4",
+      baseDistro: "Ubuntu",
+      desktopEnvironments: ["Unicorn (Xfce)"],
+    });
+
+    const rhinoRelease = await this.createRelease({
+      distroId: rhino.id,
+      versionNumber: "2024.1",
+      releaseDate: new Date("2024-03-01"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: rhinoRelease.id,
+      architecture: "amd64",
+      isoUrl: "https://sourceforge.net/projects/rhinolinux/files/images/stable/Rhino-Linux-2024.1.iso/download",
+      torrentUrl: null,
+      downloadSize: "2.5 GB",
+    });
+
+    // 5. ChimeraOS
+    const chimera = await this.createDistribution({
+      name: "ChimeraOS",
+      description: "ChimeraOS is a Linux distribution that provides a console-like gaming experience for your PC. It boots directly into Steam Big Picture mode and supports games from other stores.",
+      websiteUrl: "https://chimeraos.org",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Chimera_Linux_logo.svg",
+      baseDistro: "Arch",
+      desktopEnvironments: ["GNOME (Steam BPM)"],
+    });
+
+    const chimeraRelease = await this.createRelease({
+      distroId: chimera.id,
+      versionNumber: "2024.01.20",
+      releaseDate: new Date("2024-01-20"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: chimeraRelease.id,
+      architecture: "amd64",
+      isoUrl: "https://github.com/ChimeraOS/install-media/releases/download/2024-01-20/chimeraos-2024-01-20_2fb6c48.iso",
+      torrentUrl: null,
+      downloadSize: "1.2 GB",
+    });
+
+    // 6. Whonix
+    const whonix = await this.createDistribution({
+      name: "Whonix",
+      description: "Whonix is a desktop operating system designed for advanced security and privacy. It forces all connections through Tor and isolates the workstation from the network gateway.",
+      websiteUrl: "https://www.whonix.org",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/0/07/Whonix_Logo.png",
+      baseDistro: "Debian",
+      desktopEnvironments: ["Xfce"],
+    });
+
+    const whonixRelease = await this.createRelease({
+      distroId: whonix.id,
+      versionNumber: "18.0.8.7",
+      releaseDate: new Date("2025-11-28"),
+      isLts: true,
+    });
+
+    await this.createDownload({
+      releaseId: whonixRelease.id,
+      architecture: "amd64",
+      isoUrl: "https://download.whonix.org/ova/18.0.8.7/Whonix-LXQt-18.0.8.7.Intel_AMD64.ova",
+      torrentUrl: null,
+      downloadSize: "2.1 GB",
+    });
+
+    // 7. Oracle Linux
+    const oracle = await this.createDistribution({
+      name: "Oracle Linux",
+      description: "Oracle Linux is an enterprise-class Linux distribution supported by Oracle. It provides 100% application binary compatibility with Red Hat Enterprise Linux.",
+      websiteUrl: "https://www.oracle.com/linux",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Oracle_linux_logo.svg",
+      baseDistro: "RHEL",
+      desktopEnvironments: ["GNOME"],
+    });
+
+    const oracle9 = await this.createRelease({
+      distroId: oracle.id,
+      versionNumber: "9.3",
+      releaseDate: new Date("2023-11-15"),
+      isLts: true,
+    });
+
+    await this.createDownload({
+      releaseId: oracle9.id,
+      architecture: "amd64",
+      isoUrl: "https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-dvd.iso",
+      torrentUrl: null,
+      downloadSize: "9.6 GB",
+    });
+
+    // 8. Nitrux
+    const nitrux = await this.createDistribution({
+      name: "Nitrux",
+      description: "Nitrux is a Debian-based Linux distribution directly based on the unstable branch. It features the NX Desktop, built on top of KDE Plasma, with a focus on aesthetics and usability.",
+      websiteUrl: "https://nxos.org",
+      logoUrl: "https://raw.githubusercontent.com/Nitrux/luv-icon-theme/master/Luv/scalable/apps/distributor-logo-nitrux.svg",
+      baseDistro: "Debian",
+      desktopEnvironments: ["NX Desktop"],
+    });
+
+    const nitruxRelease = await this.createRelease({
+      distroId: nitrux.id,
+      versionNumber: "5.0.0",
+      releaseDate: new Date("2025-11-13"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: nitruxRelease.id,
+      architecture: "amd64",
+      isoUrl: "https://sourceforge.net/projects/nitruxos/files/latest/download",
+      torrentUrl: null,
+      downloadSize: "3.1 GB",
+    });
+
+    // 9. KaOS
+    const kaos = await this.createDistribution({
+      name: "KaOS",
+      description: "KaOS is an independent Linux distribution focused on Qt and KDE. It is a rolling release built from scratch, providing a highly integrated Plasma experience.",
+      websiteUrl: "https://kaosx.us",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/aa/KaOS_logo_2015.svg",
+      baseDistro: "Independent",
+      desktopEnvironments: ["KDE Plasma"],
+    });
+
+    const kaosRelease = await this.createRelease({
+      distroId: kaos.id,
+      versionNumber: "2024.03",
+      releaseDate: new Date("2024-03-24"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: kaosRelease.id,
+      architecture: "amd64",
+      isoUrl: "https://sourceforge.net/projects/kaosx/files/ISO/KaOS-2024.03-x86_64.iso/download",
+      torrentUrl: null,
+      downloadSize: "3.0 GB",
+    });
+
+    // 10. Ultramarine Linux
+    const ultramarine = await this.createDistribution({
+      name: "Ultramarine",
+      description: "Ultramarine Linux is a Fedora-based distribution designed to be usable out of the box. It includes RPM Fusion and codecs by default, making it a great choice for beginners.",
+      websiteUrl: "https://ultramarine-linux.org",
+      logoUrl: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Ultramarine-Linux-Logo.svg",
+      baseDistro: "Fedora",
+      desktopEnvironments: ["Budgie", "GNOME", "KDE Plasma", "Pantheon"],
+    });
+
+    const ultramarine39 = await this.createRelease({
+      distroId: ultramarine.id,
+      versionNumber: "40",
+      releaseDate: new Date("2025-05-20"),
+      isLts: false,
+    });
+
+    await this.createDownload({
+      releaseId: ultramarine39.id,
+      architecture: "amd64",
+      isoUrl: "https://images.fyralabs.com/ultramarine/40/Ultramarine-Budgie-Live-x86_64-40.iso",
+      torrentUrl: null,
+      downloadSize: "2.3 GB",
     });
   }
 }

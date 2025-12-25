@@ -7,14 +7,16 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  
+
   // Seed database on startup
   await storage.seedDatabase();
 
   // Get all distributions with latest release info
   app.get("/api/distributions", async (req, res) => {
     try {
-      const distros = await storage.getDistributionsWithLatestRelease();
+      const query = (req.query.q as string) || undefined;
+      const architecture = (req.query.architecture as string) || undefined;
+      const distros = await storage.getDistributionsWithLatestRelease({ query, architecture });
       res.json(distros);
     } catch (error) {
       console.error("Error fetching distributions:", error);
@@ -133,15 +135,15 @@ export async function registerRoutes(
       if (isNaN(id)) {
         return res.status(400).json({ error: "Invalid download ID" });
       }
-      
+
       const parseResult = updateDownloadUrlSchema.safeParse(req.body);
       if (!parseResult.success) {
-        return res.status(400).json({ 
-          error: "Validation failed", 
-          details: parseResult.error.flatten().fieldErrors 
+        return res.status(400).json({
+          error: "Validation failed",
+          details: parseResult.error.flatten().fieldErrors
         });
       }
-      
+
       const { isoUrl, torrentUrl } = parseResult.data;
       const updated = await storage.updateDownloadUrl(id, isoUrl, torrentUrl || undefined);
       if (!updated) {

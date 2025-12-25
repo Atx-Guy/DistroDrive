@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
+import { DistroLogo } from "@/components/DistroLogo";
 import type { Distribution } from "@shared/schema";
 
 interface DistributionCardProps {
@@ -11,35 +12,29 @@ interface DistributionCardProps {
 export function DistributionCard({ distribution }: DistributionCardProps) {
   return (
     <Link href={`/distro/${distribution.id}`}>
-      <Card 
+      <Card
         className="p-6 hover-elevate active-elevate-2 cursor-pointer transition-all duration-200 h-full flex flex-col"
         data-testid={`card-distribution-${distribution.id}`}
       >
         <div className="flex items-start gap-4">
-          <div className="w-16 h-16 rounded-md bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden">
-            {distribution.logoUrl ? (
-              <img 
-                src={distribution.logoUrl} 
-                alt={`${distribution.name} logo`}
-                className="w-12 h-12 object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = `<span class="text-2xl font-bold text-muted-foreground">${distribution.name.charAt(0)}</span>`;
-                }}
-              />
-            ) : (
-              <span className="text-2xl font-bold text-muted-foreground">
-                {distribution.name.charAt(0)}
-              </span>
-            )}
-          </div>
-          
+          <DistroLogo
+            distroName={distribution.name}
+            logoUrl={distribution.logoUrl}
+            size={48}
+            className="w-12 h-12"
+          />
+
           <div className="flex-1 min-w-0">
             <h3 className="font-serif font-bold text-lg text-foreground mb-1 truncate" data-testid={`text-distro-name-${distribution.id}`}>
               {distribution.name}
             </h3>
             {distribution.baseDistro && (
               <Badge variant="secondary" className="text-xs" data-testid={`badge-base-distro-${distribution.id}`}>
+                <DistroLogo
+                  distroName={distribution.baseDistro}
+                  variant="micro"
+                  className="w-3 h-3 mr-1"
+                />
                 {distribution.baseDistro}
               </Badge>
             )}

@@ -9,8 +9,8 @@ import { DistributionCard } from "@/components/DistributionCard";
 import { getTopMatches, type MatcherInputs, type ScoredDistribution } from "@/lib/distroMatcher";
 import type { ExperienceLevel, UseCase, Hardware } from "@/data/distro-tags";
 import type { DistributionWithLatestRelease } from "@shared/schema";
-import { 
-  Terminal, User, Code, Zap, Gamepad2, Server, Monitor, Shield, 
+import {
+  Terminal, User, Code, Zap, Gamepad2, Server, Monitor, Shield,
   Laptop, Cpu, ChevronRight, ChevronLeft, RotateCcw, Sparkles,
   Home, HardDrive, Newspaper, Scale, Usb
 } from "lucide-react";
@@ -35,33 +35,31 @@ const hardwareOptions: { value: Hardware; label: string; description: string; ic
   { value: "modern", label: "Modern", description: "Newer hardware, 8GB+ RAM", icon: Cpu },
 ];
 
-function OptionCard({ 
-  selected, 
-  onClick, 
-  icon: Icon, 
-  label, 
+function OptionCard({
+  selected,
+  onClick,
+  icon: Icon,
+  label,
   description,
   testId,
-}: { 
-  selected: boolean; 
-  onClick: () => void; 
-  icon: typeof User; 
-  label: string; 
+}: {
+  selected: boolean;
+  onClick: () => void;
+  icon: typeof User;
+  label: string;
   description?: string;
   testId: string;
 }) {
   return (
     <Card
-      className={`p-4 cursor-pointer transition-all hover-elevate active-elevate-2 ${
-        selected ? "ring-2 ring-primary bg-primary/5" : ""
-      }`}
+      className={`p-4 cursor-pointer transition-all hover-elevate active-elevate-2 ${selected ? "ring-2 ring-primary bg-primary/5" : ""
+        }`}
       onClick={onClick}
       data-testid={testId}
     >
       <div className="flex items-center gap-3">
-        <div className={`w-10 h-10 rounded-md flex items-center justify-center ${
-          selected ? "bg-primary text-primary-foreground" : "bg-muted"
-        }`}>
+        <div className={`w-10 h-10 rounded-md flex items-center justify-center ${selected ? "bg-primary text-primary-foreground" : "bg-muted"
+          }`}>
           <Icon className="w-5 h-5" />
         </div>
         <div>
@@ -157,8 +155,8 @@ export default function Matcher() {
 
             <nav className="flex items-center gap-1 flex-wrap">
               <Link href="/">
-                <Button 
-                  variant={location === "/" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-home"
                 >
@@ -166,19 +164,10 @@ export default function Matcher() {
                   <span className="hidden sm:inline">Home</span>
                 </Button>
               </Link>
-              <Link href="/iso-browser">
-                <Button 
-                  variant={location === "/iso-browser" ? "secondary" : "ghost"} 
-                  size="sm"
-                  data-testid="link-nav-iso"
-                >
-                  <HardDrive className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">ISO Library</span>
-                </Button>
-              </Link>
+
               <Link href="/matcher">
-                <Button 
-                  variant={location === "/matcher" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/matcher" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-matcher"
                 >
@@ -187,8 +176,8 @@ export default function Matcher() {
                 </Button>
               </Link>
               <Link href="/compare">
-                <Button 
-                  variant={location === "/compare" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/compare" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-compare"
                 >
@@ -197,8 +186,8 @@ export default function Matcher() {
                 </Button>
               </Link>
               <Link href="/ventoy">
-                <Button 
-                  variant={location === "/ventoy" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/ventoy" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-ventoy"
                 >
@@ -212,8 +201,8 @@ export default function Matcher() {
                 </Button>
               </Link>
               <Link href="/news">
-                <Button 
-                  variant={location === "/news" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/news" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-news"
                 >
@@ -231,9 +220,8 @@ export default function Matcher() {
           {[1, 2, 3, 4].map((s) => (
             <div
               key={s}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                s === step ? "bg-primary" : s < step ? "bg-primary/50" : "bg-muted"
-              }`}
+              className={`w-3 h-3 rounded-full transition-colors ${s === step ? "bg-primary" : s < step ? "bg-primary/50" : "bg-muted"
+                }`}
             />
           ))}
         </div>
@@ -334,9 +322,9 @@ export default function Matcher() {
             ) : (
               <div className="grid gap-6">
                 {results.map((scored) => (
-                  <ResultCard 
-                    key={scored.distribution.id} 
-                    scored={scored} 
+                  <ResultCard
+                    key={scored.distribution.id}
+                    scored={scored}
                     maxScore={3 + (useCases.length * 2) + 1}
                   />
                 ))}

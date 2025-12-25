@@ -7,70 +7,70 @@
 
 export const DISTRO_BRAND_COLORS: Record<string, string> = {
     // Major Distributions
-    "Ubuntu": "#E95420",
-    "Linux Mint": "#87CF3E",
-    "Fedora": "#51A2DA",
-    "Debian": "#D70A53",
-    "Arch Linux": "#1793D1",
-    "Manjaro": "#35BF5C",
-    "Pop!_OS": "#48B9C7",
-    "openSUSE Tumbleweed": "#73BA25",
-    "openSUSE Leap": "#73BA25",
-    "Elementary OS": "#64BAFF",
-    "Zorin OS": "#0CC1F3",
-    "MX Linux": "#000000",
-    "EndeavourOS": "#7F7FFF",
-    "Garuda Linux": "#2EBBD6",
-    "Solus": "#5294E2",
-    "Kali Linux": "#557C94",
+    "Ubuntu": "var(--distro-ubuntu)",
+    "Linux Mint": "var(--distro-mint)",
+    "Fedora": "var(--distro-fedora)",
+    "Debian": "var(--distro-debian)",
+    "Arch Linux": "var(--distro-arch)",
+    "Manjaro": "var(--distro-manjaro)",
+    "Pop!_OS": "var(--distro-popos)",
+    "openSUSE Tumbleweed": "var(--distro-opensuse)",
+    "openSUSE Leap": "var(--distro-opensuse)",
+    "Elementary OS": "var(--distro-elementary)",
+    "Zorin OS": "var(--distro-zorin)",
+    "MX Linux": "var(--distro-mx)",
+    "EndeavourOS": "var(--distro-endeavour)",
+    "Garuda Linux": "var(--distro-garuda)",
+    "Solus": "var(--distro-solus)",
+    "Kali Linux": "var(--distro-kali)",
 
     // Ubuntu Flavors
-    "Kubuntu": "#0079C1",
-    "Xubuntu": "#2283D0",
-    "Lubuntu": "#0068C8",
-    "Ubuntu MATE": "#87A752",
-    "Ubuntu Studio": "#E95420",
+    "Kubuntu": "var(--distro-kubuntu)",
+    "Xubuntu": "var(--distro-xubuntu)",
+    "Lubuntu": "var(--distro-lubuntu)",
+    "Ubuntu MATE": "var(--distro-mate)",
+    "Ubuntu Studio": "var(--distro-ubuntu)", // Fallback to Ubuntu orange if specific not defined
 
     // Enterprise
-    "CentOS Stream": "#262577",
-    "Rocky Linux": "#10B981",
-    "AlmaLinux": "#000000",
+    "CentOS Stream": "var(--distro-centos)",
+    "Rocky Linux": "var(--distro-rocky)",
+    "AlmaLinux": "var(--distro-alma)",
 
     // Advanced/Minimal
-    "Void Linux": "#478061",
-    "Gentoo": "#54487A",
-    "Slackware": "#000000",
-    "NixOS": "#5277C3",
-    "Alpine Linux": "#0D597F",
+    "Void Linux": "var(--distro-void)",
+    "Gentoo": "var(--distro-gentoo)",
+    "Slackware": "var(--distro-slackware)",
+    "NixOS": "var(--distro-nixos)",
+    "Alpine Linux": "var(--distro-alpine)",
 
     // Security/Privacy
-    "Tails": "#56347C",
-    "Qubes OS": "#3874D8",
-    "Parrot OS": "#15D4F8",
+    "Tails": "var(--distro-tails)",
+    "Qubes OS": "var(--distro-qubes)",
+    "Parrot OS": "var(--distro-parrot)",
 
     // Lightweight
-    "Peppermint OS": "#000000",
-    "antiX": "#FF0000",
-    "Bodhi Linux": "#119900",
-    "Deepin": "#2CA7F8",
-    "Puppy Linux": "#C90000",
-    "SparkyLinux": "#000000",
+    "Peppermint OS": "var(--distro-mx)", // Fallback
+    "antiX": "var(--distro-debian)", // Fallback
+    "Bodhi Linux": "var(--distro-mint)", // Fallback
+    "Deepin": "var(--distro-deepin)",
+    "Puppy Linux": "var(--distro-debian)", // Fallback
+    "SparkyLinux": "var(--distro-debian)", // Fallback
 
     // Specialized
-    "KDE neon": "#1D99F3",
-    "LMDE": "#87CF3E",
-    "Mageia": "#2397D4",
-    "PCLinuxOS": "#004B8D",
-    "Artix Linux": "#10A0CC",
-    "Vanilla OS": "#FFA14E",
-    "Nobara": "#FF6347",
-    "Fedora Silverblue": "#51A2DA",
-    "Clear Linux": "#44D0F0",
+    "KDE neon": "var(--distro-neon)",
+    "LMDE": "var(--distro-mint)",
+    "Mageia": "var(--distro-mageia)",
+    "PCLinuxOS": "var(--distro-pclinux)", // Verify if exists, otherwise define
+    "Artix Linux": "var(--distro-artix)",
+    "Vanilla OS": "var(--distro-vanilla)",
+    "Nobara": "var(--distro-nobara)",
+    "Fedora Silverblue": "var(--distro-fedora)",
+    "Clear Linux": "var(--distro-clear)",
 
     // ARM/Special Hardware
-    "Raspberry Pi OS": "#C51A4A",
-    "Armbian": "#FF6700",
-    "Asahi Linux": "#E95420",
+    "Raspberry Pi OS": "var(--distro-raspi)",
+    "Armbian": "var(--distro-armbian)",
+    "Asahi Linux": "var(--distro-ubuntu)", // Fallback or new var
 };
 
 /**
@@ -126,7 +126,70 @@ export const DISTRO_SIMPLE_ICONS_SLUGS: Record<string, string> = {
     "Raspberry Pi OS": "raspberrypi",
     "Armbian": "armbian",
     "Deepin": "deepin",
+    "Oracle Linux": "oracle",
 };
+
+/**
+ * Local logo file mapping for "distro-icons" (high contrast/micro usage)
+ */
+export const DISTRO_LOGO_FILES: Record<string, string> = {
+    "AlmaLinux": "alma.svg",
+    "Alpine Linux": "alpine.svg",
+    "antiX": "antix.svg",
+    "Arch Linux": "arch.svg",
+    "Armbian": "armbian.png",
+    "Artix Linux": "artix.png",
+    "Asahi Linux": "asahi.png",
+    "Bodhi Linux": "bodhi.svg",
+    "CentOS Stream": "centos.svg",
+    "Clear Linux": "clear.svg",
+    "Debian": "debian.png",
+    "Deepin": "deepin.svg",
+    "Elementary OS": "elementary.svg",
+    "EndeavourOS": "endeavour.svg",
+    "Fedora": "fedora.svg",
+    "Garuda Linux": "garuda.svg",
+    "Gentoo": "gentoo.png",
+    "Kali Linux": "kali.svg",
+    "Kubuntu": "kubuntu.svg",
+    "Lubuntu": "lubuntu.svg",
+    "Mageia": "mageia.svg",
+    "Manjaro": "manjaro.svg",
+    "Ubuntu MATE": "mate.svg",
+    "Linux Mint": "mint.svg",
+    "MX Linux": "mx.svg",
+    "KDE neon": "neon.svg",
+    "NixOS": "nixos.svg",
+    "Nobara": "nobara.svg",
+    "openSUSE Tumbleweed": "opensuse.png",
+    "openSUSE Leap": "opensuse.png",
+    "Parrot OS": "parrot.svg",
+    "PCLinuxOS": "pclinux.svg",
+    "Peppermint OS": "peppermint.svg",
+    "Pop!_OS": "popos.svg",
+    "Puppy Linux": "puppy.svg",
+    "Qubes OS": "qubes.png",
+    "Raspberry Pi OS": "raspi.png",
+    "Rocky Linux": "rocky.svg",
+    "Slackware": "slackware.svg",
+    "Solus": "solus.svg",
+    "SparkyLinux": "sparky.svg",
+    "Ubuntu Studio": "studio.svg",
+    "Tails": "tails.svg",
+    "Ubuntu": "ubuntu.png",
+    "Vanilla OS": "vanilla.svg",
+    "Void Linux": "void.png",
+    "Xubuntu": "xubuntu.svg",
+    "Zorin OS": "zorin.svg",
+};
+
+/**
+ * Get the local logo path for a distribution
+ */
+export function getDistroLogoPath(distroName: string): string | null {
+    const filename = DISTRO_LOGO_FILES[distroName];
+    return filename ? `/logos/${filename}` : null;
+}
 
 /**
  * Get the Simple Icons slug for a distribution
@@ -136,3 +199,4 @@ export const DISTRO_SIMPLE_ICONS_SLUGS: Record<string, string> = {
 export function getDistroSimpleIconsSlug(distroName: string): string | null {
     return DISTRO_SIMPLE_ICONS_SLUGS[distroName] || null;
 }
+

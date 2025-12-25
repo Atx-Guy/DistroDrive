@@ -10,9 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { 
-  Terminal, Home, HardDrive, Sparkles, Newspaper, Scale, Usb, 
-  Trash2, Download, FileCode, ArrowLeft 
+import {
+  Terminal, Home, HardDrive, Sparkles, Newspaper, Scale, Usb,
+  Trash2, Download, FileCode, ArrowLeft
 } from "lucide-react";
 import { useIsoSelection } from "@/contexts/IsoSelectionContext";
 
@@ -48,7 +48,7 @@ export default function VentoyBuilder() {
       "mkdir -p isos",
       "cd isos",
       "",
-      ...selectedDownloads.map(d => 
+      ...selectedDownloads.map(d =>
         `wget -c "${d.isoUrl}" -O "${d.distroName.toLowerCase().replace(/\s+/g, "-")}-${d.version}-${d.architecture}.iso"`
       )
     ];
@@ -82,8 +82,8 @@ export default function VentoyBuilder() {
 
             <nav className="flex items-center gap-1 flex-wrap">
               <Link href="/">
-                <Button 
-                  variant={location === "/" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-home"
                 >
@@ -91,19 +91,10 @@ export default function VentoyBuilder() {
                   <span className="hidden sm:inline">Home</span>
                 </Button>
               </Link>
-              <Link href="/iso-browser">
-                <Button 
-                  variant={location === "/iso-browser" ? "secondary" : "ghost"} 
-                  size="sm"
-                  data-testid="link-nav-iso"
-                >
-                  <HardDrive className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">ISO Library</span>
-                </Button>
-              </Link>
+
               <Link href="/matcher">
-                <Button 
-                  variant={location === "/matcher" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/matcher" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-matcher"
                 >
@@ -112,8 +103,8 @@ export default function VentoyBuilder() {
                 </Button>
               </Link>
               <Link href="/compare">
-                <Button 
-                  variant={location === "/compare" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/compare" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-compare"
                 >
@@ -122,8 +113,8 @@ export default function VentoyBuilder() {
                 </Button>
               </Link>
               <Link href="/ventoy">
-                <Button 
-                  variant={location === "/ventoy" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/ventoy" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-ventoy"
                 >
@@ -137,8 +128,8 @@ export default function VentoyBuilder() {
                 </Button>
               </Link>
               <Link href="/news">
-                <Button 
-                  variant={location === "/news" ? "secondary" : "ghost"} 
+                <Button
+                  variant={location === "/news" ? "secondary" : "ghost"}
                   size="sm"
                   data-testid="link-nav-news"
                 >
@@ -171,10 +162,10 @@ export default function VentoyBuilder() {
             <p className="text-muted-foreground mb-6">
               Browse the ISO Library and add ISOs to build your Ventoy configuration.
             </p>
-            <Link href="/iso-browser">
+            <Link href="/">
               <Button data-testid="button-browse-isos">
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Browse ISO Library
+                Browse Directory
               </Button>
             </Link>
           </Card>
@@ -183,9 +174,9 @@ export default function VentoyBuilder() {
             <Card className="overflow-hidden">
               <div className="p-4 border-b flex items-center justify-between gap-4 flex-wrap">
                 <h2 className="font-semibold">Selected ISOs ({selectedCount})</h2>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={clearSelection}
                   data-testid="button-clear-all"
                 >
@@ -239,8 +230,8 @@ export default function VentoyBuilder() {
             </Card>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card 
-                className="p-6 hover-elevate cursor-pointer" 
+              <Card
+                className="p-6 hover-elevate cursor-pointer"
                 onClick={generateVentoyJson}
                 data-testid="button-download-ventoy-json"
               >
@@ -257,8 +248,8 @@ export default function VentoyBuilder() {
                 </div>
               </Card>
 
-              <Card 
-                className="p-6 hover-elevate cursor-pointer" 
+              <Card
+                className="p-6 hover-elevate cursor-pointer"
                 onClick={generateDownloadScript}
                 data-testid="button-download-script"
               >
@@ -277,7 +268,7 @@ export default function VentoyBuilder() {
             </div>
 
             <div className="text-center pt-4">
-              <Link href="/iso-browser">
+              <Link href="/">
                 <Button variant="outline" data-testid="button-add-more">
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Add More ISOs

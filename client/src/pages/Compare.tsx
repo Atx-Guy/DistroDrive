@@ -116,29 +116,29 @@ function getSpecValue(
   key: string
 ): string {
   if (!distro) return "-";
-  
+
   if (key === "desktopEnvironments") {
     return distro.desktopEnvironments.length > 0
       ? distro.desktopEnvironments.join(", ")
       : "-";
   }
-  
+
   if (key === "baseDistro") {
     return distro.baseDistro || "-";
   }
-  
+
   if (distro.technicalSpecs) {
     const value = distro.technicalSpecs[key as keyof typeof distro.technicalSpecs];
     return value?.toString() || "-";
   }
-  
+
   return "-";
 }
 
 export default function Compare() {
   const [location, setLocation] = useLocation();
   const searchString = useSearch();
-  
+
   const params = useMemo(() => new URLSearchParams(searchString), [searchString]);
   const d1Param = params.get("d1");
   const d2Param = params.get("d2");
@@ -167,7 +167,7 @@ export default function Compare() {
 
   useEffect(() => {
     if (!initializedFromUrl) return;
-    
+
     const newParams = new URLSearchParams();
     if (distro1) newParams.set("d1", distro1);
     if (distro2) newParams.set("d2", distro2);
@@ -211,12 +211,7 @@ export default function Compare() {
                   <span className="hidden sm:inline">Home</span>
                 </Button>
               </Link>
-              <Link href="/iso-browser">
-                <Button variant="ghost" size="sm" data-testid="link-nav-iso">
-                  <HardDrive className="w-4 h-4 sm:mr-2" />
-                  <span className="hidden sm:inline">ISO Library</span>
-                </Button>
-              </Link>
+
               <Link href="/matcher">
                 <Button variant="ghost" size="sm" data-testid="link-nav-matcher">
                   <Sparkles className="w-4 h-4 sm:mr-2" />
@@ -291,8 +286,8 @@ export default function Compare() {
                   </div>
                   <div className="p-4 border-l flex flex-col items-center gap-3">
                     <Avatar className="w-12 h-12" data-testid="avatar-distro1">
-                      <AvatarImage 
-                        src={selectedDistro1?.logoUrl || undefined} 
+                      <AvatarImage
+                        src={selectedDistro1?.logoUrl || undefined}
                         alt={selectedDistro1 ? `${selectedDistro1.name} logo` : ""}
                         className="object-contain"
                         data-testid="img-distro1-logo"
@@ -307,8 +302,8 @@ export default function Compare() {
                   </div>
                   <div className="p-4 border-l flex flex-col items-center gap-3">
                     <Avatar className="w-12 h-12" data-testid="avatar-distro2">
-                      <AvatarImage 
-                        src={selectedDistro2?.logoUrl || undefined} 
+                      <AvatarImage
+                        src={selectedDistro2?.logoUrl || undefined}
                         alt={selectedDistro2 ? `${selectedDistro2.name} logo` : ""}
                         className="object-contain"
                         data-testid="img-distro2-logo"

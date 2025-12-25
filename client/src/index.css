@@ -4,11 +4,11 @@
 
 /* LIGHT MODE - Using dark theme as default per design guidelines */
 :root {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+  --button-outline: rgba(255, 255, 255, .10);
+  --badge-outline: rgba(255, 255, 255, .05);
   --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
+  --elevate-1: rgba(255, 255, 255, .04);
+  --elevate-2: rgba(255, 255, 255, .09);
   --background: 220deg 48.39% 6.08%;
   --foreground: 210 40% 98%;
   --border: 217 33% 17%;
@@ -58,6 +58,47 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
+  /* Linux Distribution Brand Colors */
+  --distro-ubuntu: #E95420;
+  --distro-mint: #87CF3E;
+  --distro-arch: #1793D1;
+  --distro-fedora: #51A2DA;
+  --distro-debian: #D70A53;
+  --distro-manjaro: #35BF5C;
+  --distro-popos: #48B9C7;
+  --distro-opensuse: #73BA25;
+  --distro-elementary: #64BAFF;
+  --distro-zorin: #0CC1F3;
+  --distro-mx: #000000;
+  --distro-endeavour: #7F7FFF;
+  --distro-garuda: #2EBBD6;
+  --distro-solus: #5294E2;
+  --distro-kali: #557C94;
+  --distro-kubuntu: #0079C1;
+  --distro-xubuntu: #2283D0;
+  --distro-lubuntu: #0068C8;
+  --distro-mate: #87A752;
+  --distro-centos: #262577;
+  --distro-rocky: #10B981;
+  --distro-alma: #000000;
+  --distro-void: #478061;
+  --distro-gentoo: #54487A;
+  --distro-slackware: #000000;
+  --distro-nixos: #5277C3;
+  --distro-alpine: #0D597F;
+  --distro-tails: #56347C;
+  --distro-qubes: #3874D8;
+  --distro-parrot: #15D4F8;
+  --distro-neon: #1D99F3;
+  --distro-mageia: #2397D4;
+  --distro-artix: #10A0CC;
+  --distro-vanilla: #FFA14E;
+  --distro-nobara: #FF6347;
+  --distro-clear: #44D0F0;
+  --distro-raspi: #C51A4A;
+  --distro-armbian: #FF6700;
+  --distro-deepin: #2CA7F8;
+
   /* Fallback for older browsers */
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
@@ -83,11 +124,11 @@
 
 /* Light mode override if needed in future */
 .light {
-  --button-outline: rgba(0,0,0, .10);
-  --badge-outline: rgba(0,0,0, .05);
+  --button-outline: rgba(0, 0, 0, .10);
+  --badge-outline: rgba(0, 0, 0, .05);
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
+  --elevate-1: rgba(0, 0, 0, .03);
+  --elevate-2: rgba(0, 0, 0, .08);
   --background: 0 0% 98%;
   --foreground: 222 47% 11%;
   --border: 0 0% 89%;
@@ -163,6 +204,7 @@
   }
 
   .no-default-hover-elevate {}
+
   .no-default-active-elevate {}
 
   .toggle-elevate::before,
@@ -219,5 +261,9 @@
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
+  }
+
+  .font-nerd {
+    font-family: "Symbols Nerd Font", "JetBrains Mono Nerd Font", "FiraCode Nerd Font", "JetBrains Mono", monospace;
   }
 }

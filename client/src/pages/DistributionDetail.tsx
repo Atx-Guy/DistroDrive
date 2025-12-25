@@ -6,14 +6,15 @@ import { Header } from "@/components/Header";
 import { ReleaseTable } from "@/components/ReleaseTable";
 import { ReleaseHistory } from "@/components/ReleaseHistory";
 import { IsoArchive } from "@/components/IsoArchive";
+import { DistroLogo } from "@/components/DistroLogo";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  Globe, 
+import {
+  ArrowLeft,
+  ExternalLink,
+  Globe,
   Monitor,
   Layers,
   ServerCrash,
@@ -134,7 +135,7 @@ export default function DistributionDetail() {
   return (
     <div className="min-h-screen bg-background">
       <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
-      
+
       <main className="max-w-7xl mx-auto px-6 py-8">
         <Link href="/">
           <Button variant="ghost" size="sm" className="mb-6 -ml-2" data-testid="button-back-home">
@@ -165,25 +166,13 @@ export default function DistributionDetail() {
         {distribution && (
           <div className="space-y-8">
             <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="w-24 h-24 rounded-lg bg-muted flex items-center justify-center flex-shrink-0 overflow-hidden">
-                {distribution.logoUrl ? (
-                  <img 
-                    src={distribution.logoUrl} 
-                    alt={`${distribution.name} logo`}
-                    className="w-20 h-20 object-contain"
-                    data-testid="img-distro-logo"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement!.innerHTML = `<span class="text-4xl font-bold text-muted-foreground">${distribution.name.charAt(0)}</span>`;
-                    }}
-                  />
-                ) : (
-                  <span className="text-4xl font-bold text-muted-foreground">
-                    {distribution.name.charAt(0)}
-                  </span>
-                )}
-              </div>
-              
+              <DistroLogo
+                distroName={distribution.name}
+                logoUrl={distribution.logoUrl}
+                variant="large"
+                className="w-20 h-20"
+              />
+
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
                   <h1 className="font-serif font-bold text-3xl text-foreground" data-testid="text-distro-name">
@@ -191,6 +180,11 @@ export default function DistributionDetail() {
                   </h1>
                   {distribution.baseDistro && (
                     <Badge variant="secondary" data-testid="badge-base-distro">
+                      <DistroLogo
+                        distroName={distribution.baseDistro}
+                        variant="micro"
+                        className="w-4 h-4 mr-1.5"
+                      />
                       Based on {distribution.baseDistro}
                     </Badge>
                   )}
@@ -238,9 +232,9 @@ export default function DistributionDetail() {
                   <Globe className="w-5 h-5 text-primary" />
                   <span className="text-sm text-muted-foreground">Official Website</span>
                 </div>
-                <a 
-                  href={distribution.websiteUrl} 
-                  target="_blank" 
+                <a
+                  href={distribution.websiteUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-primary hover:underline truncate block"
                   data-testid="link-website-short"
@@ -252,8 +246,8 @@ export default function DistributionDetail() {
 
             {/* Release History Chart */}
             {distribution.releases.length > 0 && (
-              <ReleaseHistory 
-                releases={distribution.releases} 
+              <ReleaseHistory
+                releases={distribution.releases}
                 distroName={distribution.name}
               />
             )}

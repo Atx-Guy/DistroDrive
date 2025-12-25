@@ -4,13 +4,23 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useIsoSelection } from "@/contexts/IsoSelectionContext";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface HeaderProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
 }
 
-export function Header({ searchQuery, onSearchChange }: HeaderProps) {
+export function Header({
+  searchQuery,
+  onSearchChange,
+}: HeaderProps) {
   const [location] = useLocation();
   const { selectedCount } = useIsoSelection();
 
@@ -32,24 +42,26 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
             </div>
           </Link>
 
-          <div className="flex-1 max-w-md hidden md:block">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search distributions..."
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="pl-10 bg-background border-border"
-                data-testid="input-search"
-              />
+          <div className="flex-1 max-w-xl hidden md:block">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search distributions..."
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange(e.target.value)}
+                  className="pl-10 bg-background border-border"
+                  data-testid="input-search"
+                />
+              </div>
             </div>
           </div>
 
           <nav className="flex items-center gap-1 flex-wrap">
             <Link href="/">
-              <Button 
-                variant={location === "/" ? "secondary" : "ghost"} 
+              <Button
+                variant={location === "/" ? "secondary" : "ghost"}
                 size="sm"
                 data-testid="link-nav-home"
               >
@@ -57,19 +69,10 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 <span className="hidden sm:inline">Home</span>
               </Button>
             </Link>
-            <Link href="/iso-browser">
-              <Button 
-                variant={location === "/iso-browser" ? "secondary" : "ghost"} 
-                size="sm"
-                data-testid="link-nav-iso"
-              >
-                <HardDrive className="w-4 h-4 sm:mr-2" />
-                <span className="hidden sm:inline">ISO Library</span>
-              </Button>
-            </Link>
+
             <Link href="/matcher">
-              <Button 
-                variant={location === "/matcher" ? "secondary" : "ghost"} 
+              <Button
+                variant={location === "/matcher" ? "secondary" : "ghost"}
                 size="sm"
                 data-testid="link-nav-matcher"
               >
@@ -78,8 +81,8 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               </Button>
             </Link>
             <Link href="/compare">
-              <Button 
-                variant={location === "/compare" ? "secondary" : "ghost"} 
+              <Button
+                variant={location === "/compare" ? "secondary" : "ghost"}
                 size="sm"
                 data-testid="link-nav-compare"
               >
@@ -88,8 +91,8 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               </Button>
             </Link>
             <Link href="/ventoy">
-              <Button 
-                variant={location === "/ventoy" ? "secondary" : "ghost"} 
+              <Button
+                variant={location === "/ventoy" ? "secondary" : "ghost"}
                 size="sm"
                 data-testid="link-nav-ventoy"
               >
@@ -103,8 +106,8 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               </Button>
             </Link>
             <Link href="/news">
-              <Button 
-                variant={location === "/news" ? "secondary" : "ghost"} 
+              <Button
+                variant={location === "/news" ? "secondary" : "ghost"}
                 size="sm"
                 data-testid="link-nav-news"
               >
@@ -115,7 +118,7 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
           </nav>
         </div>
 
-        <div className="md:hidden mt-4">
+        <div className="md:hidden mt-4 space-y-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
